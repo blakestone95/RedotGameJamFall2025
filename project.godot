@@ -12,4 +12,5 @@ config_version=5
 
 config/name="Antpocalypse"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/image="res://data/2D assets/other/BootSplash_temp.png"
+config/icon="res://data/2D assets/other/gameicon_temp.png"
