@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://bx08d373rhb7o"]
+
+[ext_resource type="Script" path="res://gameplay/inventory/items/itemData.gd" id="1_g6xom"]
+[ext_resource type="Texture2D" uid="uid://mg2syir17h5n" path="res://data/2D assets/world/Leafbit.png" id="2_m58q0"]
+
+[resource]
+script = ExtResource("1_g6xom")
+type = 0
+name = "Leaf"
+texture = ExtResource("2_m58q0")
+max_amount = 10
