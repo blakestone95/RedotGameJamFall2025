@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://brc0mofk4ogjs"]
+
+[ext_resource type="Script" path="res://gameplay/inventory/items/itemData.gd" id="1_2otx7"]
+[ext_resource type="Texture2D" uid="uid://cyod6qufq10lm" path="res://icon.svg" id="2_fxo8v"]
+
+[resource]
+script = ExtResource("1_2otx7")
+type = 2
+name = "Food"
+texture = ExtResource("2_fxo8v")
+max_amount = 0
