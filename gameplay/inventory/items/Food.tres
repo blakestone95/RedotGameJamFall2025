@@ -8,4 +8,4 @@ script = ExtResource("1_2otx7")
 type = 2
 name = "Food"
 texture = ExtResource("2_fxo8v")
-max_amount = 0
+max_amount = 10
