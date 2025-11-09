@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://6ies8rxg2dmo"]
+
+[ext_resource type="Script" path="res://gameplay/character/antonia.gd" id="1_k7mp8"]
+[ext_resource type="Texture2D" uid="uid://do7mpe4r63ikw" path="res://data/2D assets/character/AntoniaSpriteSheet.png" id="2_302ew"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byet5"]
+atlas = ExtResource("2_302ew")
+region = Rect2(400, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k84el"]
+atlas = ExtResource("2_302ew")
+region = Rect2(800, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w58vf"]
+atlas = ExtResource("2_302ew")
+region = Rect2(0, 0, 400, 400)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wnrh0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byet5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k84el")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byet5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w58vf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_to8o5"]
+radius = 150.0
+height = 350.0
+
+[node name="Antonia" type="Node2D"]
+script = ExtResource("1_k7mp8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(16, 0)
+sprite_frames = SubResource("SpriteFrames_wnrh0")
+frame_progress = 0.955353
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_mask = 6
+motion_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CapsuleShape2D_to8o5")
