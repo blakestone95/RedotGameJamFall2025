@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmxx65bem7m35"]
+
+[ext_resource type="Texture2D" uid="uid://dy6qs2qtyxnu4" path="res://data/2D assets/world/Default Map.png" id="1_c3gql"]
+[ext_resource type="PackedScene" uid="uid://6ies8rxg2dmo" path="res://gameplay/character/Antonia.tscn" id="2_rfscu"]
+
+[node name="Overworld" type="Node2D"]
+
+[node name="MapBackground" type="TextureRect" parent="."]
+offset_left = -9223.0
+offset_top = -3523.0
+offset_right = -8223.0
+offset_bottom = -2523.0
+scale = Vector2(12.4907, 12.4907)
+texture = ExtResource("1_c3gql")
+
+[node name="World Objects" type="Node2D" parent="."]
+
+[node name="Antonia" parent="World Objects" instance=ExtResource("2_rfscu")]
+position = Vector2(9.53674e-07, -1)
+rotation = -2.45036
+scale = Vector2(0.175205, 0.175205)
+
+[node name="Camera2D" type="Camera2D" parent="World Objects/Antonia"]
+position = Vector2(-3.63851, -4.39747)
+rotation = 2.45036
+scale = Vector2(5.70758, 5.70758)
