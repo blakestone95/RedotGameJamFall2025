@@ -3,11 +3,10 @@ extends Control
 
 var slotSize = 64
 
-var itemsLoad : Dictionary = {
-	ItemData.Type.LEAF : "res://gameplay/inventory/items/Leaf.tres",
-	ItemData.Type.STICK : "res://gameplay/inventory/items/Stick.tres",
-	ItemData.Type.FOOD : "res://gameplay/inventory/items/Food.tres",
-}
+var itemsLoad = ["res://gameplay/inventory/items/Leaf.tres",
+	"res://gameplay/inventory/items/Stick.tres",
+	"res://gameplay/inventory/items/Food.tres",
+	"res://gameplay/inventory/items/Pebble.tres"]
 
 func _ready() -> void:
 	for i in itemsLoad:
@@ -15,5 +14,5 @@ func _ready() -> void:
 		slot.init(Vector2(slotSize, slotSize))
 		$HBoxContainer.add_child(slot)
 		var item = InventoryItem.new()
-		item.init(load(itemsLoad[i]))
+		item.init(load(i))
 		slot.add_child(item)
