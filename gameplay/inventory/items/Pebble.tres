@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://dwpbt4mvk2odb"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://dwpbt4mvk2odb"]
 
 [ext_resource type="Script" path="res://gameplay/inventory/items/itemData.gd" id="1_2qlxm"]
+[ext_resource type="Texture2D" uid="uid://c5jk8m2sn2j5r" path="res://data/2D assets/world/Pebble.png" id="2_ixwlb"]
 
 [resource]
 script = ExtResource("1_2qlxm")
 type = 3
 name = "Pebble"
+texture = ExtResource("2_ixwlb")
 max_amount = 0
