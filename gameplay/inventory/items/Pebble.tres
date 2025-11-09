@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://dwpbt4mvk2odb"]
+
+[ext_resource type="Script" path="res://gameplay/inventory/items/itemData.gd" id="1_2qlxm"]
+
+[resource]
+script = ExtResource("1_2qlxm")
+type = 3
+name = "Pebble"
+max_amount = 0

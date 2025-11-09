@@ -1,7 +1,7 @@
 class_name ItemData
 extends Resource
 
-enum Type {LEAF, STICK, FOOD}
+enum Type {LEAF, STICK, FOOD, PEBBLE}
 
 @export var type: Type
 @export var name: String
