@@ -1,0 +1,1 @@
+in autoloads, we can have scripts automatically load relevant files so that gameplay feels optimized.

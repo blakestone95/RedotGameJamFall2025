@@ -1,0 +1,1 @@
+here will be any 2d assets which are within the game but not classified in any other category, usually splash screens etc
