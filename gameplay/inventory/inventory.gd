@@ -3,6 +3,8 @@ extends Control
 
 var slotSize = 64
 
+var inventoryItems : Dictionary
+
 var itemsLoad = ["res://gameplay/inventory/items/Leaf.tres",
 	"res://gameplay/inventory/items/Stick.tres",
 	"res://gameplay/inventory/items/Food.tres",
@@ -16,3 +18,7 @@ func _ready() -> void:
 		var item = InventoryItem.new()
 		item.init(load(i))
 		slot.add_child(item)
+		inventoryItems[item.item.type] = item
+		
+func increase_item(type: ItemData.Type, amount: int):
+	inventoryItems[type].increase(amount)
