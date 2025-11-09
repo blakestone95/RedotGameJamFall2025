@@ -1,8 +1,5 @@
 class_name InventorySlot
 extends PanelContainer
 
-@export var type: ItemData.Type
-
-func init(t: ItemData.Type, cms: Vector2) -> void:
-	type = t
+func init(cms: Vector2) -> void:
 	custom_minimum_size = cms
