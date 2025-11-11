@@ -1,7 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://6ies8rxg2dmo"]
+[gd_scene load_steps=14 format=3 uid="uid://6ies8rxg2dmo"]
 
 [ext_resource type="Script" path="res://gameplay/character/antonia.gd" id="1_k7mp8"]
+[ext_resource type="Script" path="res://gameplay/inventory/items/item_data.gd" id="2_28fm6"]
 [ext_resource type="Texture2D" uid="uid://do7mpe4r63ikw" path="res://data/2D assets/character/AntoniaSpriteSheet.png" id="2_302ew"]
+[ext_resource type="Resource" uid="uid://bx08d373rhb7o" path="res://gameplay/inventory/items/Leaf.tres" id="3_8fv6c"]
+[ext_resource type="Resource" uid="uid://umc8jremj87a" path="res://gameplay/inventory/items/Stick.tres" id="4_6q770"]
+[ext_resource type="Resource" uid="uid://dwpbt4mvk2odb" path="res://gameplay/inventory/items/Pebble.tres" id="5_a2een"]
+[ext_resource type="Resource" uid="uid://brc0mofk4ogjs" path="res://gameplay/inventory/items/Food.tres" id="6_ggqb6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_byet5"]
 atlas = ExtResource("2_302ew")
@@ -35,12 +40,15 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_to8o5"]
-radius = 150.0
-height = 350.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_to8o5"]
+radius = 180.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xnl2y"]
+radius = 400.0
 
 [node name="Antonia" type="Node2D"]
 script = ExtResource("1_k7mp8")
+inventory_items = Array[ExtResource("2_28fm6")]([ExtResource("3_8fv6c"), ExtResource("4_6q770"), ExtResource("5_a2een"), ExtResource("6_ggqb6")])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(16, 0)
@@ -51,5 +59,17 @@ frame_progress = 0.955353
 collision_mask = 6
 motion_mode = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-shape = SubResource("CapsuleShape2D_to8o5")
+[node name="CollisionCircle" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_to8o5")
+debug_color = Color(0, 0.54423, 0.945571, 0.658824)
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="InteractionCircle" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_xnl2y")
+debug_color = Color(9.62615e-07, 0.649433, 0.143892, 0.42)
+
+[connection signal="area_entered" from="InteractionArea" to="." method="_on_interaction_area_entered"]
+[connection signal="area_exited" from="InteractionArea" to="." method="_on_interaction_area_exited"]
