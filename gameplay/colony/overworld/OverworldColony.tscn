@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://c28kh77i1dev6"]
+
+[ext_resource type="Texture2D" uid="uid://7h56jvne7h3l" path="res://data/2D assets/world/topview_anthill.png" id="1_uhbpm"]
+[ext_resource type="Script" path="res://gameplay/colony/overworld/overworld_colony.gd" id="2_ohxvw"]
+[ext_resource type="Script" path="res://gameplay/inventory/inventory_gui_control.gd" id="3_y6lv6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uhbpm"]
+radius = 100.0
+
+[node name="OverworldColony" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_uhbpm")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("2_ohxvw")
+
+[node name="InteractionCircle" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_uhbpm")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+visible = false
+offset_left = -64.0
+offset_top = -118.0
+offset_right = 64.0
+offset_bottom = -54.0
+
+[node name="InventoryGui" type="Control" parent="CenterContainer" node_paths=PackedStringArray("inventory_source")]
+layout_mode = 2
+script = ExtResource("3_y6lv6")
+inventory_source = NodePath("../../InteractionArea")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/InventoryGui"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

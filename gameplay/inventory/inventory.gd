@@ -1,24 +1,18 @@
 class_name Inventory
-extends Control
 
 var slotSize = 64
 
-var inventoryItems : Dictionary
+## Indexed with ItemData.Type and contains ItemData
+var items: Dictionary = {}
 
-var itemsLoad = ["res://gameplay/inventory/items/Leaf.tres",
-	"res://gameplay/inventory/items/Stick.tres",
-	"res://gameplay/inventory/items/Food.tres",
-	"res://gameplay/inventory/items/Pebble.tres"]
+func _init(item_data: Dictionary):
+	# Validate data
+	for item in item_data.values():
+		assert(item is ItemData, "All values of item_data passed to Inventory must be ItemData")
+	items = item_data
 
-func _ready() -> void:
-	for i in itemsLoad:
-		var slot = InventorySlot.new()
-		slot.init(Vector2(slotSize, slotSize))
-		$HBoxContainer.add_child(slot)
-		var item = InventoryItem.new()
-		item.init(load(i))
-		slot.add_child(item)
-		inventoryItems[item.item.type] = item
-		
 func increase_item(type: ItemData.Type, amount: int):
-	inventoryItems[type].increase(amount)
+	items[type].increase(amount)
+
+func decrease_item(type: ItemData.Type, amount: int):
+	items[type].decrease(amount)

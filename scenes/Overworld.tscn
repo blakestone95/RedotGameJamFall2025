@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmxx65bem7m35"]
+[gd_scene load_steps=9 format=3 uid="uid://bmxx65bem7m35"]
 
 [ext_resource type="Texture2D" uid="uid://dy6qs2qtyxnu4" path="res://data/2D assets/world/Default Map.png" id="1_c3gql"]
+[ext_resource type="PackedScene" uid="uid://c28kh77i1dev6" path="res://gameplay/colony/overworld/OverworldColony.tscn" id="2_puia7"]
 [ext_resource type="PackedScene" uid="uid://6ies8rxg2dmo" path="res://gameplay/character/Antonia.tscn" id="2_rfscu"]
-[ext_resource type="PackedScene" uid="uid://brouxaecajl23" path="res://gameplay/inventory/Inventory.tscn" id="3_xkcif"]
+[ext_resource type="PackedScene" uid="uid://brouxaecajl23" path="res://gameplay/inventory/InventoryGui.tscn" id="3_xkcif"]
+[ext_resource type="PackedScene" uid="uid://cvf4dc2at14k6" path="res://gameplay/groundItems/resourcePickups/FoodPickup.tscn" id="5_b5655"]
+[ext_resource type="PackedScene" uid="uid://bd66d8aayrdbr" path="res://gameplay/groundItems/resourcePickups/LeafPickup.tscn" id="6_0n4wa"]
+[ext_resource type="PackedScene" uid="uid://cuppqrojhp08q" path="res://gameplay/groundItems/resourcePickups/PebblePickup.tscn" id="7_666lb"]
+[ext_resource type="PackedScene" uid="uid://de4tue37p42jp" path="res://gameplay/groundItems/resourcePickups/TwigPickup.tscn" id="8_m38k2"]
 
 [node name="Overworld" type="Node2D"]
 
@@ -16,6 +21,10 @@ texture = ExtResource("1_c3gql")
 
 [node name="World Objects" type="Node2D" parent="."]
 
+[node name="OverworldColony" parent="World Objects" instance=ExtResource("2_puia7")]
+position = Vector2(128, -108)
+scale = Vector2(2.56783, 2.56783)
+
 [node name="Antonia" parent="World Objects" instance=ExtResource("2_rfscu")]
 position = Vector2(9.53674e-07, -1)
 rotation = -2.45036
@@ -28,4 +37,17 @@ scale = Vector2(5.70758, 5.70758)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="World Objects/Antonia/Camera2D"]
 
-[node name="Inventory" parent="World Objects/Antonia/Camera2D/CanvasLayer" instance=ExtResource("3_xkcif")]
+[node name="Inventory" parent="World Objects/Antonia/Camera2D/CanvasLayer" node_paths=PackedStringArray("inventory_source") instance=ExtResource("3_xkcif")]
+inventory_source = NodePath("../../..")
+
+[node name="FoodPickup" parent="." instance=ExtResource("5_b5655")]
+position = Vector2(-544, -148)
+
+[node name="LeafPickup" parent="." instance=ExtResource("6_0n4wa")]
+position = Vector2(-664, 171)
+
+[node name="PebblePickup" parent="." instance=ExtResource("7_666lb")]
+position = Vector2(-343, 469)
+
+[node name="TwigPickup" parent="." instance=ExtResource("8_m38k2")]
+position = Vector2(73, 427)

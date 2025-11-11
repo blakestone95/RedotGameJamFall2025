@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvf4dc2at14k6"]
+
+[ext_resource type="Script" path="res://gameplay/groundItems/resourcePickups/pickup.gd" id="1_7ilr7"]
+[ext_resource type="Texture2D" uid="uid://ydb3lfgldbr3" path="res://data/2D assets/world/Crumb.png" id="2_7ilr7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w26cd"]
+
+[node name="FoodPickup" type="Node2D"]
+
+[node name="PickupArea" type="Area2D" parent="." node_paths=PackedStringArray("root")]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_7ilr7")
+pickup_type = 3
+root = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+shape = SubResource("CircleShape2D_w26cd")
+
+[node name="TextureRect" type="TextureRect" parent="PickupArea"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7ilr7")
