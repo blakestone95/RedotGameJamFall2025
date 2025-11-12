@@ -8,6 +8,9 @@
 [ext_resource type="Resource" uid="uid://dwpbt4mvk2odb" path="res://gameplay/inventory/items/Pebble.tres" id="5_a2een"]
 [ext_resource type="Resource" uid="uid://brc0mofk4ogjs" path="res://gameplay/inventory/items/Food.tres" id="6_ggqb6"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_to8o5"]
+radius = 180.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_byet5"]
 atlas = ExtResource("2_302ew")
 region = Rect2(400, 0, 400, 400)
@@ -40,28 +43,23 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_to8o5"]
-radius = 180.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_xnl2y"]
 radius = 400.0
 
-[node name="Antonia" type="Node2D"]
+[node name="Antonia" type="CharacterBody2D"]
+collision_mask = 6
+motion_mode = 1
 script = ExtResource("1_k7mp8")
 inventory_items = Array[ExtResource("2_28fm6")]([ExtResource("3_8fv6c"), ExtResource("4_6q770"), ExtResource("5_a2een"), ExtResource("6_ggqb6")])
+
+[node name="CollisionCircle" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_to8o5")
+debug_color = Color(0, 0.54423, 0.945571, 0.658824)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(16, 0)
 sprite_frames = SubResource("SpriteFrames_wnrh0")
 frame_progress = 0.955353
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-collision_mask = 6
-motion_mode = 1
-
-[node name="CollisionCircle" type="CollisionShape2D" parent="CharacterBody2D"]
-shape = SubResource("CircleShape2D_to8o5")
-debug_color = Color(0, 0.54423, 0.945571, 0.658824)
 
 [node name="InteractionArea" type="Area2D" parent="."]
 collision_layer = 0

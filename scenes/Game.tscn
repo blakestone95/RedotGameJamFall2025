@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cjil0hsi5ghr"]
+[gd_scene load_steps=8 format=3 uid="uid://b3it838w1malp"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_qbsmt"]
-[ext_resource type="PackedScene" uid="uid://bmxx65bem7m35" path="res://scenes/Overworld.tscn" id="2_cpr0p"]
+[ext_resource type="PackedScene" uid="uid://dn0jgsyiovc1t" path="res://scenes/Overworld.tscn" id="2_cpr0p"]
 [ext_resource type="Script" path="res://gameplay/inventory/items/item_data.gd" id="2_kiw3p"]
 [ext_resource type="Resource" uid="uid://bx08d373rhb7o" path="res://gameplay/inventory/items/Leaf.tres" id="3_400sg"]
 [ext_resource type="Resource" uid="uid://umc8jremj87a" path="res://gameplay/inventory/items/Stick.tres" id="4_g4kob"]
