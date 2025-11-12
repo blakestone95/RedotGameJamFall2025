@@ -16,6 +16,11 @@ config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/image="res://data/2D assets/other/BootSplash_temp.png"
 config/icon="res://data/2D assets/other/gameicon_temp.png"
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+
 [input]
 
 character_up={
