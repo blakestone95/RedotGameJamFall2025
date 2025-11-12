@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://dn0jgsyiovc1t"]
+[gd_scene load_steps=10 format=4 uid="uid://dn0jgsyiovc1t"]
 
 [ext_resource type="Texture2D" uid="uid://yyxgoq3gpcqr" path="res://data/2D assets/world/Tilemap_World.png" id="2_5gya1"]
+[ext_resource type="PackedScene" uid="uid://c28kh77i1dev6" path="res://gameplay/colony/overworld/OverworldColony.tscn" id="2_puia7"]
 [ext_resource type="PackedScene" uid="uid://6ies8rxg2dmo" path="res://gameplay/character/Antonia.tscn" id="2_rfscu"]
-[ext_resource type="PackedScene" uid="uid://brouxaecajl23" path="res://gameplay/inventory/Inventory.tscn" id="3_xkcif"]
-[ext_resource type="PackedScene" uid="uid://b7lkqr3s4c8wy" path="res://scenes/Parallax_Background.tscn" id="5_e6hpn"]
+[ext_resource type="PackedScene" uid="uid://brouxaecajl23" path="res://gameplay/inventory/InventoryGui.tscn" id="3_xkcif"]
+[ext_resource type="PackedScene" path="res://scenes/Parallax_Background.tscn" id="5_e6hpn"]
 [ext_resource type="Shader" path="res://data/2D assets/world/Plants(Seethrough).gdshader" id="5_ln1e8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gmhqd"]
@@ -530,6 +531,10 @@ tile_set = SubResource("TileSet_os70q")
 
 [node name="World Objects" type="Node2D" parent="."]
 
+[node name="OverworldColony" parent="World Objects" instance=ExtResource("2_puia7")]
+position = Vector2(128, -108)
+scale = Vector2(2.56783, 2.56783)
+
 [node name="Antonia" parent="World Objects" instance=ExtResource("2_rfscu")]
 position = Vector2(9.53674e-07, -1)
 rotation = -2.45036
@@ -542,7 +547,8 @@ scale = Vector2(5.70758, 5.70758)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="World Objects/Antonia/Camera2D"]
 
-[node name="Inventory" parent="World Objects/Antonia/Camera2D/CanvasLayer" instance=ExtResource("3_xkcif")]
+[node name="Inventory" parent="World Objects/Antonia/Camera2D/CanvasLayer" node_paths=PackedStringArray("inventory_source") instance=ExtResource("3_xkcif")]
+inventory_source = NodePath("../../..")
 
 [node name="TileMapLayer4 (greenery)" type="TileMapLayer" parent="."]
 material = SubResource("ShaderMaterial_mg4ds")

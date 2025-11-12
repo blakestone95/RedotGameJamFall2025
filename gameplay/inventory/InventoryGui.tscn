@@ -1,15 +1,15 @@
 [gd_scene load_steps=2 format=3 uid="uid://brouxaecajl23"]
 
-[ext_resource type="Script" path="res://gameplay/inventory/inventory.gd" id="1_41s6i"]
+[ext_resource type="Script" path="res://gameplay/inventory/inventory_gui_control.gd" id="1_q201u"]
 
-[node name="Inventory" type="Control"]
+[node name="InventoryGui" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_41s6i")
+script = ExtResource("1_q201u")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
