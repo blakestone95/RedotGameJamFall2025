@@ -1,4 +1,4 @@
-extends Node2D
+class_name Antonia extends CharacterBody2D
 
 # Attributes
 @export var speed = 200
@@ -20,9 +20,9 @@ func _ready() -> void:
 		intentory_data[item.type] = item.duplicate()
 	inventory = Inventory.new(intentory_data)
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	# Determine direction from inputs
-	var velocity = Vector2.ZERO
+	velocity = Vector2.ZERO
 	if Input.is_action_pressed("character_right"):
 		velocity.x += 1
 	if Input.is_action_pressed("character_left"):
@@ -42,8 +42,10 @@ func _process(delta: float) -> void:
 		$AnimatedSprite2D.stop()
 	
 	# Move the character
-	position += velocity * delta
-	
+	move_and_slide()
+
+
+func _process(delta: float) -> void:
 	# Handle interaction
 	if Input.is_action_just_pressed("interact"):
 		handle_interaction()
