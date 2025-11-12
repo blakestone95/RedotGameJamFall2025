@@ -20,7 +20,7 @@ func _ready() -> void:
 		intentory_data[item.type] = item.duplicate()
 	inventory = Inventory.new(intentory_data)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	# Determine direction from inputs
 	velocity = Vector2.ZERO
 	if Input.is_action_pressed("character_right"):
@@ -45,7 +45,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# Handle interaction
 	if Input.is_action_just_pressed("interact"):
 		handle_interaction()

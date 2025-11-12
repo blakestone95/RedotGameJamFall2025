@@ -20,6 +20,11 @@ config/icon="res://data/2D assets/other/gameicon_temp.png"
 
 IdManager="*res://autoloads/id_manager.gd"
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+
 [input]
 
 character_up={
