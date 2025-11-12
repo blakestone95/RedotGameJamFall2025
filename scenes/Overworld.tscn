@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmxx65bem7m35"]
+[gd_scene load_steps=3 format=3 uid="uid://bmxx65bem7m35"]
 
 [ext_resource type="Texture2D" uid="uid://dy6qs2qtyxnu4" path="res://data/2D assets/world/Default Map.png" id="1_c3gql"]
 [ext_resource type="PackedScene" uid="uid://6ies8rxg2dmo" path="res://gameplay/character/Antonia.tscn" id="2_rfscu"]
-[ext_resource type="PackedScene" uid="uid://brouxaecajl23" path="res://gameplay/inventory/Inventory.tscn" id="3_xkcif"]
 
 [node name="Overworld" type="Node2D"]
 
@@ -25,7 +24,3 @@ scale = Vector2(0.175205, 0.175205)
 position = Vector2(-3.63851, -4.39747)
 rotation = 2.45036
 scale = Vector2(5.70758, 5.70758)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="World Objects/Antonia/Camera2D"]
-
-[node name="Inventory" parent="World Objects/Antonia/Camera2D/CanvasLayer" instance=ExtResource("3_xkcif")]
