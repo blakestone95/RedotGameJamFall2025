@@ -1,10 +1,9 @@
 extends ProgressBar
 
 
-func _ready() -> void:
-	$Timer.wait_time = max_value
+signal progress_bar_completed
 
-func start_timer() -> void:
-	if $Timer.is_stopped():
-		$Timer.start()
-		
+func reduce_progress(amount: float):
+	value = max(0, value - amount)
+	if value == 0:
+		progress_bar_completed.emit()
