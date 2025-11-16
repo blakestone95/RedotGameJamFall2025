@@ -1,0 +1,126 @@
+[gd_scene load_steps=7 format=3 uid="uid://c1bgmdavl3i8v"]
+
+[ext_resource type="Script" path="res://gameplay/colony/rubble/rubble.gd" id="1_hi1rg"]
+[ext_resource type="Texture2D" uid="uid://28nxejtvv4bf" path="res://data/2D assets/world/rubble sprites/Rubble 01.png" id="1_hxukk"]
+[ext_resource type="Texture2D" uid="uid://c5mau1mc1ej17" path="res://data/2D assets/other/Dust Cloud.png" id="6_30lcg"]
+
+[sub_resource type="Animation" id="Animation_vciij"]
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rubble/Rubble:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333, 0.0666, 0.0999, 0.1332, 0.1665, 0.1998, 0.2331, 0.2664, 0.2997, 0.333, 0.3663, 0.3996, 0.4329, 0.4662, 0.4995, 0.999, 1.998),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-5, 0), Vector2(-3, -1), Vector2(-1, 4), Vector2(4, -1), Vector2(-4, -5), Vector2(-1, 3), Vector2(3, -3), Vector2(-4, 5), Vector2(8, 1), Vector2(-6, -3), Vector2(1, 4), Vector2(-4, 4), Vector2(2, -6), Vector2(3, 6), Vector2(-5, 6), Vector2(2, -4), Vector2(-2, -6), Vector2(-3, 62)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rubble/Rubble:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.999, 1.998),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rubble/Rubble:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1998, 0.3996, 0.666, 1.1655, 1.998),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.816814, 0.652753, -0.652753, 3.7542, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Dust/DustCloud:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1665, 0.2664, 0.4662, 0.5994, 0.999, 1.7649, 2.5308),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_sjny3"]
+resource_name = "Rubble_Fall"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rubble/Rubble:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333, 0.0666, 0.0999, 0.1332, 0.1665, 0.1998, 0.2331, 0.2664, 0.2997, 0.333, 0.3663, 0.3996, 0.4329, 0.4662, 0.4995, 0.5328, 1.0323, 2.0313),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-5, 0), Vector2(-6, -4), Vector2(2, -2), Vector2(-2, 3), Vector2(2, 4), Vector2(5, 3), Vector2(-7, 3), Vector2(-3, -4), Vector2(-4, -2), Vector2(5, -3), Vector2(0, 0), Vector2(-3, 4), Vector2(2, 5), Vector2(6, 1), Vector2(1, -2), Vector2(0, -3), Vector2(1, 6), Vector2(1, 52), Vector2(4, 109)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rubble/Rubble:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5328, 2.0313),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rubble/Rubble:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1998, 0.4329, 1.0323, 2.0313),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.164061, 0.488692, 3.0997, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4iscx"]
+_data = {
+"RESET": SubResource("Animation_vciij"),
+"Rubble_Fall": SubResource("Animation_sjny3")
+}
+
+[node name="Rubble" type="Node2D"]
+script = ExtResource("1_hi1rg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4iscx")
+}
+
+[node name="Rubble" type="Node2D" parent="."]
+
+[node name="Rubble" type="Sprite2D" parent="Rubble"]
+position = Vector2(-5, 0)
+texture = ExtResource("1_hxukk")
+
+[node name="Dust" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0.686275)
+position = Vector2(-84, 79)
+scale = Vector2(2.65625, 2.65625)
+
+[node name="DustCloud" type="Sprite2D" parent="Dust"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(31.6235, -29.7412)
+texture = ExtResource("6_30lcg")
