@@ -20,5 +20,4 @@ func _on_foraging_progress_progress_bar_completed() -> void:
 	get_parent().queue_free()
 
 func breaking_progress(amount: float) -> void:
-	print('test')
 	foraging_progress.reduce_progress(amount)
