@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://sve2fxbwg7n1"]
+
+[ext_resource type="Texture2D" uid="uid://uk3uxjr0wujt" path="res://data/2D assets/world/AntHill Base (7of7).png" id="1_7ffwc"]
+
+[node name="AntHillBas(7Of7)" type="Sprite2D"]
+texture = ExtResource("1_7ffwc")

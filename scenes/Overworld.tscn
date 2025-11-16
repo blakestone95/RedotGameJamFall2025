@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c28kh77i1dev6" path="res://gameplay/colony/overworld/OverworldColony.tscn" id="2_puia7"]
 [ext_resource type="PackedScene" uid="uid://6ies8rxg2dmo" path="res://gameplay/character/Antonia.tscn" id="2_rfscu"]
 [ext_resource type="PackedScene" uid="uid://brouxaecajl23" path="res://gameplay/inventory/InventoryGui.tscn" id="3_xkcif"]
-[ext_resource type="PackedScene" path="res://scenes/Parallax_Background.tscn" id="5_e6hpn"]
+[ext_resource type="PackedScene" uid="uid://b7lkqr3s4c8wy" path="res://scenes/Parallax_Background.tscn" id="5_e6hpn"]
 [ext_resource type="Shader" path="res://data/2D assets/world/Plants(Seethrough).gdshader" id="5_ln1e8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gmhqd"]
