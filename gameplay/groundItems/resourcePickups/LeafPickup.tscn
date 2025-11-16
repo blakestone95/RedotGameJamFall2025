@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://mg2syir17h5n" path="res://data/2D assets/world/Leafbit.png" id="2_2ekjp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w26cd"]
+radius = 8.0
 
 [node name="LeafPickup" type="Node2D"]
 
@@ -22,10 +23,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -50.0
-offset_right = 50.0
-offset_bottom = 50.0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_2ekjp")
+expand_mode = 3
