@@ -25,5 +25,10 @@ shape = SubResource("CapsuleShape2D_x0cfc")
 texture = ExtResource("3_2bg5g")
 
 [node name="ForagingProgress" parent="." instance=ExtResource("4_7j8o2")]
+visible = false
+offset_left = -18.0
+offset_top = -222.0
+offset_right = 18.0
+offset_bottom = -204.0
 
 [connection signal="progress_bar_completed" from="ForagingProgress" to="Area2D" method="_on_foraging_progress_progress_bar_completed"]

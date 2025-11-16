@@ -35,5 +35,10 @@ size_flags_horizontal = 4
 texture = ExtResource("1_vxljo")
 
 [node name="ForagingProgress" parent="." instance=ExtResource("3_d0hve")]
+visible = false
+offset_left = -20.0
+offset_top = -210.0
+offset_right = 16.0
+offset_bottom = -192.0
 
 [connection signal="progress_bar_completed" from="ForagingProgress" to="Area2D" method="_on_foraging_progress_progress_bar_completed"]

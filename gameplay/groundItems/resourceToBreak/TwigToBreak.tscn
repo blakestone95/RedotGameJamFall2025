@@ -19,12 +19,16 @@ pickup_item = ExtResource("2_egy04")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-17, 11)
 rotation = 0.785398
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_egy04")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_0goa5")
 
 [node name="ForagingProgress" parent="." instance=ExtResource("4_pn4ke")]
+visible = false
+offset_left = -11.0
+offset_top = -185.0
+offset_right = 25.0
+offset_bottom = -167.0
 
 [connection signal="progress_bar_completed" from="ForagingProgress" to="Area2D" method="_on_foraging_progress_progress_bar_completed"]
