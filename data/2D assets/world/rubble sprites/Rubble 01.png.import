@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5mau1mc1ej17"
-path="res://.godot/imported/Dust Cloud.png-f06e79f6466eef21e57efc5264712e03.ctex"
+uid="uid://28nxejtvv4bf"
+path="res://.godot/imported/Rubble 01.png-5b7079efba107cfb86cbfee249e2b9fd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://data/2D assets/character/Dust Cloud.png"
-dest_files=["res://.godot/imported/Dust Cloud.png-f06e79f6466eef21e57efc5264712e03.ctex"]
+source_file="res://data/2D assets/world/rubble sprites/Rubble 01.png"
+dest_files=["res://.godot/imported/Rubble 01.png-5b7079efba107cfb86cbfee249e2b9fd.ctex"]
 
 [params]
 

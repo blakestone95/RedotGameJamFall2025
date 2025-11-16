@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://64sfstt1lh88"]
+
+[ext_resource type="Script" path="res://scenes/rubblepile.gd" id="1_3w31d"]
+[ext_resource type="PackedScene" uid="uid://c1bgmdavl3i8v" path="res://scenes/Rubble.tscn" id="1_y2kog"]
+
+[node name="rubblepile" type="Node2D"]
+script = ExtResource("1_3w31d")
+
+[node name="Rubble" parent="." instance=ExtResource("1_y2kog")]
+
+[node name="Rubble2" parent="." instance=ExtResource("1_y2kog")]
+position = Vector2(-22, 34)
+
+[node name="Rubble3" parent="." instance=ExtResource("1_y2kog")]
+position = Vector2(23, 34)
+
+[node name="Rubble4" parent="." instance=ExtResource("1_y2kog")]
+position = Vector2(3, 72)
+
+[node name="Rubble5" parent="." instance=ExtResource("1_y2kog")]
+position = Vector2(-40, 72)
+
+[node name="Rubble6" parent="." instance=ExtResource("1_y2kog")]
+position = Vector2(45, 73)
+
+[node name="Rubble7" parent="." instance=ExtResource("1_y2kog")]
+position = Vector2(68, 110)
+
+[node name="Rubble8" parent="." instance=ExtResource("1_y2kog")]
+position = Vector2(-63, 111)
+
+[node name="Rubble9" parent="." instance=ExtResource("1_y2kog")]
+position = Vector2(25, 113)
+
+[node name="Rubble10" parent="." instance=ExtResource("1_y2kog")]
+position = Vector2(-18, 110)
