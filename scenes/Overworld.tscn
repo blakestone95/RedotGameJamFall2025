@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://dn0jgsyiovc1t"]
+[gd_scene load_steps=14 format=4 uid="uid://dn0jgsyiovc1t"]
 
 [ext_resource type="Texture2D" uid="uid://yyxgoq3gpcqr" path="res://data/2D assets/world/Tilemap_World.png" id="2_5gya1"]
 [ext_resource type="PackedScene" uid="uid://c28kh77i1dev6" path="res://gameplay/colony/overworld/OverworldColony.tscn" id="2_puia7"]
@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://brouxaecajl23" path="res://gameplay/inventory/InventoryGui.tscn" id="3_xkcif"]
 [ext_resource type="PackedScene" uid="uid://b7lkqr3s4c8wy" path="res://scenes/Parallax_Background.tscn" id="5_e6hpn"]
 [ext_resource type="Shader" path="res://data/2D assets/world/Plants(Seethrough).gdshader" id="5_ln1e8"]
+[ext_resource type="PackedScene" uid="uid://dwbx8vhx4wk6e" path="res://gameplay/groundItems/resourceToBreak/LeafToBreak.tscn" id="6_666lb"]
+[ext_resource type="PackedScene" uid="uid://bufmmsc7tlwwp" path="res://gameplay/groundItems/resourceToBreak/FoodToBreak.tscn" id="6_i5y0i"]
+[ext_resource type="PackedScene" uid="uid://jx1hwa05ip52" path="res://gameplay/groundItems/resourceToBreak/PebbleToBreak.tscn" id="8_m38k2"]
+[ext_resource type="PackedScene" uid="uid://cusph446n0sbw" path="res://gameplay/groundItems/resourceToBreak/TwigToBreak.tscn" id="9_ff6um"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gmhqd"]
 texture = ExtResource("2_5gya1")
@@ -633,6 +637,18 @@ scale = Vector2(5.70758, 5.70758)
 
 [node name="Inventory" parent="World Objects/Antonia/Camera2D/CanvasLayer" node_paths=PackedStringArray("inventory_source") instance=ExtResource("3_xkcif")]
 inventory_source = NodePath("../../..")
+
+[node name="LeafToBreak" parent="." instance=ExtResource("6_666lb")]
+position = Vector2(-333, 122)
+
+[node name="FoodToBreak" parent="." instance=ExtResource("6_i5y0i")]
+position = Vector2(-486, 355)
+
+[node name="PebbleToBreak" parent="." instance=ExtResource("8_m38k2")]
+position = Vector2(414, 287)
+
+[node name="TwigToBreak" parent="." instance=ExtResource("9_ff6um")]
+position = Vector2(51, 328)
 
 [node name="TileMapLayer4 (greenery)" type="TileMapLayer" parent="."]
 material = SubResource("ShaderMaterial_mg4ds")

@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://bufmmsc7tlwwp"]
+
+[ext_resource type="Script" path="res://gameplay/groundItems/resourceToBreak/item_to_break.gd" id="1_2cet3"]
+[ext_resource type="Texture2D" uid="uid://7nihwwwv5eki" path="res://data/2D assets/world/Cookie.png" id="1_vxljo"]
+[ext_resource type="PackedScene" uid="uid://cvf4dc2at14k6" path="res://gameplay/groundItems/resourcePickups/FoodPickup.tscn" id="2_y243t"]
+[ext_resource type="PackedScene" uid="uid://c3j5wu03naiiv" path="res://gameplay/foraging/ForagingProgress.tscn" id="3_d0hve"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2cet3"]
+radius = 180.011
+
+[node name="FoodToBreak" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_2cet3")
+pickup_item = ExtResource("2_y243t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_2cet3")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+texture = ExtResource("1_vxljo")
+
+[node name="ForagingProgress" parent="." instance=ExtResource("3_d0hve")]
+visible = false
+offset_left = -20.0
+offset_top = -210.0
+offset_right = 16.0
+offset_bottom = -192.0
+
+[connection signal="progress_bar_completed" from="ForagingProgress" to="Area2D" method="_on_foraging_progress_progress_bar_completed"]

@@ -12,13 +12,14 @@ var inventory: Inventory
 # Separated interactions with pickups and colony so we can prioritize interactions without complex data structure management
 var nearby_pickups: Dictionary = {}
 var nearby_colony: OverworldColony # There will only be one colony
+var nearby_breakable: Dictionary = {}
 
 func _ready() -> void:
 	# Set up inventory
-	var intentory_data: Dictionary = {}
+	var inventory_data: Dictionary = {}
 	for item in inventory_items:
-		intentory_data[item.type] = item.duplicate()
-	inventory = Inventory.new(intentory_data)
+		inventory_data[item.type] = item.duplicate()
+	inventory = Inventory.new(inventory_data)
 
 func _physics_process(_delta: float) -> void:
 	# Determine direction from inputs
@@ -49,13 +50,16 @@ func _process(_delta: float) -> void:
 	# Handle interaction
 	if Input.is_action_just_pressed("interact"):
 		handle_interaction()
-
+	if Input.is_action_pressed("break") and velocity == Vector2.ZERO:
+		handle_break(_delta)
 
 func _on_interaction_area_entered(area: Area2D) -> void:
 	if area is Pickup:
 		nearby_pickups[area.id] = area
 	if area is OverworldColony:
 		nearby_colony = area
+	if area is ItemToBreak:
+		nearby_breakable[area.id] = area
 
 
 func _on_interaction_area_exited(area: Area2D) -> void:
@@ -63,7 +67,8 @@ func _on_interaction_area_exited(area: Area2D) -> void:
 		nearby_pickups.erase(area.id)
 	if area is OverworldColony:
 		nearby_colony = null
-
+	if area is ItemToBreak:
+		nearby_breakable.erase(area.id)
 
 func handle_interaction() -> void:
 	if nearby_pickups.size() > 0:
@@ -86,3 +91,10 @@ func handle_interaction() -> void:
 			# Update player inventory
 			item_to_deposit.decrease(item_to_deposit.count - remainder)
 		return
+
+func handle_break(amount: float) -> void:
+	if nearby_breakable.size() > 0:
+		# Handle pickup into inventory
+		var breakable: ItemToBreak = nearby_breakable.values()[0]
+		assert(breakable is ItemToBreak, "The first nearby breakable is not actually a ItemToBreak class")
+		breakable.breaking_progress(amount)
