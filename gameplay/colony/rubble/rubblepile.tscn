@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://64sfstt1lh88"]
 
-[ext_resource type="Script" path="res://scenes/rubblepile.gd" id="1_3w31d"]
-[ext_resource type="PackedScene" uid="uid://c1bgmdavl3i8v" path="res://scenes/Rubble.tscn" id="1_y2kog"]
+[ext_resource type="Script" path="res://gameplay/colony/rubble/rubblepile.gd" id="1_3w31d"]
+[ext_resource type="PackedScene" uid="uid://c1bgmdavl3i8v" path="res://gameplay/colony/rubble/Rubble.tscn" id="1_y2kog"]
 
 [node name="rubblepile" type="Node2D"]
 script = ExtResource("1_3w31d")

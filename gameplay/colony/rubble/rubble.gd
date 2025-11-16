@@ -7,6 +7,7 @@ extends Node2D
 
 const rubble_folder := "res://data/2D assets/world/rubble sprites/"
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var rubble: Sprite2D = $Rubble/Rubble
 
 # Called when the node enters the scene tree for the first time.
@@ -43,3 +44,7 @@ func _list_png_files(folder_path: String) -> Array[String]:
 		push_error("Cannot open folder: %s" % folder_path)
 		
 	return files
+
+
+func rubble_fall() -> void:
+	animation_player.play("RESET")

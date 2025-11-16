@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c1bgmdavl3i8v"]
 
-[ext_resource type="Script" path="res://scenes/rubble.gd" id="1_hi1rg"]
+[ext_resource type="Script" path="res://gameplay/colony/rubble/rubble.gd" id="1_hi1rg"]
 [ext_resource type="Texture2D" uid="uid://28nxejtvv4bf" path="res://data/2D assets/world/rubble sprites/Rubble 01.png" id="1_hxukk"]
 [ext_resource type="Texture2D" uid="uid://c5mau1mc1ej17" path="res://data/2D assets/other/Dust Cloud.png" id="6_30lcg"]
 

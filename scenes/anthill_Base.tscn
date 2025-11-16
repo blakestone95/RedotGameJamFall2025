@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://sve2fxbwg7n1"]
+[gd_scene load_steps=19 format=3 uid="uid://sve2fxbwg7n1"]
 
 [ext_resource type="Texture2D" uid="uid://uk3uxjr0wujt" path="res://data/2D assets/world/AntHill Base (7of7).png" id="1_7ffwc"]
 [ext_resource type="Texture2D" uid="uid://c8kx2bfnd7jpt" path="res://data/2D assets/world/AntHill Base (7of7) Built Template.png" id="2_35foo"]
@@ -17,8 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://c85ddbcpgursb" path="res://data/2D assets/world/AntHill Base Scout Destroyed.png" id="15_kl7tb"]
 [ext_resource type="Texture2D" uid="uid://5troepvaqp3i" path="res://data/2D assets/world/AntHill Base Storage destroyed.png" id="16_fdade"]
 [ext_resource type="Texture2D" uid="uid://dvmbfvgapjgq" path="res://data/2D assets/world/AntHill Base (7of7) FG.png" id="17_dh1lk"]
+[ext_resource type="PackedScene" uid="uid://64sfstt1lh88" path="res://gameplay/colony/rubble/rubblepile.tscn" id="17_ltvga"]
 
-[node name="AntHillBas(7Of7)" type="Node2D"]
+[node name="AntHillBase(7Of7)" type="Node2D"]
 
 [node name="AntHillBase(7Of7)" type="Sprite2D" parent="."]
 texture = ExtResource("1_7ffwc")
@@ -29,6 +30,7 @@ modulate = Color(1, 1, 1, 0.286275)
 texture = ExtResource("2_35foo")
 
 [node name="Built" type="Node2D" parent="."]
+visible = false
 
 [node name="AntHillBaseAphidRanchBuilt" type="Sprite2D" parent="Built"]
 position = Vector2(354.5, -281)
@@ -59,7 +61,6 @@ position = Vector2(396, 244)
 texture = ExtResource("9_u5ucv")
 
 [node name="Destroyed" type="Node2D" parent="."]
-visible = false
 
 [node name="AntHillBaseAphidRanchDestroyed" type="Sprite2D" parent="Destroyed"]
 position = Vector2(354, -292)
@@ -88,6 +89,36 @@ texture = ExtResource("15_kl7tb")
 [node name="AntHillBaseStorageDestroyed" type="Sprite2D" parent="Destroyed"]
 position = Vector2(414, 288)
 texture = ExtResource("16_fdade")
+
+[node name="rubble_Blocks" type="Node2D" parent="."]
+
+[node name="rubblepile_houses" parent="rubble_Blocks" instance=ExtResource("17_ltvga")]
+position = Vector2(-153, -99)
+scale = Vector2(0.6, 0.6)
+
+[node name="rubblepile_guard" parent="rubble_Blocks" instance=ExtResource("17_ltvga")]
+position = Vector2(-34, -526)
+scale = Vector2(0.6, 0.6)
+
+[node name="rubblepile_scout" parent="rubble_Blocks" instance=ExtResource("17_ltvga")]
+position = Vector2(-191, -662)
+scale = Vector2(0.6, 0.6)
+
+[node name="rubblepile_farm" parent="rubble_Blocks" instance=ExtResource("17_ltvga")]
+position = Vector2(-229, -431)
+scale = Vector2(0.6, 0.6)
+
+[node name="rubblepile_royal" parent="rubble_Blocks" instance=ExtResource("17_ltvga")]
+position = Vector2(-4, 394)
+scale = Vector2(0.6, 0.6)
+
+[node name="rubblepile_storage" parent="rubble_Blocks" instance=ExtResource("17_ltvga")]
+position = Vector2(113, 99)
+scale = Vector2(0.6, 0.6)
+
+[node name="rubblepile_ranch" parent="rubble_Blocks" instance=ExtResource("17_ltvga")]
+position = Vector2(-11, -233)
+scale = Vector2(0.6, 0.6)
 
 [node name="AntHillBase(7Of7)Fg" type="Sprite2D" parent="."]
 texture = ExtResource("17_dh1lk")
