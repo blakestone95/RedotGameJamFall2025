@@ -7,6 +7,7 @@ class_name RebuildButton extends Button
 	ItemData.Type.PEBBLE: 0,
 	ItemData.Type.FOOD: 0,
 }
+@export var rubble_pile: RubblePile
 @export var destroyed_room: Sprite2D
 @export var rebuilt_room: Sprite2D
 
@@ -18,22 +19,27 @@ func _enter_tree() -> void:
 		game = get_tree().get_nodes_in_group("game")[0] as Game;
 		if !game.is_node_ready(): await game.ready
 	
-	update_state()
+	update_state(false)
 	game.colony_inventory.updated.connect(update_state)
 
 # Handle all state updates
-func update_state() -> void:
-	var rebuilt = check_rebuilt_state()
+func update_state(rocks_falling: bool) -> void:
+	var rebuilt = check_rebuilt_state(rocks_falling)
 	if rebuilt: return # Can exit processing early if the room is rebuilt already
 	check_can_afford_rebuild()
 	show_costs()
 
-func check_rebuilt_state() -> bool:
+# Checks against the upgrade state from Game to decide what should be shown
+func check_rebuilt_state(rocks_falling: bool) -> bool:
 	if game.colony_upgrades[room_type]:
+		hide()
 		rebuilt_room.show()
 		destroyed_room.hide()
+		# We only want to hide the rubble pile when we aren't playing the falling animation, e.g. on initial load
+		if !rocks_falling: rubble_pile.hide()
 		return true
 	
+	show()
 	rebuilt_room.hide()
 	destroyed_room.show()
 	return false
@@ -62,6 +68,9 @@ func show_costs() -> void:
 	pass
 
 func on_rebuild() -> void:
-	# Button will be disabled if we can't afford, so don't need to check
+	# Button will be disabled if we can't afford to rebuild, so don't need to check that here
 	game.rebuild_room(room_type)
-	update_state()
+	hide()
+	if rubble_pile != null:
+		rubble_pile.rubble_fall()
+	update_state(true)
