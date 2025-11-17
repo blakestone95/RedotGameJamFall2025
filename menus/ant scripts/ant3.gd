@@ -7,3 +7,6 @@ func  _process(delta):
 
 func loop_movement(delta):
 	progress_ratio += delta * speed
+
+func _ready() -> void:
+	get_node("AnimatedSprite2D3").play()
