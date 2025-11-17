@@ -26,6 +26,10 @@ SignalManager="*res://autoloads/signal_manager.gd"
 window/size/viewport_width=1280
 window/size/viewport_height=720
 
+[global_group]
+
+game=""
+
 [input]
 
 character_up={

@@ -1,4 +1,5 @@
 class_name Game extends Node2D
+# NOTE: Game is assigned the group "game" for ease of access across scenes
 
 enum GameState {EXPLORE, REBUILD}
 

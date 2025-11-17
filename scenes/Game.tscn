@@ -7,7 +7,7 @@
 [ext_resource type="Resource" uid="uid://dwpbt4mvk2odb" path="res://gameplay/inventory/items/Pebble.tres" id="5_qy1jj"]
 [ext_resource type="Resource" uid="uid://brc0mofk4ogjs" path="res://gameplay/inventory/items/Food.tres" id="6_3xj3m"]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" groups=["game"]]
 script = ExtResource("1_qbsmt")
 inventory_items = Array[ExtResource("2_kiw3p")]([ExtResource("3_400sg"), ExtResource("4_g4kob"), ExtResource("5_qy1jj"), ExtResource("6_3xj3m")])
 

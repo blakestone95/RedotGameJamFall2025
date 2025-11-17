@@ -13,7 +13,8 @@ func _ready() -> void:
 		assert("inventory" in inventory_source, "Inventory Source MUST be a node with a property \"inventory\"")
 		inventory = inventory_source.inventory
 	else:
-		var game = get_node("/root/Game") as Game
+		var game = get_tree().get_nodes_in_group("game")[0] as Game
+		await game.ready
 		inventory = game.colony_inventory
 	
 	assert(inventory != null, "Didn't find inventory in either Intentory source or \"Game\" node")
