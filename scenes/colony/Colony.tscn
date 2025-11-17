@@ -1,0 +1,188 @@
+[gd_scene load_steps=22 format=3 uid="uid://c3xvewkqam3go"]
+
+[ext_resource type="Texture2D" uid="uid://uk3uxjr0wujt" path="res://data/2D assets/world/AntHill Base (7of7).png" id="1_vrkjr"]
+[ext_resource type="Texture2D" uid="uid://c8kx2bfnd7jpt" path="res://data/2D assets/world/AntHill Base (7of7) Built Template.png" id="2_suedb"]
+[ext_resource type="Texture2D" uid="uid://dwaafdvygognb" path="res://data/2D assets/world/base buildings/AntHill Base Aphid Ranch Built.png" id="3_qyces"]
+[ext_resource type="Texture2D" uid="uid://dhjfbb8nku5x3" path="res://data/2D assets/world/base buildings/AntHill Base Fungus Farm Built.png" id="4_yfji4"]
+[ext_resource type="Texture2D" uid="uid://2q4d2anw4i7l" path="res://data/2D assets/world/base buildings/AntHill Base Guard Built.png" id="5_qofh2"]
+[ext_resource type="Texture2D" uid="uid://dgvy2s2na3mxn" path="res://data/2D assets/world/base buildings/AntHill Base Houses Built.png" id="6_4utww"]
+[ext_resource type="Texture2D" uid="uid://ytsisbnldg2s" path="res://data/2D assets/world/base buildings/AntHill Base Royal Chamber Built.png" id="7_nfuiw"]
+[ext_resource type="Texture2D" uid="uid://darasio3lg621" path="res://data/2D assets/world/base buildings/AntHill Base Scout Built.png" id="8_3dw1l"]
+[ext_resource type="Texture2D" uid="uid://duv8it5f6a4m" path="res://data/2D assets/world/base buildings/AntHill Base Storage Built.png" id="9_1vtka"]
+[ext_resource type="Texture2D" uid="uid://b5wlb7yfgflnx" path="res://data/2D assets/world/base buildings/AntHill Base Aphid Ranch Destroyed.png" id="10_oradm"]
+[ext_resource type="Texture2D" uid="uid://b5y60lpt8hk72" path="res://data/2D assets/world/base buildings/AntHill Base Fungus Farm Destroyed.png" id="11_1hnwc"]
+[ext_resource type="Texture2D" uid="uid://d1sn5xrdv4pu6" path="res://data/2D assets/world/base buildings/AntHill Base Guard Destroyed.png" id="12_1hmcp"]
+[ext_resource type="Texture2D" uid="uid://cvxtljtw4gh32" path="res://data/2D assets/world/base buildings/AntHill Base Houses Destroyed.png" id="13_e1xbi"]
+[ext_resource type="Texture2D" uid="uid://cwffrs8sgpnlm" path="res://data/2D assets/world/base buildings/AntHill Base Royal Chamber Destroyed.png" id="14_1o04r"]
+[ext_resource type="Texture2D" uid="uid://c85ddbcpgursb" path="res://data/2D assets/world/base buildings/AntHill Base Scout Destroyed.png" id="15_fj7pa"]
+[ext_resource type="Texture2D" uid="uid://5troepvaqp3i" path="res://data/2D assets/world/base buildings/AntHill Base Storage destroyed.png" id="16_ru00g"]
+[ext_resource type="PackedScene" uid="uid://64sfstt1lh88" path="res://gameplay/colony/rubble/rubblepile.tscn" id="17_6nhoc"]
+[ext_resource type="Texture2D" uid="uid://dvmbfvgapjgq" path="res://data/2D assets/world/AntHill Base (7of7) FG.png" id="18_b6sg5"]
+[ext_resource type="Script" path="res://scenes/colony/start_button.gd" id="19_r4j2g"]
+[ext_resource type="Script" path="res://gameplay/inventory/inventory_gui_control.gd" id="20_q1hyv"]
+[ext_resource type="Script" path="res://scenes/colony/day_counter.gd" id="21_83glh"]
+
+[node name="Colony" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AntHillBase(7Of7)" type="Sprite2D" parent="."]
+texture = ExtResource("1_vrkjr")
+
+[node name="AntHillBase(7Of7)BuiltTemplate" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.286275)
+texture = ExtResource("2_suedb")
+
+[node name="Built" type="Node2D" parent="."]
+visible = false
+
+[node name="AntHillBaseAphidRanchBuilt" type="Sprite2D" parent="Built"]
+position = Vector2(354.5, -281)
+texture = ExtResource("3_qyces")
+
+[node name="AntHillBaseFungusFarmBuilt" type="Sprite2D" parent="Built"]
+position = Vector2(-449, -322)
+texture = ExtResource("4_yfji4")
+
+[node name="AntHillBaseGuardBuilt" type="Sprite2D" parent="Built"]
+position = Vector2(340, -566)
+texture = ExtResource("5_qofh2")
+
+[node name="AntHillBaseHousesBuilt" type="Sprite2D" parent="Built"]
+position = Vector2(-338, 70)
+texture = ExtResource("6_4utww")
+
+[node name="AntHillBaseRoyalChamberBuilt" type="Sprite2D" parent="Built"]
+position = Vector2(-31, 697)
+texture = ExtResource("7_nfuiw")
+
+[node name="AntHillBaseScoutBuilt" type="Sprite2D" parent="Built"]
+position = Vector2(-386, -670)
+texture = ExtResource("8_3dw1l")
+
+[node name="AntHillBaseStorageBuilt" type="Sprite2D" parent="Built"]
+position = Vector2(396, 244)
+texture = ExtResource("9_1vtka")
+
+[node name="Destroyed" type="Node2D" parent="."]
+
+[node name="AntHillBaseAphidRanchDestroyed" type="Sprite2D" parent="Destroyed"]
+position = Vector2(354, -292)
+texture = ExtResource("10_oradm")
+
+[node name="AntHillBaseFungusFarmDestroyed" type="Sprite2D" parent="Destroyed"]
+position = Vector2(-447, -326)
+texture = ExtResource("11_1hnwc")
+
+[node name="AntHillBaseGuardDestroyed" type="Sprite2D" parent="Destroyed"]
+position = Vector2(325, -550)
+texture = ExtResource("12_1hmcp")
+
+[node name="AntHillBaseHousesDestroyed" type="Sprite2D" parent="Destroyed"]
+position = Vector2(-345, 76)
+texture = ExtResource("13_e1xbi")
+
+[node name="AntHillBaseRoyalChamberDestroyed" type="Sprite2D" parent="Destroyed"]
+position = Vector2(-35, 696)
+texture = ExtResource("14_1o04r")
+
+[node name="AntHillBaseScoutDestroyed" type="Sprite2D" parent="Destroyed"]
+position = Vector2(-383, -667)
+texture = ExtResource("15_fj7pa")
+
+[node name="AntHillBaseStorageDestroyed" type="Sprite2D" parent="Destroyed"]
+position = Vector2(414, 288)
+texture = ExtResource("16_ru00g")
+
+[node name="rubble_Blocks" type="Node2D" parent="."]
+
+[node name="rubblepile_houses" parent="rubble_Blocks" instance=ExtResource("17_6nhoc")]
+position = Vector2(-153, -99)
+scale = Vector2(0.6, 0.6)
+
+[node name="rubblepile_guard" parent="rubble_Blocks" instance=ExtResource("17_6nhoc")]
+position = Vector2(-34, -526)
+scale = Vector2(0.6, 0.6)
+
+[node name="rubblepile_scout" parent="rubble_Blocks" instance=ExtResource("17_6nhoc")]
+position = Vector2(-191, -662)
+scale = Vector2(0.6, 0.6)
+
+[node name="rubblepile_farm" parent="rubble_Blocks" instance=ExtResource("17_6nhoc")]
+position = Vector2(-229, -431)
+scale = Vector2(0.6, 0.6)
+
+[node name="rubblepile_royal" parent="rubble_Blocks" instance=ExtResource("17_6nhoc")]
+position = Vector2(-4, 394)
+scale = Vector2(0.6, 0.6)
+
+[node name="rubblepile_storage" parent="rubble_Blocks" instance=ExtResource("17_6nhoc")]
+position = Vector2(113, 99)
+scale = Vector2(0.6, 0.6)
+
+[node name="rubblepile_ranch" parent="rubble_Blocks" instance=ExtResource("17_6nhoc")]
+position = Vector2(-11, -233)
+scale = Vector2(0.6, 0.6)
+
+[node name="AntHillBase(7Of7)Fg" type="Sprite2D" parent="."]
+texture = ExtResource("18_b6sg5")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="StartButtonMargin" type="MarginContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 20
+
+[node name="StartButton" type="Button" parent="CanvasLayer/VBoxContainer/StartButtonMargin"]
+layout_mode = 2
+text = "Start Day"
+script = ExtResource("19_r4j2g")
+
+[node name="InventoryControl" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("20_q1hyv")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/InventoryControl"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -48.0
+offset_bottom = 40.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+
+[node name="DayCounter" type="Label" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "Day: ?"
+horizontal_alignment = 2
+script = ExtResource("21_83glh")
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/StartButtonMargin/StartButton" to="CanvasLayer/VBoxContainer/StartButtonMargin/StartButton" method="_on_pressed"]

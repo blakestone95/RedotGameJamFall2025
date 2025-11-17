@@ -1,19 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3it838w1malp"]
+[gd_scene load_steps=7 format=3 uid="uid://b3it838w1malp"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_qbsmt"]
-[ext_resource type="PackedScene" uid="uid://dn0jgsyiovc1t" path="res://scenes/Overworld.tscn" id="2_cpr0p"]
 [ext_resource type="Script" path="res://gameplay/inventory/items/item_data.gd" id="2_kiw3p"]
 [ext_resource type="Resource" uid="uid://bx08d373rhb7o" path="res://gameplay/inventory/items/Leaf.tres" id="3_400sg"]
 [ext_resource type="Resource" uid="uid://umc8jremj87a" path="res://gameplay/inventory/items/Stick.tres" id="4_g4kob"]
 [ext_resource type="Resource" uid="uid://dwpbt4mvk2odb" path="res://gameplay/inventory/items/Pebble.tres" id="5_qy1jj"]
 [ext_resource type="Resource" uid="uid://brc0mofk4ogjs" path="res://gameplay/inventory/items/Food.tres" id="6_3xj3m"]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" groups=["game"]]
 script = ExtResource("1_qbsmt")
 inventory_items = Array[ExtResource("2_kiw3p")]([ExtResource("3_400sg"), ExtResource("4_g4kob"), ExtResource("5_qy1jj"), ExtResource("6_3xj3m")])
 
-[node name="Overworld" parent="." instance=ExtResource("2_cpr0p")]
-position = Vector2(441, 246)
+[node name="OpenScene" type="Node2D" parent="."]
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 bus = &"Music"

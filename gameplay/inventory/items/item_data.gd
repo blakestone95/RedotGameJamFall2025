@@ -9,14 +9,12 @@ enum Type {LEAF, STICK, PEBBLE, FOOD}
 var count = 0
 @export var max_amount: int
 
-## Signal emitted if either increase or decrease are called, whether the count changes or not
-##
-## Use this to know when the GUI needs to update
+## Signal emitted if either increase or decrease are called, whether the count changes or not.
+## Use this to know when the GUI needs to update.
 signal updated
 
-## Increase the item count by the passed amount
-##
-## Returns [code]true[/code] when successful
+## Increase the item count by the passed amount.
+## Returns the amount of items that couldn't fit.
 func increase(amount: int) -> int:
 	var sum: int = count + amount
 	var remainder: int = 0
@@ -29,8 +27,7 @@ func increase(amount: int) -> int:
 	return remainder
 
 ## Decrease the item count by the passed amount
-##
-## Returns [code]true[/code] when successful
+## Returns the amount of items that couldn't be removed.
 func decrease(amount: int) -> int:
 	var sum: int = count - amount
 	var remainder: int = 0

@@ -14,7 +14,7 @@ grow_vertical = 2
 script = ExtResource("1_fns74")
 
 [node name="MainMenuBackground" type="Sprite2D" parent="."]
-position = Vector2(642, 359)
+position = Vector2(640, 360)
 texture = ExtResource("1_xlg2h")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
