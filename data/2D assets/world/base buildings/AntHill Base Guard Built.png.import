@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwaafdvygognb"
-path="res://.godot/imported/AntHill Base Aphid Ranch Built.png-cccfb1720b647adf9e1c60399a8e1294.ctex"
+uid="uid://2q4d2anw4i7l"
+path="res://.godot/imported/AntHill Base Guard Built.png-ccff70950ee342a658f82622646805ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://data/2D assets/world/AntHill Base Aphid Ranch Built.png"
-dest_files=["res://.godot/imported/AntHill Base Aphid Ranch Built.png-cccfb1720b647adf9e1c60399a8e1294.ctex"]
+source_file="res://data/2D assets/world/base buildings/AntHill Base Guard Built.png"
+dest_files=["res://.godot/imported/AntHill Base Guard Built.png-ccff70950ee342a658f82622646805ec.ctex"]
 
 [params]
 

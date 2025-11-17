@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1sn5xrdv4pu6"
-path="res://.godot/imported/AntHill Base Guard Destroyed.png-38bd870bd921ffedd767ccd03a0a3ac4.ctex"
+uid="uid://dgvy2s2na3mxn"
+path="res://.godot/imported/AntHill Base Houses Built.png-65a0c79ec803788f7ed18bcc8b45c914.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://data/2D assets/world/AntHill Base Guard Destroyed.png"
-dest_files=["res://.godot/imported/AntHill Base Guard Destroyed.png-38bd870bd921ffedd767ccd03a0a3ac4.ctex"]
+source_file="res://data/2D assets/world/base buildings/AntHill Base Houses Built.png"
+dest_files=["res://.godot/imported/AntHill Base Houses Built.png-65a0c79ec803788f7ed18bcc8b45c914.ctex"]
 
 [params]
 

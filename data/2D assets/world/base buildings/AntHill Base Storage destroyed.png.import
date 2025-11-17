@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ytsisbnldg2s"
-path="res://.godot/imported/AntHill Base Royal Chamber Built.png-35dd1d1191bc221325c38765a29dd6c3.ctex"
+uid="uid://5troepvaqp3i"
+path="res://.godot/imported/AntHill Base Storage destroyed.png-cea97f4aa6793610b0accd36f2ac7913.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://data/2D assets/world/AntHill Base Royal Chamber Built.png"
-dest_files=["res://.godot/imported/AntHill Base Royal Chamber Built.png-35dd1d1191bc221325c38765a29dd6c3.ctex"]
+source_file="res://data/2D assets/world/base buildings/AntHill Base Storage destroyed.png"
+dest_files=["res://.godot/imported/AntHill Base Storage destroyed.png-cea97f4aa6793610b0accd36f2ac7913.ctex"]
 
 [params]
 

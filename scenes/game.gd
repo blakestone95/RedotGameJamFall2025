@@ -16,6 +16,11 @@ func _ready() -> void:
 	colony_inventory = Inventory.new(intentory_data)
 	music_player()
 
+
+func _process(delta: float) -> void:
+	music_player()
+
+
 func music_player() -> void:
 	if overworld.visible:
 		if music.stream != GameMusic:
@@ -27,3 +32,5 @@ func music_player() -> void:
 			music.play()
 	else:
 		music.stop()
+	if not music.playing:
+		music.play()
