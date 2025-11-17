@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dvmbfvgapjgq" path="res://data/2D assets/world/AntHill Base (7of7) FG.png" id="17_dh1lk"]
 [ext_resource type="PackedScene" uid="uid://64sfstt1lh88" path="res://gameplay/colony/rubble/rubblepile.tscn" id="17_ltvga"]
 
-[node name="AntHillBase(7Of7)" type="Node2D"]
+[node name="Colony" type="Node2D"]
 
 [node name="AntHillBase(7Of7)" type="Sprite2D" parent="."]
 texture = ExtResource("1_7ffwc")
