@@ -844,7 +844,6 @@ scale = Vector2(2.56783, 2.56783)
 position = Vector2(9.53674e-07, -1)
 rotation = -2.45036
 scale = Vector2(0.175, 0.175)
-speed = 200
 
 [node name="Camera2D" type="Camera2D" parent="World Objects/Antonia"]
 position = Vector2(-3.63851, -4.39747)

@@ -78,7 +78,7 @@ grow_vertical = 2
 script = ExtResource("1_kt1s7")
 
 [node name="MainMenuBackground" type="Sprite2D" parent="."]
-position = Vector2(640, 364)
+position = Vector2(640, 360)
 texture = ExtResource("1_1bkv5")
 
 [node name="TITLE" type="Label" parent="."]

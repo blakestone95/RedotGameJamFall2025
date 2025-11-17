@@ -5,10 +5,9 @@ enum GameState {EXPLORE, REBUILD}
 ## Scene that shows when we are in the Explore state
 const explore_scene = "res://scenes/Overworld.tscn"
 ## Scene that shows when we are in the Rebuild state
-const rebuild_scene = "res://scenes/Colony.tscn"
+const rebuild_scene = "res://scenes/colony/Colony.tscn"
+@onready var open_scene: Node2D = $OpenScene
 
-# Start in the colony screen on game start
-var state: GameState = GameState.REBUILD
 var colony_inventory: Inventory
 ## Provide the ItemData resources in the order you want them to appear
 @export var inventory_items: Array[ItemData]
@@ -18,7 +17,6 @@ var state: GameState = GameState.REBUILD
 var day: int = 0
 
 @onready var music: AudioStreamPlayer = $Music
-@onready var overworld: Node2D = $Overworld
 var MenuMusic = preload("res://data/audio_assets/music/MenuMusic.mp3")
 var GameMusic = preload("res://data/audio_assets/music/NightLullaby.mp3")
 
@@ -31,43 +29,29 @@ func _ready() -> void:
 	
 	# Render initial state
 	var scene = preload(rebuild_scene).instantiate()
-	add_child(scene)
+	open_scene.add_child(scene)
+	music.stream = MenuMusic
+	music.play()
 	
 	# Connect to signals
 	SignalManager.update_game_state.connect(on_state_update)
-	
-	music_player()
-
-
-func _process(delta: float) -> void:
-	music_player()
-
-
-func music_player() -> void:
-	if overworld.visible:
-		if music.stream != GameMusic:
-			music.stream = GameMusic
-			music.play()
-	elif not overworld.visible:
-		if music.stream != MenuMusic:
-			music.stream = MenuMusic
-			music.play()
-	else:
-		music.stop()
-	if not music.playing:
-		music.play()
 
 func on_state_update(new_state: GameState) -> void:
 	assert(new_state is GameState, "Signal update_game_state must be emitted with an argument of type GameState")
 	if state == new_state: return
 	
-	# When the state updates, remove the current scene and load the aapropriate scene
-	for child in get_children(): child.queue_free()
+	# When the state updates, remove the current scene and load the apropriate scene
+	# Also update what music is playing
+	for child in open_scene.get_children(): child.queue_free()
 	var scene: Node2D
 	if new_state == GameState.EXPLORE:
 		day += 1
 		scene = preload(explore_scene).instantiate()
+		music.stream = GameMusic
 	if new_state == GameState.REBUILD:
 		scene = preload(rebuild_scene).instantiate()
+		music.stream = MenuMusic
+	
 	assert(scene != null, "Tried to transition to game state %s with no scene attached" % new_state)
-	add_child(scene)
+	open_scene.add_child(scene)
+	music.play()
