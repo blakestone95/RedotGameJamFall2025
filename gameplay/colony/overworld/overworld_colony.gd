@@ -5,7 +5,7 @@ class_name OverworldColony extends Area2D
 var inventory: Inventory
 
 func _ready() -> void:
-	var game_node = find_parent("Game");
-	await game_node.ready
-	assert("colony_inventory" in game_node, "OverworldColony must be the descendant of a Game node with the colony_inventory property set")
-	inventory = game_node.colony_inventory
+	var game = get_tree().get_nodes_in_group("game")[0] as Game;
+	if !game.is_node_ready(): await game.ready
+	assert("colony_inventory" in game, "OverworldColony must be the descendant of a Game node with the colony_inventory property set")
+	inventory = game.colony_inventory
