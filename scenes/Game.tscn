@@ -13,6 +13,7 @@ script = ExtResource("1_qbsmt")
 inventory_items = Array[ExtResource("2_kiw3p")]([ExtResource("3_400sg"), ExtResource("4_g4kob"), ExtResource("5_qy1jj"), ExtResource("6_3xj3m")])
 
 [node name="Overworld" parent="." instance=ExtResource("2_cpr0p")]
+position = Vector2(441, 246)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 bus = &"Music"

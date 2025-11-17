@@ -1,0 +1,95 @@
+[gd_scene load_steps=4 format=3 uid="uid://cicu1qk0jq20x"]
+
+[ext_resource type="Script" path="res://menus/credits.gd" id="1_fns74"]
+[ext_resource type="Texture2D" uid="uid://c81w0qa1xtdfl" path="res://data/2D assets/ui/MainMenu_Background.png" id="1_xlg2h"]
+[ext_resource type="Theme" uid="uid://urbhhupy6a5l" path="res://data/2D assets/ui/Mainmenubutton.tres" id="3_dn5jh"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fns74")
+
+[node name="MainMenuBackground" type="Sprite2D" parent="."]
+position = Vector2(642, 359)
+texture = ExtResource("1_xlg2h")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Programmer:"
+
+[node name="Programer" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Programmer:"
+
+[node name="Label3" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Programmer:"
+
+[node name="Label4" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Artist:"
+
+[node name="Label5" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Artist:"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "blakestone95"
+uri = "https://blakestone95.itch.io"
+
+[node name="LinkButton2" type="LinkButton" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "craknain"
+uri = "https://craknain.itch.io"
+
+[node name="LinkButton3" type="LinkButton" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "TheBugMaker"
+uri = "https://TheBugMaker.itch.io"
+
+[node name="LinkButton4" type="LinkButton" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "omnistingray"
+uri = "https://omnistingray.itch.io"
+
+[node name="LinkButton5" type="LinkButton" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Jintessa"
+uri = "https://Jintessa.itch.io"
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 563.0
+offset_top = 471.0
+offset_right = 726.0
+offset_bottom = 534.0
+theme = ExtResource("3_dn5jh")
+theme_override_font_sizes/font_size = 40
+text = "GO BACK"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
