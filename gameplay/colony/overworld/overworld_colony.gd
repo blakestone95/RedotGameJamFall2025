@@ -7,5 +7,5 @@ var inventory: Inventory
 func _ready() -> void:
 	var game = get_tree().get_nodes_in_group("game")[0] as Game;
 	if !game.is_node_ready(): await game.ready
-	assert("colony_inventory" in game, "OverworldColony must be the descendant of a Game node with the colony_inventory property set")
+	assert("colony_inventory" in game, "Colonyinventory requires the Game node to be in the tree with the colony_inventory property set")
 	inventory = game.colony_inventory
