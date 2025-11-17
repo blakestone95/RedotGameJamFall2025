@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://6oui2eds8loi"]
+
+[ext_resource type="Script" path="res://scenes/overworld/pause_menu.gd" id="1_4x8e1"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4x8e1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.0627451)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.5
+offset_top = -33.0
+offset_right = 35.5
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResumeButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="EndDayButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "End Day"
+
+[connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_close"]
+[connection signal="pressed" from="VBoxContainer/EndDayButton" to="." method="_end_day"]

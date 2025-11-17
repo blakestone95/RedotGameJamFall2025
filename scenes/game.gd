@@ -4,7 +4,7 @@ class_name Game extends Node2D
 enum GameState {EXPLORE, REBUILD}
 
 ## Scene that shows when we are in the Explore state
-const explore_scene = "res://scenes/Overworld.tscn"
+const explore_scene = "res://scenes/overworld/Overworld.tscn"
 ## Scene that shows when we are in the Rebuild state
 const rebuild_scene = "res://scenes/colony/Colony.tscn"
 @onready var open_scene: Node2D = $OpenScene
@@ -40,16 +40,17 @@ func _ready() -> void:
 func on_state_update(new_state: GameState) -> void:
 	assert(new_state is GameState, "Signal update_game_state must be emitted with an argument of type GameState")
 	if state == new_state: return
-	
+	state = new_state
+
 	# When the state updates, remove the current scene and load the apropriate scene
 	# Also update what music is playing
 	for child in open_scene.get_children(): child.queue_free()
 	var scene: Node2D
-	if new_state == GameState.EXPLORE:
+	if state == GameState.EXPLORE:
 		day += 1
 		scene = preload(explore_scene).instantiate()
 		music.stream = GameMusic
-	if new_state == GameState.REBUILD:
+	if state == GameState.REBUILD:
 		scene = preload(rebuild_scene).instantiate()
 		music.stream = MenuMusic
 	
