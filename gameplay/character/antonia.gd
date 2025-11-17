@@ -70,7 +70,7 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	
 	# whats below for audio
-	ground_below()
+	# ground_below()
 
 
 func _process(_delta: float) -> void:

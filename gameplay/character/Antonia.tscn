@@ -50,7 +50,6 @@ radius = 400.0
 collision_mask = 6
 motion_mode = 1
 script = ExtResource("1_k7mp8")
-speed = null
 inventory_items = Array[ExtResource("2_28fm6")]([ExtResource("3_8fv6c"), ExtResource("4_6q770"), ExtResource("5_a2een"), ExtResource("6_ggqb6")])
 
 [node name="CollisionCircle" type="CollisionShape2D" parent="."]
