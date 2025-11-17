@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhjfbb8nku5x3"
-path="res://.godot/imported/AntHill Base Fungus Farm Built.png-fa256a16c463db7e0536d531dc199c26.ctex"
+uid="uid://d1sn5xrdv4pu6"
+path="res://.godot/imported/AntHill Base Guard Destroyed.png-d6172dd7e67627ccc80f9acb1ff7c81c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://data/2D assets/world/AntHill Base Fungus Farm Built.png"
-dest_files=["res://.godot/imported/AntHill Base Fungus Farm Built.png-fa256a16c463db7e0536d531dc199c26.ctex"]
+source_file="res://data/2D assets/world/base buildings/AntHill Base Guard Destroyed.png"
+dest_files=["res://.godot/imported/AntHill Base Guard Destroyed.png-d6172dd7e67627ccc80f9acb1ff7c81c.ctex"]
 
 [params]
 

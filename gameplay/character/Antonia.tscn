@@ -59,7 +59,7 @@ debug_color = Color(0, 0.54423, 0.945571, 0.658824)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(16, 0)
 sprite_frames = SubResource("SpriteFrames_wnrh0")
-frame_progress = 0.955353
+frame_progress = 0.352953
 
 [node name="InteractionArea" type="Area2D" parent="."]
 collision_layer = 0
@@ -68,6 +68,10 @@ collision_mask = 8
 [node name="InteractionCircle" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("CircleShape2D_xnl2y")
 debug_color = Color(9.62615e-07, 0.649433, 0.143892, 0.42)
+
+[node name="Footsteps_SFX" type="AudioStreamPlayer2D" parent="."]
+volume_db = 13.631
+bus = &"SFX"
 
 [connection signal="area_entered" from="InteractionArea" to="." method="_on_interaction_area_entered"]
 [connection signal="area_exited" from="InteractionArea" to="." method="_on_interaction_area_exited"]

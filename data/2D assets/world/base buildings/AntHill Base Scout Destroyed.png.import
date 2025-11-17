@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duv8it5f6a4m"
-path="res://.godot/imported/AntHill Base Storage Built.png-228138d415fec489f1851661dd614105.ctex"
+uid="uid://c85ddbcpgursb"
+path="res://.godot/imported/AntHill Base Scout Destroyed.png-da1d714893d2372c28996ca9f717fed3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://data/2D assets/world/AntHill Base Storage Built.png"
-dest_files=["res://.godot/imported/AntHill Base Storage Built.png-228138d415fec489f1851661dd614105.ctex"]
+source_file="res://data/2D assets/world/base buildings/AntHill Base Scout Destroyed.png"
+dest_files=["res://.godot/imported/AntHill Base Scout Destroyed.png-da1d714893d2372c28996ca9f717fed3.ctex"]
 
 [params]
 
