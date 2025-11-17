@@ -7,12 +7,15 @@ const explore_scene = "res://scenes/Overworld.tscn"
 ## Scene that shows when we are in the Rebuild state
 const rebuild_scene = "res://scenes/Colony.tscn"
 
+# Start in the colony screen on game start
+var state: GameState = GameState.REBUILD
 var colony_inventory: Inventory
 ## Provide the ItemData resources in the order you want them to appear
 @export var inventory_items: Array[ItemData]
 
 # Start in the colony screen on game start
 var state: GameState = GameState.REBUILD
+var day: int = 0
 
 @onready var music: AudioStreamPlayer = $Music
 @onready var overworld: Node2D = $Overworld
@@ -62,6 +65,7 @@ func on_state_update(new_state: GameState) -> void:
 	for child in get_children(): child.queue_free()
 	var scene: Node2D
 	if new_state == GameState.EXPLORE:
+		day += 1
 		scene = preload(explore_scene).instantiate()
 	if new_state == GameState.REBUILD:
 		scene = preload(rebuild_scene).instantiate()
