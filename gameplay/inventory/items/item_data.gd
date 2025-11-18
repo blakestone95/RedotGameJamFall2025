@@ -2,6 +2,18 @@ class_name ItemData
 extends Resource
 
 enum Type {LEAF, STICK, PEBBLE, FOOD}
+static var type_name_singular = {
+	Type.LEAF: 'Leaf',
+	Type.STICK: 'Stick',
+	Type.PEBBLE: 'Pebble',
+	Type.FOOD: 'Food',
+}
+static var type_name_plural = {
+	Type.LEAF: 'Leaves',
+	Type.STICK: 'Sticks',
+	Type.PEBBLE: 'Pebbles',
+	Type.FOOD: 'Food',
+}
 
 @export var type: Type
 @export var name: String

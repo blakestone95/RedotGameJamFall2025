@@ -1,6 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://c3xvewkqam3go"]
+[gd_scene load_steps=25 format=3 uid="uid://c3xvewkqam3go"]
 
 [ext_resource type="Script" path="res://scenes/colony/colony_camera.gd" id="1_fgowp"]
+[ext_resource type="Script" path="res://scenes/colony/colony.gd" id="1_sqlji"]
 [ext_resource type="Texture2D" uid="uid://uk3uxjr0wujt" path="res://data/2D assets/world/AntHill Base (7of7).png" id="1_vrkjr"]
 [ext_resource type="Texture2D" uid="uid://c8kx2bfnd7jpt" path="res://data/2D assets/world/AntHill Base (7of7) Built Template.png" id="2_suedb"]
 [ext_resource type="Texture2D" uid="uid://dwaafdvygognb" path="res://data/2D assets/world/base buildings/AntHill Base Aphid Ranch Built.png" id="3_qyces"]
@@ -14,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://b5y60lpt8hk72" path="res://data/2D assets/world/base buildings/AntHill Base Fungus Farm Destroyed.png" id="11_1hnwc"]
 [ext_resource type="Texture2D" uid="uid://d1sn5xrdv4pu6" path="res://data/2D assets/world/base buildings/AntHill Base Guard Destroyed.png" id="12_1hmcp"]
 [ext_resource type="Texture2D" uid="uid://cvxtljtw4gh32" path="res://data/2D assets/world/base buildings/AntHill Base Houses Destroyed.png" id="13_e1xbi"]
+[ext_resource type="Script" path="res://scenes/colony/rebuild_button.gd" id="13_nhadl"]
 [ext_resource type="Texture2D" uid="uid://cwffrs8sgpnlm" path="res://data/2D assets/world/base buildings/AntHill Base Royal Chamber Destroyed.png" id="14_1o04r"]
 [ext_resource type="Texture2D" uid="uid://c85ddbcpgursb" path="res://data/2D assets/world/base buildings/AntHill Base Scout Destroyed.png" id="15_fj7pa"]
 [ext_resource type="Texture2D" uid="uid://5troepvaqp3i" path="res://data/2D assets/world/base buildings/AntHill Base Storage destroyed.png" id="16_ru00g"]
@@ -24,8 +26,10 @@
 [ext_resource type="Script" path="res://scenes/colony/day_counter.gd" id="21_83glh"]
 
 [node name="Colony" type="Node2D"]
+script = ExtResource("1_sqlji")
 
 [node name="ColonyCamera2D" type="Camera2D" parent="." node_paths=PackedStringArray("bounding_box")]
+position = Vector2(0, -720)
 script = ExtResource("1_fgowp")
 bounding_box = NodePath("../AntHillBase(7Of7)")
 
@@ -38,93 +42,175 @@ modulate = Color(1, 1, 1, 0.286275)
 texture = ExtResource("2_suedb")
 
 [node name="Built" type="Node2D" parent="."]
-visible = false
 
-[node name="AntHillBaseAphidRanchBuilt" type="Sprite2D" parent="Built"]
+[node name="AphidRanchBuilt" type="Sprite2D" parent="Built"]
 position = Vector2(354.5, -281)
 texture = ExtResource("3_qyces")
 
-[node name="AntHillBaseFungusFarmBuilt" type="Sprite2D" parent="Built"]
+[node name="FungusFarmBuilt" type="Sprite2D" parent="Built"]
 position = Vector2(-449, -322)
 texture = ExtResource("4_yfji4")
 
-[node name="AntHillBaseGuardBuilt" type="Sprite2D" parent="Built"]
+[node name="GuardBuilt" type="Sprite2D" parent="Built"]
 position = Vector2(340, -566)
 texture = ExtResource("5_qofh2")
 
-[node name="AntHillBaseHousesBuilt" type="Sprite2D" parent="Built"]
+[node name="HousesBuilt" type="Sprite2D" parent="Built"]
 position = Vector2(-338, 70)
 texture = ExtResource("6_4utww")
 
-[node name="AntHillBaseRoyalChamberBuilt" type="Sprite2D" parent="Built"]
+[node name="RoyalChamberBuilt" type="Sprite2D" parent="Built"]
 position = Vector2(-31, 697)
 texture = ExtResource("7_nfuiw")
 
-[node name="AntHillBaseScoutBuilt" type="Sprite2D" parent="Built"]
+[node name="ScoutBuilt" type="Sprite2D" parent="Built"]
 position = Vector2(-386, -670)
 texture = ExtResource("8_3dw1l")
 
-[node name="AntHillBaseStorageBuilt" type="Sprite2D" parent="Built"]
+[node name="StorageBuilt" type="Sprite2D" parent="Built"]
 position = Vector2(396, 244)
 texture = ExtResource("9_1vtka")
 
 [node name="Destroyed" type="Node2D" parent="."]
 
-[node name="AntHillBaseAphidRanchDestroyed" type="Sprite2D" parent="Destroyed"]
+[node name="AphidRanchDestroyed" type="Sprite2D" parent="Destroyed"]
 position = Vector2(354, -292)
 texture = ExtResource("10_oradm")
 
-[node name="AntHillBaseFungusFarmDestroyed" type="Sprite2D" parent="Destroyed"]
+[node name="AphidRanchRebuildButton" type="Button" parent="Destroyed/AphidRanchDestroyed" node_paths=PackedStringArray("rubble_pile", "destroyed_room", "rebuilt_room")]
+offset_left = -287.0
+offset_top = 60.0
+offset_right = -220.0
+offset_bottom = 91.0
+text = "Rebuild"
+script = ExtResource("13_nhadl")
+rubble_pile = NodePath("../../../Rubble/RubbleRanch")
+destroyed_room = NodePath("..")
+rebuilt_room = NodePath("../../../Built/AphidRanchBuilt")
+
+[node name="FungusFarmDestroyed" type="Sprite2D" parent="Destroyed"]
 position = Vector2(-447, -326)
 texture = ExtResource("11_1hnwc")
 
-[node name="AntHillBaseGuardDestroyed" type="Sprite2D" parent="Destroyed"]
+[node name="FungusFarmRebuildButton" type="Button" parent="Destroyed/FungusFarmDestroyed" node_paths=PackedStringArray("rubble_pile", "destroyed_room", "rebuilt_room")]
+offset_left = 79.0
+offset_top = -83.0
+offset_right = 146.0
+offset_bottom = -52.0
+text = "Rebuild"
+script = ExtResource("13_nhadl")
+room_type = 1
+rubble_pile = NodePath("../../../Rubble/RubbleFarm")
+destroyed_room = NodePath("..")
+rebuilt_room = NodePath("../../../Built/FungusFarmBuilt")
+
+[node name="GuardDestroyed" type="Sprite2D" parent="Destroyed"]
 position = Vector2(325, -550)
 texture = ExtResource("12_1hmcp")
 
-[node name="AntHillBaseHousesDestroyed" type="Sprite2D" parent="Destroyed"]
+[node name="GuardRebuildButton" type="Button" parent="Destroyed/GuardDestroyed" node_paths=PackedStringArray("rubble_pile", "destroyed_room", "rebuilt_room")]
+offset_left = -231.0
+offset_top = 25.0
+offset_right = -164.0
+offset_bottom = 56.0
+text = "Rebuild"
+script = ExtResource("13_nhadl")
+room_type = 2
+rubble_pile = NodePath("../../../Rubble/RubbleGuard")
+destroyed_room = NodePath("..")
+rebuilt_room = NodePath("../../../Built/GuardBuilt")
+
+[node name="HousesDestroyed" type="Sprite2D" parent="Destroyed"]
 position = Vector2(-345, 76)
 texture = ExtResource("13_e1xbi")
 
-[node name="AntHillBaseRoyalChamberDestroyed" type="Sprite2D" parent="Destroyed"]
+[node name="HousesRebuildButton" type="Button" parent="Destroyed/HousesDestroyed" node_paths=PackedStringArray("rubble_pile", "destroyed_room", "rebuilt_room")]
+offset_left = 72.0
+offset_top = -94.0
+offset_right = 139.0
+offset_bottom = -63.0
+text = "Rebuild"
+script = ExtResource("13_nhadl")
+room_type = 3
+rubble_pile = NodePath("../../../Rubble/RubbleHouses")
+destroyed_room = NodePath("..")
+rebuilt_room = NodePath("../../../Built/HousesBuilt")
+
+[node name="RoyalChamberDestroyed" type="Sprite2D" parent="Destroyed"]
 position = Vector2(-35, 696)
 texture = ExtResource("14_1o04r")
 
-[node name="AntHillBaseScoutDestroyed" type="Sprite2D" parent="Destroyed"]
+[node name="RoyalChamberRebuildButton" type="Button" parent="Destroyed/RoyalChamberDestroyed" node_paths=PackedStringArray("rubble_pile", "destroyed_room", "rebuilt_room")]
+offset_left = -11.0
+offset_top = -189.0
+offset_right = 56.0
+offset_bottom = -158.0
+text = "Rebuild"
+script = ExtResource("13_nhadl")
+room_type = 4
+rubble_pile = NodePath("../../../Rubble/RubbleRoyal")
+destroyed_room = NodePath("..")
+rebuilt_room = NodePath("../../../Built/RoyalChamberBuilt")
+
+[node name="ScoutDestroyed" type="Sprite2D" parent="Destroyed"]
 position = Vector2(-383, -667)
 texture = ExtResource("15_fj7pa")
 
-[node name="AntHillBaseStorageDestroyed" type="Sprite2D" parent="Destroyed"]
+[node name="ScoutRebuildButton" type="Button" parent="Destroyed/ScoutDestroyed" node_paths=PackedStringArray("rubble_pile", "destroyed_room", "rebuilt_room")]
+offset_left = 89.0
+offset_top = -22.0
+offset_right = 156.0
+offset_bottom = 9.0
+text = "Rebuild"
+script = ExtResource("13_nhadl")
+room_type = 5
+rubble_pile = NodePath("../../../Rubble/RubbleScout")
+destroyed_room = NodePath("..")
+rebuilt_room = NodePath("../../../Built/ScoutBuilt")
+
+[node name="StorageDestroyed" type="Sprite2D" parent="Destroyed"]
 position = Vector2(414, 288)
 texture = ExtResource("16_ru00g")
 
-[node name="rubble_Blocks" type="Node2D" parent="."]
+[node name="StorageRebuildButton" type="Button" parent="Destroyed/StorageDestroyed" node_paths=PackedStringArray("rubble_pile", "destroyed_room", "rebuilt_room")]
+offset_left = -222.0
+offset_top = -159.0
+offset_right = -155.0
+offset_bottom = -128.0
+text = "Rebuild"
+script = ExtResource("13_nhadl")
+room_type = 6
+rubble_pile = NodePath("../../../Rubble/RubbleStorage")
+destroyed_room = NodePath("..")
+rebuilt_room = NodePath("../../../Built/StorageBuilt")
 
-[node name="rubblepile_houses" parent="rubble_Blocks" instance=ExtResource("17_6nhoc")]
+[node name="Rubble" type="Node2D" parent="."]
+
+[node name="RubbleHouses" parent="Rubble" instance=ExtResource("17_6nhoc")]
 position = Vector2(-153, -99)
 scale = Vector2(0.6, 0.6)
 
-[node name="rubblepile_guard" parent="rubble_Blocks" instance=ExtResource("17_6nhoc")]
+[node name="RubbleGuard" parent="Rubble" instance=ExtResource("17_6nhoc")]
 position = Vector2(-34, -526)
 scale = Vector2(0.6, 0.6)
 
-[node name="rubblepile_scout" parent="rubble_Blocks" instance=ExtResource("17_6nhoc")]
+[node name="RubbleScout" parent="Rubble" instance=ExtResource("17_6nhoc")]
 position = Vector2(-191, -662)
 scale = Vector2(0.6, 0.6)
 
-[node name="rubblepile_farm" parent="rubble_Blocks" instance=ExtResource("17_6nhoc")]
+[node name="RubbleFarm" parent="Rubble" instance=ExtResource("17_6nhoc")]
 position = Vector2(-229, -431)
 scale = Vector2(0.6, 0.6)
 
-[node name="rubblepile_royal" parent="rubble_Blocks" instance=ExtResource("17_6nhoc")]
+[node name="RubbleRoyal" parent="Rubble" instance=ExtResource("17_6nhoc")]
 position = Vector2(-4, 394)
 scale = Vector2(0.6, 0.6)
 
-[node name="rubblepile_storage" parent="rubble_Blocks" instance=ExtResource("17_6nhoc")]
+[node name="RubbleStorage" parent="Rubble" instance=ExtResource("17_6nhoc")]
 position = Vector2(113, 99)
 scale = Vector2(0.6, 0.6)
 
-[node name="rubblepile_ranch" parent="rubble_Blocks" instance=ExtResource("17_6nhoc")]
+[node name="RubbleRanch" parent="Rubble" instance=ExtResource("17_6nhoc")]
 position = Vector2(-11, -233)
 scale = Vector2(0.6, 0.6)
 
@@ -188,4 +274,11 @@ text = "Day: ?"
 horizontal_alignment = 2
 script = ExtResource("21_83glh")
 
+[connection signal="pressed" from="Destroyed/AphidRanchDestroyed/AphidRanchRebuildButton" to="Destroyed/AphidRanchDestroyed/AphidRanchRebuildButton" method="on_rebuild"]
+[connection signal="pressed" from="Destroyed/FungusFarmDestroyed/FungusFarmRebuildButton" to="Destroyed/FungusFarmDestroyed/FungusFarmRebuildButton" method="on_rebuild"]
+[connection signal="pressed" from="Destroyed/GuardDestroyed/GuardRebuildButton" to="Destroyed/GuardDestroyed/GuardRebuildButton" method="on_rebuild"]
+[connection signal="pressed" from="Destroyed/HousesDestroyed/HousesRebuildButton" to="Destroyed/HousesDestroyed/HousesRebuildButton" method="on_rebuild"]
+[connection signal="pressed" from="Destroyed/RoyalChamberDestroyed/RoyalChamberRebuildButton" to="Destroyed/RoyalChamberDestroyed/RoyalChamberRebuildButton" method="on_rebuild"]
+[connection signal="pressed" from="Destroyed/ScoutDestroyed/ScoutRebuildButton" to="Destroyed/ScoutDestroyed/ScoutRebuildButton" method="on_rebuild"]
+[connection signal="pressed" from="Destroyed/StorageDestroyed/StorageRebuildButton" to="Destroyed/StorageDestroyed/StorageRebuildButton" method="on_rebuild"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/StartButtonMargin/StartButton" to="CanvasLayer/VBoxContainer/StartButtonMargin/StartButton" method="_on_pressed"]

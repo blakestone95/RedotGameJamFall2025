@@ -11,7 +11,19 @@ const rebuild_scene = "res://scenes/colony/Colony.tscn"
 
 var colony_inventory: Inventory
 ## Provide the ItemData resources in the order you want them to appear
-@export var inventory_items: Array[ItemData]
+@export var inventory_items: Array[ItemData] 
+
+var colony_upgrades: Dictionary = {
+	Colony.Rooms.RANCH: false,
+	Colony.Rooms.FARM: false,
+	Colony.Rooms.GUARD: false,
+	Colony.Rooms.HOUSES: false,
+	Colony.Rooms.ROYAL_CHAMBERS: false,
+	Colony.Rooms.SCOUT: false,
+	Colony.Rooms.STORAGE: false,
+}
+# Literally only so the Royal Chamber room can monitor when colony_upgrades changes
+signal room_rebuilt
 
 # Start in the colony screen on game start
 var state: GameState = GameState.REBUILD
@@ -57,3 +69,14 @@ func on_state_update(new_state: GameState) -> void:
 	assert(scene != null, "Tried to transition to game state %s with no scene attached" % new_state)
 	open_scene.add_child(scene)
 	music.play()
+
+func rebuild_room(type: Colony.Rooms, costs: Dictionary):
+	assert(colony_upgrades.has(type), "colony_upgrade dictionary has no key for type " + str(type))
+
+	# Checking costs is handled in RebuildButton, we don't need to recheck here
+	for item_type in costs.keys():
+		var cost = costs[item_type]
+		colony_inventory.decrease_item(item_type, cost)
+
+	colony_upgrades[type] = true
+	room_rebuilt.emit()
