@@ -8,4 +8,4 @@ script = ExtResource("1_2qlxm")
 type = 2
 name = "Pebble"
 texture = ExtResource("2_ixwlb")
-max_amount = 10
+max_amount = 1

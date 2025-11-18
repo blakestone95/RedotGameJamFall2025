@@ -20,4 +20,4 @@ func _on_inventory_update():
 	update_counter()
 
 func update_counter():
-	counter.text = str(item.count)
+	counter.text = str(item.count) + "/" + str(item.max_amount)
