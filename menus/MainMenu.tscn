@@ -1,9 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://xr0fw4yvmvc3"]
+[gd_scene load_steps=22 format=3 uid="uid://bxnts5kevcg5k"]
 
 [ext_resource type="Script" path="res://menus/main_menu.gd" id="1_ih3s6"]
 [ext_resource type="Texture2D" uid="uid://c81w0qa1xtdfl" path="res://data/2D assets/ui/MainMenu_Background.png" id="2_53qvp"]
-[ext_resource type="Theme" uid="uid://urbhhupy6a5l" path="res://data/2D assets/ui/Mainmenubutton.tres" id="3_je8l7"]
-[ext_resource type="PackedScene" uid="uid://cicu1qk0jq20x" path="res://menus/credits.tscn" id="4_wnv6w"]
+[ext_resource type="Theme" path="res://data/2D assets/ui/Mainmenubutton.tres" id="3_je8l7"]
+[ext_resource type="PackedScene" path="res://menus/credits.tscn" id="4_wnv6w"]
 [ext_resource type="Texture2D" uid="uid://7h56jvne7h3l" path="res://data/2D assets/world/topview_anthill.png" id="5_m8c1o"]
 [ext_resource type="Texture2D" uid="uid://ydb3lfgldbr3" path="res://data/2D assets/world/Crumb.png" id="6_h14mx"]
 [ext_resource type="Texture2D" uid="uid://cw7awlj7drk5v" path="res://data/2D assets/world/Stick.png" id="7_8pvqd"]

@@ -1,0 +1,289 @@
+[gd_scene load_steps=18 format=3 uid="uid://cpx3virw6s82k"]
+
+[ext_resource type="Script" path="res://scenes/opening_cinematic.gd" id="1_hlgve"]
+[ext_resource type="Texture2D" uid="uid://dijp5vh7s4h2y" path="res://data/2D assets/other/openingcinematic/Opening Cinematic_01a.png" id="1_yquna"]
+[ext_resource type="PackedScene" uid="uid://bxnts5kevcg5k" path="res://menus/MainMenu.tscn" id="2_3ovar"]
+[ext_resource type="Texture2D" uid="uid://da6av1k5n83r6" path="res://data/2D assets/other/openingcinematic/Opening Cinematic_01b.png" id="2_frlxg"]
+[ext_resource type="Texture2D" uid="uid://dn4dq4o7bao2h" path="res://data/2D assets/other/openingcinematic/Opening Cinematic_02a.png" id="3_0aa5l"]
+[ext_resource type="Texture2D" uid="uid://srrsd4ivlj2x" path="res://data/2D assets/other/openingcinematic/Opening Cinematic_02b.png" id="4_fl5on"]
+[ext_resource type="Texture2D" uid="uid://dg6qrbbx02dd8" path="res://data/2D assets/other/openingcinematic/Opening Cinematic_03b.png" id="5_ryuho"]
+[ext_resource type="Texture2D" uid="uid://cd65mff3o1pbu" path="res://data/2D assets/other/openingcinematic/Opening Cinematic_03a.png" id="6_tyqux"]
+[ext_resource type="Texture2D" uid="uid://ycl3jw6ipgk7" path="res://data/2D assets/other/openingcinematic/Opening Cinematic_04a.png" id="7_j35py"]
+[ext_resource type="Texture2D" uid="uid://b7xl8uw2jw2" path="res://data/2D assets/other/openingcinematic/Opening Cinematic_04b.png" id="8_rd2vl"]
+[ext_resource type="Texture2D" uid="uid://3a1kpjuw0fmi" path="res://data/2D assets/other/MainMenu_Background.png" id="9_fxknh"]
+
+[sub_resource type="Animation" id="Animation_lovi3"]
+resource_name = "Opening_Cinematic"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scene 01/Ants_Happy:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.0333, 2.8971, 3.0303),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Scene 02/Ants_Worried:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.8971, 3.0303, 4.4955, 4.6287),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Scene 03/Ants_Frightened:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(4.4955, 4.6287),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Scene 02/Clouds and Rain:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.5318, 3.0303),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -600), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Scene 03/Alert:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(4.2291, 4.5288, 4.8285, 5.0949, 5.3613, 5.6277, 5.9274),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Scene 04:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 5.6277, 7.9587),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-2000, 350), Vector2(-2000, 350), Vector2(0, 350)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Scene 05/MainMenuBackground:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(9.0576, 9.9567),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hbfhn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scene 01/Ants_Happy:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Scene 02/Clouds and Rain:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Scene 02/Ants_Worried:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Scene 03/Alert:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Scene 03/Ants_Frightened:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Scene 04:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2000, 350)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Scene 05/MainMenuBackground:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pd770"]
+_data = {
+"Opening_Cinematic": SubResource("Animation_lovi3"),
+"RESET": SubResource("Animation_hbfhn")
+}
+
+[sub_resource type="Animation" id="Animation_x20s2"]
+resource_name = "Wave Movement"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scene 04/Water:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2331, 0.7326, 0.9657),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-5, -10), Vector2(5, 10), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_iu6l8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scene 04/Water:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_287o7"]
+_data = {
+"RESET": SubResource("Animation_iu6l8"),
+"Wave Movement": SubResource("Animation_x20s2")
+}
+
+[node name="Opening_Cinematic" type="Node2D" node_paths=PackedStringArray("cinematic")]
+script = ExtResource("1_hlgve")
+cinematic = NodePath("Cinematic")
+next_scene = ExtResource("2_3ovar")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1_yquna")
+
+[node name="Scene 01" type="Node2D" parent="."]
+
+[node name="Ants_Happy" type="Sprite2D" parent="Scene 01"]
+texture = ExtResource("2_frlxg")
+
+[node name="Scene 02" type="Node2D" parent="."]
+
+[node name="Clouds and Rain" type="Sprite2D" parent="Scene 02"]
+texture = ExtResource("3_0aa5l")
+
+[node name="Ants_Worried" type="Sprite2D" parent="Scene 02"]
+texture = ExtResource("4_fl5on")
+
+[node name="Scene 03" type="Node2D" parent="."]
+
+[node name="Alert" type="Sprite2D" parent="Scene 03"]
+texture = ExtResource("5_ryuho")
+
+[node name="Ants_Frightened" type="Sprite2D" parent="Scene 03"]
+texture = ExtResource("6_tyqux")
+
+[node name="Scene 04" type="Node2D" parent="."]
+position = Vector2(-2000, 350)
+
+[node name="Water" type="Sprite2D" parent="Scene 04"]
+texture = ExtResource("7_j35py")
+
+[node name="Bubbles" type="Sprite2D" parent="Scene 04"]
+texture = ExtResource("8_rd2vl")
+
+[node name="Scene 05" type="Node2D" parent="."]
+
+[node name="MainMenuBackground" type="Sprite2D" parent="Scene 05"]
+texture = ExtResource("9_fxknh")
+
+[node name="Cinematic" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pd770")
+}
+autoplay = "Opening_Cinematic"
+
+[node name="Waves" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_287o7")
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="animation_finished" from="Cinematic" to="." method="_on_cinematic_animation_finished"]
