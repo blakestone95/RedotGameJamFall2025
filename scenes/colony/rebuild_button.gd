@@ -85,7 +85,7 @@ func show_costs() -> void:
 
 func on_rebuild() -> void:
 	# Button will be disabled if we can't afford to rebuild, so don't need to check that here
-	game.rebuild_room(room_type)
+	game.rebuild_room(room_type, costs)
 	hide()
 	if rubble_pile != null:
 		rubble_pile.rubble_fall()

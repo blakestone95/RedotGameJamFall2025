@@ -70,7 +70,13 @@ func on_state_update(new_state: GameState) -> void:
 	open_scene.add_child(scene)
 	music.play()
 
-func rebuild_room(type: Colony.Rooms):
+func rebuild_room(type: Colony.Rooms, costs: Dictionary):
 	assert(colony_upgrades.has(type), "colony_upgrade dictionary has no key for type " + str(type))
+
+	# Checking costs is handled in RebuildButton, we don't need to recheck here
+	for item_type in costs.keys():
+		var cost = costs[item_type]
+		colony_inventory.decrease_item(item_type, cost)
+
 	colony_upgrades[type] = true
 	room_rebuilt.emit()

@@ -15,10 +15,15 @@ func _init(item_data: Dictionary):
 		assert(item is ItemData, "All values of item_data passed to Inventory must be ItemData")
 	items = item_data
 
-func increase_item(type: ItemData.Type, amount: int):
-	items[type].increase(amount)
+func increase_item(type: ItemData.Type, amount: int) -> int:
+	# Could add the item, but since the items are ItemData types, there's info you'd be missing. So let's just error here.
+	assert(items.has(type), "Attempted to increase item not in this inventory")
+	var remainder = items[type].increase(amount)
 	updated.emit(type)
+	return remainder
 
-func decrease_item(type: ItemData.Type, amount: int):
-	items[type].decrease(amount)
+func decrease_item(type: ItemData.Type, amount: int) -> int:
+	assert(items.has(type), "Attempted to decrease item not in this inventory")
+	var remainder = items[type].decrease(amount)
 	updated.emit(type)
+	return remainder
