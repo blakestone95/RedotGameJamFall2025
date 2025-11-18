@@ -8,4 +8,4 @@ script = ExtResource("1_rmdwr")
 type = 1
 name = "Stick"
 texture = ExtResource("2_vbhwy")
-max_amount = 10
+max_amount = 2

@@ -1,4 +1,4 @@
-class_name IDManager extends Node
+extends Node
 
 var nextId: int = 1
 

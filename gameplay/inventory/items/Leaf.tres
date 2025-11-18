@@ -8,4 +8,4 @@ script = ExtResource("1_g6xom")
 type = 0
 name = "Leaf"
 texture = ExtResource("2_m58q0")
-max_amount = 10
+max_amount = 2

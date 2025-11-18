@@ -1,7 +1,9 @@
 class_name Antonia extends CharacterBody2D
 
 # Attributes
-@export var speed = 200
+@export var speed = 300
+
+var game: Game
 
 # Audio related  (Stingray)
 @onready var footstep_player: AudioStreamPlayer2D = $Footsteps_SFX
@@ -44,6 +46,14 @@ func _ready() -> void:
 	for item in inventory_items:
 		inventory_data[item.type] = item.duplicate()
 	inventory = Inventory.new(inventory_data)
+
+func _enter_tree() -> void:
+	# Get the game node so we can access the inventory
+	if game == null: 
+		game = get_tree().get_nodes_in_group("game")[0] as Game;
+		if !game.is_node_ready(): await game.ready
+	
+	apply_upgrades()
 
 func _physics_process(_delta: float) -> void:
 	# Determine direction from inputs
@@ -125,6 +135,22 @@ func handle_break(amount: float) -> void:
 		var breakable: ItemToBreak = nearby_breakable.values()[0]
 		assert(breakable is ItemToBreak, "The first nearby breakable is not actually a ItemToBreak class")
 		breakable.breaking_progress(amount)
+
+func apply_upgrades() -> void:
+	# Speed increase
+	if game.colony_upgrades[Colony.Rooms.SCOUT]:
+		speed *= 1.25
+	
+	# Storage increase
+	if game.colony_upgrades[Colony.Rooms.STORAGE]:
+		inventory.items[ItemData.Type.LEAF].max_amount += 2
+		inventory.items[ItemData.Type.STICK].max_amount += 2
+		inventory.items[ItemData.Type.PEBBLE].max_amount += 1
+		inventory.items[ItemData.Type.FOOD].max_amount += 2
+	
+	# Health increase
+	if game.colony_upgrades[Colony.Rooms.GUARD]:
+		pass # TODO: Hook up to health system when implemented
 
 """
 # doesn't work.  Not part of MVP, stretch goal
