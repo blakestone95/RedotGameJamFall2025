@@ -151,7 +151,11 @@ func apply_upgrades() -> void:
 	# Health increase
 	if game.colony_upgrades[Colony.Rooms.GUARD]:
 		pass # TODO: Hook up to health system when implemented
-
+		
+func _on_interaction_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("enemy"):
+		game.on_lose_game()
+		
 """
 # doesn't work.  Not part of MVP, stretch goal
 func ground_below() -> void:
@@ -214,3 +218,7 @@ func _find_all_tilemap_layers(node: Node, layers: Array[Node]) -> void:
 	for child in node.get_children():
 		_find_all_tilemap_layers(child, layers)
 """
+
+
+
+		
