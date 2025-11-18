@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bhk8b14ylpk0h"]
+[gd_scene load_steps=8 format=3 uid="uid://bhk8b14ylpk0h"]
 
 [ext_resource type="Texture2D" uid="uid://bx0gif7gdbfxx" path="res://data/2D assets/character/Beetle.png" id="1_ubihp"]
 [ext_resource type="Script" path="res://gameplay/enemies/beetle.gd" id="1_wmd30"]
@@ -35,14 +35,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_borkq"]
 radius = 500.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qt1mr"]
-radius = 1000.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ubihp"]
-radius = 63.89
-height = 289.48
-
-[node name="Beetle" type="Node2D"]
+[node name="Beetle" type="Node2D" groups=["enemy"]]
 script = ExtResource("1_wmd30")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -53,16 +46,5 @@ frame_progress = 0.0460256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionZone"]
 shape = SubResource("CircleShape2D_borkq")
-
-[node name="LimitZone" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LimitZone"]
-shape = SubResource("CircleShape2D_qt1mr")
-
-[node name="HitboxZone" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxZone"]
-position = Vector2(2, -15)
-shape = SubResource("CapsuleShape2D_ubihp")
 
 [connection signal="body_entered" from="DetectionZone" to="." method="_on_detection_zone_body_entered"]
