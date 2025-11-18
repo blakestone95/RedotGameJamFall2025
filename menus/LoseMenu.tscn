@@ -1,0 +1,264 @@
+[gd_scene load_steps=22 format=3 uid="uid://ky6c418pyj6d"]
+
+[ext_resource type="Script" path="res://menus/lose_menu.gd" id="1_t7yca"]
+[ext_resource type="Texture2D" uid="uid://c81w0qa1xtdfl" path="res://data/2D assets/ui/MainMenu_Background.png" id="2_hfx3b"]
+[ext_resource type="Theme" uid="uid://urbhhupy6a5l" path="res://data/2D assets/ui/Mainmenubutton.tres" id="3_ou2va"]
+[ext_resource type="PackedScene" uid="uid://cicu1qk0jq20x" path="res://menus/credits.tscn" id="4_2tv5r"]
+[ext_resource type="Texture2D" uid="uid://7h56jvne7h3l" path="res://data/2D assets/world/topview_anthill.png" id="5_muqma"]
+[ext_resource type="Texture2D" uid="uid://ydb3lfgldbr3" path="res://data/2D assets/world/Crumb.png" id="6_iffbq"]
+[ext_resource type="Texture2D" uid="uid://cw7awlj7drk5v" path="res://data/2D assets/world/Stick.png" id="7_v8j6r"]
+[ext_resource type="Script" path="res://menus/ant scripts/ant1.gd" id="8_krhsc"]
+[ext_resource type="Texture2D" uid="uid://do7mpe4r63ikw" path="res://data/2D assets/character/AntoniaSpriteSheet.png" id="9_x6ypg"]
+[ext_resource type="Script" path="res://menus/ant scripts/ant2.gd" id="10_rkkna"]
+[ext_resource type="Script" path="res://menus/ant scripts/ant3.gd" id="11_ikchf"]
+[ext_resource type="Script" path="res://menus/ant scripts/ant4.gd" id="12_t3sp5"]
+[ext_resource type="AudioStream" uid="uid://cv4mhiqfgfka4" path="res://data/audio_assets/music/MenuMusic.mp3" id="13_1e6pd"]
+
+[sub_resource type="Curve2D" id="Curve2D_miq6v"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 145, 85, 0, 0, 0, 0, 142, 157, 0, 0, 0, 0, 256, 227, 0, 0, 0, 0, 256, 227, 0, 0, 0, 0, 302, 290, 0, 0, 0, 0, 413, 233, 0, 0, 0, 0, 413, 233, 0, 0, 0, 0, 413, 233, 0, 0, 0, 0, 503, 266, 0, 0, 0, 0, 458, 338, 0, 0, 0, 0, 497, 353, 0, 0, 0, 0, 594, 314, 0, 0, 0, 0, 615, 428, 0, 0, 0, 0, 561, 534, 0, 0, 0, 0, 497, 498, 0, 0, 0, 0, 648, 527, 0, 0, 0, 0, 648, 527, 0, 0, 0, 0, 612, 558, 0, 0, 0, 0, 512, 555, 0, 0, 0, 0, 630, 617, 0, 0, 0, 0, 659, 578, 0, 0, 0, 0, 659, 578, 0, 0, 0, 0, 716, 537, 0, 0, 0, 0, 729, 404, 0, 0, 0, 0, 693, 392, 0, 0, 0, 0, 785, 369, 0, 0, 0, 0, 785, 369, 0, 0, 0, 0, 807, 423, 0, 0, 0, 0, 908, 512, 0, 0, 0, 0, 908, 512, 0, 0, 0, 0, 968, 477, 0, 0, 0, 0, 1032, 438, 0, 0, 0, 0, 995, 519, 0, 0, 0, 0, 1047, 539, 0, 0, 0, 0, 1060, 564, 0, 0, 0, 0, 855, 336, 0, 0, 0, 0, 693, 248, 0, 0, 0, 0, 668, 282, 0, 0, 0, 0, 410, 119, 0, 0, 0, 0, 422, 157, 0, 0, 0, 0, 308, 95, 0, 0, 0, 0, 286, 146, 0, 0, 0, 0, 212, 142, 0, 0, 0, 0, 145, 85)
+}
+point_count = 44
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82ymk"]
+atlas = ExtResource("9_x6ypg")
+region = Rect2(0, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bkv5"]
+atlas = ExtResource("9_x6ypg")
+region = Rect2(400, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpxjr"]
+atlas = ExtResource("9_x6ypg")
+region = Rect2(800, 0, 400, 400)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0hxc3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82ymk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bkv5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpxjr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve2D" id="Curve2D_1bkv5"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 156, 90, 0, 0, 0, 0, 228, 40, 0, 0, 0, 0, 286, 64, 0, 0, 0, 0, 392, 64, 0, 0, 0, 0, 392, 64, 0, 0, 0, 0, 485, 130, 0, 0, 0, 0, 485, 130, 0, 0, 0, 0, 563, 79, 0, 0, 0, 0, 563, 79, 0, 0, 0, 0, 667, 37, 0, 0, 0, 0, 664, 79, 0, 0, 0, 0, 688, 99, 0, 0, 0, 0, 763, 66, 0, 0, 0, 0, 763, 66, 0, 0, 0, 0, 781, 135, 0, 0, 0, 0, 842, 103, 0, 0, 0, 0, 861, 63, 0, 0, 0, 0, 879, 136, 0, 0, 0, 0, 890, 120, 0, 0, 0, 0, 911, 105, 0, 0, 0, 0, 930, 73, 0, 0, 0, 0, 968, 31, 0, 0, 0, 0, 995, 36, 0, 0, 0, 0, 1029, 12, 0, 0, 0, 0, 1053, 42, 0, 0, 0, 0, 1079, 58, 0, 0, 0, 0, 1067, 108, 0, 0, 0, 0, 1059, 160, 0, 0, 0, 0, 1083, 178, 0, 0, 0, 0, 1074, 207, 0, 0, 0, 0, 1020, 222, 0, 0, 0, 0, 1025, 294, 0, 0, 0, 0, 1080, 320, 0, 0, 0, 0, 1071, 371, 0, 0, 0, 0, 1029, 382, 0, 0, 0, 0, 1037, 424, 0, 0, 0, 0, 1062, 455, 0, 0, 0, 0, 1067, 494, 0, 0, 0, 0, 1053, 509, 0, 0, 0, 0, 1083, 554, 0, 0, 0, 0, 1071, 577, 0, 0, 0, 0, 998, 586, 0, 0, 0, 0, 965, 566, 0, 0, 0, 0, 890, 524, 0, 0, 0, 0, 881, 539, 0, 0, 0, 0, 824, 515, 0, 0, 0, 0, 811, 460, 0, 0, 0, 0, 722, 466, 0, 0, 0, 0, 674, 409, 0, 0, 0, 0, 676, 370, 0, 0, 0, 0, 566, 311, 0, 0, 0, 0, 500, 361, 0, 0, 0, 0, 478, 249, 0, 0, 0, 0, 418, 261, 0, 0, 0, 0, 336, 165, 0, 0, 0, 0, 253, 258, 0, 0, 0, 0, 250, 214, 0, 0, 0, 0, 154, 144, 0, 0, 0, 0, 156, 90)
+}
+point_count = 59
+
+[sub_resource type="Curve2D" id="Curve2D_wpxjr"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 124, 92, 0, 0, 0, 0, 118, 162, 0, 0, 0, 0, 82, 222, 0, 0, 0, 0, 141, 228, 0, 0, 0, 0, 88, 247, 0, 0, 0, 0, 135, 266, 0, 0, 0, 0, 73, 296, 0, 0, 0, 0, 46, 260, 0, 0, 0, 0, 37, 287, 0, 0, 0, 0, 150, 309, 0, 0, 0, 0, 52, 345, 0, 0, 0, 0, 205, 309, 0, 0, 0, 0, 275, 362, 0, 0, 0, 0, 82, 404, 0, 0, 0, 0, 179, 474, 0, 0, 0, 0, 277, 440, 0, 0, 0, 0, 156, 556, 0, 0, 0, 0, 128, 535, 0, 0, 0, 0, 105, 607, 0, 0, 0, 0, 270, 586, 0, 0, 0, 0, 222, 626, 0, 0, 0, 0, 311, 590, 0, 0, 0, 0, 287, 550, 0, 0, 0, 0, 304, 516, 0, 0, 0, 0, 342, 542, 0, 0, 0, 0, 410, 482, 0, 0, 0, 0, 410, 482, 0, 0, 0, 0, 412, 548, 0, 0, 0, 0, 491, 527, 0, 0, 0, 0, 522, 556, 0, 0, 0, 0, 522, 556, 0, 0, 0, 0, 565, 588, 0, 0, 0, 0, 641, 584, 0, 0, 0, 0, 603, 535, 0, 0, 0, 0, 652, 516, 0, 0, 0, 0, 722, 544, 0, 0, 0, 0, 777, 457, 0, 0, 0, 0, 828, 542, 0, 0, 0, 0, 849, 561, 0, 0, 0, 0, 878, 569, 0, 0, 0, 0, 895, 548, 0, 0, 0, 0, 929, 565, 0, 0, 0, 0, 946, 546, 0, 0, 0, 0, 1012, 506, 0, 0, 0, 0, 1008, 626, 0, 0, 0, 0, 1052, 612, 0, 0, 0, 0, 1071, 588, 0, 0, 0, 0, 1071, 588, 0, 0, 0, 0, 984, 461, 0, 0, 0, 0, 1027, 402, 0, 0, 0, 0, 980, 368, 0, 0, 0, 0, 917, 412, 0, 0, 0, 0, 914, 321, 0, 0, 0, 0, 770, 336, 0, 0, 0, 0, 781, 226, 0, 0, 0, 0, 847, 152, 0, 0, 0, 0, 770, 154, 0, 0, 0, 0, 722, 211, 0, 0, 0, 0, 647, 111, 0, 0, 0, 0, 637, 160, 0, 0, 0, 0, 520, 101, 0, 0, 0, 0, 592, 270, 0, 0, 0, 0, 525, 258, 0, 0, 0, 0, 514, 175, 0, 0, 0, 0, 472, 215, 0, 0, 0, 0, 457, 184, 0, 0, 0, 0, 380, 228, 0, 0, 0, 0, 372, 177, 0, 0, 0, 0, 264, 192, 0, 0, 0, 0, 260, 133, 0, 0, 0, 0, 260, 133, 0, 0, 0, 0, 124, 92)
+}
+point_count = 72
+
+[sub_resource type="Curve2D" id="Curve2D_0hxc3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 115, 87, 0, 0, 0, 0, 179, 216, 0, 0, 0, 0, 179, 216, 0, 0, 0, 0, 157, 236, 0, 0, 0, 0, 128, 282, 0, 0, 0, 0, 194, 278, 0, 0, 0, 0, 202, 263, 0, 0, 0, 0, 230, 250, 0, 0, 0, 0, 242, 227, 0, 0, 0, 0, 236, 223, 0, 0, 0, 0, 181, 149, 0, 0, 0, 0, 257, 153, 0, 0, 0, 0, 350, 267, 0, 0, 0, 0, 350, 185, 0, 0, 0, 0, 304, 163, 0, 0, 0, 0, 602, 72, 0, 0, 0, 0, 475, 153, 0, 0, 0, 0, 378, 66, 0, 0, 0, 0, 295, 72, 0, 0, 0, 0, 441, 197, 0, 0, 0, 0, 369, 344, 0, 0, 0, 0, 270, 358, 0, 0, 0, 0, 327, 418, 0, 0, 0, 0, 342, 409, 0, 0, 0, 0, 363, 409, 0, 0, 0, 0, 437, 344, 0, 0, 0, 0, 456, 293, 0, 0, 0, 0, 484, 299, 0, 0, 0, 0, 469, 392, 0, 0, 0, 0, 446, 409, 0, 0, 0, 0, 530, 452, 0, 0, 0, 0, 518, 363, 0, 0, 0, 0, 541, 331, 0, 0, 0, 0, 533, 297, 0, 0, 0, 0, 545, 284, 0, 0, 0, 0, 533, 229, 0, 0, 0, 0, 583, 238, 0, 0, 0, 0, 681, 240, 0, 0, 0, 0, 649, 289, 0, 0, 0, 0, 613, 375, 0, 0, 0, 0, 622, 375, 0, 0, 0, 0, 662, 403, 0, 0, 0, 0, 549, 462, 0, 0, 0, 0, 486, 466, 0, 0, 0, 0, 486, 490, 0, 0, 0, 0, 528, 558, 0, 0, 0, 0, 715, 634, 0, 0, 0, 0, 569, 471, 0, 0, 0, 0, 662, 498, 0, 0, 0, 0, 670, 430, 0, 0, 0, 0, 751, 452, 0, 0, 0, 0, 730, 352, 0, 0, 0, 0, 691, 337, 0, 0, 0, 0, 700, 322, 0, 0, 0, 0, 732, 276, 0, 0, 0, 0, 833, 248, 0, 0, 0, 0, 863, 274, 0, 0, 0, 0, 954, 240, 0, 0, 0, 0, 914, 195, 0, 0, 0, 0, 1054, 153, 0, 0, 0, 0, 1064, 176, 0, 0, 0, 0, 1077, 204, 0, 0, 0, 0, 1016, 282, 0, 0, 0, 0, 937, 308, 0, 0, 0, 0, 844, 363, 0, 0, 0, 0, 884, 403, 0, 0, 0, 0, 876, 422, 0, 0, 0, 0, 840, 486, 0, 0, 0, 0, 759, 469, 0, 0, 0, 0, 772, 526, 0, 0, 0, 0, 789, 536, 0, 0, 0, 0, 844, 564, 0, 0, 0, 0, 903, 528, 0, 0, 0, 0, 905, 486, 0, 0, 0, 0, 961, 466, 0, 0, 0, 0, 984, 466, 0, 0, 0, 0, 997, 530, 0, 0, 0, 0, 1105, 577, 0, 0, 0, 0, 1056, 414, 0, 0, 0, 0, 954, 354, 0, 0, 0, 0, 1014, 318, 0, 0, 0, 0, 893, 265, 0, 0, 0, 0, 797, 147, 0, 0, 0, 0, 713, 197, 0, 0, 0, 0, 668, 159, 0, 0, 0, 0, 626, 168, 0, 0, 0, 0, 617, 191, 0, 0, 0, 0, 545, 189, 0, 0, 0, 0, 467, 227, 0, 0, 0, 0, 444, 280, 0, 0, 0, 0, 363, 269, 0, 0, 0, 0, 346, 246, 0, 0, 0, 0, 297, 238, 0, 0, 0, 0, 274, 286, 0, 0, 0, 0, 206, 310, 0, 0, 0, 0, 143, 341, 0, 0, 0, 0, 102, 346, 0, 0, 0, 0, 64, 305, 0, 0, 0, 0, 22, 233, 0, 0, 0, 0, 28, 208, 0, 0, 0, 0, 81, 208, 0, 0, 0, 0, 62, 153, 0, 0, 0, 0, 71, 98, 0, 0, 0, 0, 115, 87)
+}
+point_count = 104
+
+[node name="Lose Menu" type="Control"]
+layout_direction = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t7yca")
+
+[node name="WinMenuBackground" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = ExtResource("2_hfx3b")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -334.0
+offset_right = 335.0
+offset_bottom = 186.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.909018, 0.508745, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 96
+text = "ANTPOCALYPSE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Failure message" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -321.0
+offset_top = 109.0
+offset_right = 49.0
+offset_bottom = 386.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.909018, 0.508745, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 48
+text = "Oh no!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Failure message body" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -274.0
+offset_top = 228.0
+offset_right = 497.0
+offset_bottom = 505.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.964706, 0.917647, 0.709804, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 24
+text = "The colony did not get enough food to survive the day...
+
+Thanks for playing! Would you like to try again?"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ButtonContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = 3.0
+offset_right = 394.0
+offset_bottom = 257.0
+grow_vertical = 2
+
+[node name="Main Menu" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+theme = ExtResource("3_ou2va")
+text = "MAIN MENU"
+
+[node name="Credits" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+theme = ExtResource("3_ou2va")
+text = "CREDITS"
+
+[node name="Quit" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+theme = ExtResource("3_ou2va")
+text = "EXIT"
+
+[node name="Credits" parent="." instance=ExtResource("4_2tv5r")]
+visible = false
+layout_mode = 1
+
+[node name="TopviewAnthill" type="Sprite2D" parent="."]
+position = Vector2(140, 93)
+texture = ExtResource("5_muqma")
+
+[node name="Crumb" type="Sprite2D" parent="."]
+position = Vector2(1088, 587)
+texture = ExtResource("6_iffbq")
+
+[node name="Stick" type="Sprite2D" parent="."]
+position = Vector2(1080, 90)
+scale = Vector2(0.36, 0.3225)
+texture = ExtResource("7_v8j6r")
+
+[node name="ants" type="Node2D" parent="."]
+
+[node name="ant1" type="Path2D" parent="ants"]
+curve = SubResource("Curve2D_miq6v")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="ants/ant1"]
+position = Vector2(144.726, 91.587)
+rotation = 1.61244
+progress = 6.6
+script = ExtResource("8_krhsc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ants/ant1/PathFollow2D"]
+position = Vector2(5.5206, 2.49783)
+rotation = 1.43917
+scale = Vector2(0.157472, 0.123144)
+sprite_frames = SubResource("SpriteFrames_0hxc3")
+frame_progress = 0.525996
+
+[node name="ant2" type="Path2D" parent="ants"]
+curve = SubResource("Curve2D_1bkv5")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="ants/ant2"]
+position = Vector2(156, 90)
+rotation = -0.606988
+script = ExtResource("10_rkkna")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="ants/ant2/PathFollow2D"]
+position = Vector2(-15.492, -2.23595)
+rotation = -4.40837
+scale = Vector2(0.157472, 0.123144)
+sprite_frames = SubResource("SpriteFrames_0hxc3")
+frame = 1
+frame_progress = 0.711405
+
+[node name="ant3" type="Path2D" parent="ants"]
+curve = SubResource("Curve2D_wpxjr")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="ants/ant3"]
+position = Vector2(124, 92)
+rotation = 1.6563
+script = ExtResource("11_ikchf")
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="ants/ant3/PathFollow2D"]
+position = Vector2(1.90729, -1.16715)
+rotation = 1.63906
+scale = Vector2(0.157472, 0.123144)
+sprite_frames = SubResource("SpriteFrames_0hxc3")
+frame = 1
+frame_progress = 0.711405
+
+[node name="Path2D" type="Path2D" parent="ants"]
+curve = SubResource("Curve2D_0hxc3")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="ants/Path2D"]
+position = Vector2(115, 87)
+rotation = 1.11025
+script = ExtResource("12_t3sp5")
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="ants/Path2D/PathFollow2D"]
+position = Vector2(10.715, -5.84708)
+rotation = 2.18511
+scale = Vector2(0.157472, 0.123144)
+sprite_frames = SubResource("SpriteFrames_0hxc3")
+frame = 1
+frame_progress = 0.711405
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_1e6pd")
+autoplay = true
+parameters/looping = true
+
+[connection signal="pressed" from="ButtonContainer/Main Menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="ButtonContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="ButtonContainer/Quit" to="." method="_on_quit_pressed"]

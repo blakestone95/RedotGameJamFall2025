@@ -93,4 +93,4 @@ func on_rebuild() -> void:
 	
 	if room_type == Colony.Rooms.ROYAL_CHAMBERS:
 		await get_tree().create_timer(3).timeout
-		get_tree().change_scene_to_file("res://menus/WinMenu.tscn")
+		game.on_win_game()

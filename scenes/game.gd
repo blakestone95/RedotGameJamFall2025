@@ -5,7 +5,10 @@ enum GameState {EXPLORE, REBUILD}
 
 # Start in the colony screen on game start
 var state: GameState = GameState.REBUILD
+const win_scene = "res://menus/WinMenu.tscn"
+const lose_scene = "res://menus/LoseMenu.tscn"
 var day: int = 0
+var base_food_req: int = 20
 
 ## Scene that shows when we are in the Explore state
 const explore_scene = "res://scenes/overworld/Overworld.tscn"
@@ -53,6 +56,12 @@ func _ready() -> void:
 	SignalManager.update_game_state.connect(on_state_update)
 	exploration_timer.timeout.connect(on_timer_expired)
 
+func on_lose_game() -> void:
+	get_tree().change_scene_to_file(lose_scene)
+
+func on_win_game() -> void:
+	get_tree().change_scene_to_file(win_scene)
+
 func on_state_update(new_state: GameState) -> void:
 	assert(new_state is GameState, "Signal update_game_state must be emitted with an argument of type GameState")
 	if state == new_state: return
@@ -68,6 +77,7 @@ func on_state_update(new_state: GameState) -> void:
 		exploration_timer.start()
 		music.stream = GameMusic
 	if state == GameState.REBUILD:
+		consume_food()
 		scene = preload(rebuild_scene).instantiate()
 		exploration_timer.stop()
 		music.stream = MenuMusic
@@ -75,6 +85,14 @@ func on_state_update(new_state: GameState) -> void:
 	assert(scene != null, "Tried to transition to game state %s with no scene attached" % new_state)
 	open_scene.add_child(scene)
 	music.play()
+
+func consume_food() -> void:
+	# Could potentially make unlocking rooms increase maintenance costs
+	var food_consumed = base_food_req
+	var remainder = colony_inventory.decrease_item(ItemData.Type.FOOD, food_consumed)
+	if remainder > 0:
+		# We didn't have enough food... game over
+		on_lose_game()
 
 func on_timer_expired() -> void:
 	# Could potentially show a message here if we have time
