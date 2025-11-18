@@ -1,5 +1,6 @@
-[gd_scene load_steps=22 format=3 uid="uid://c3xvewkqam3go"]
+[gd_scene load_steps=23 format=3 uid="uid://c3xvewkqam3go"]
 
+[ext_resource type="Script" path="res://scenes/colony/colony_camera.gd" id="1_fgowp"]
 [ext_resource type="Texture2D" uid="uid://uk3uxjr0wujt" path="res://data/2D assets/world/AntHill Base (7of7).png" id="1_vrkjr"]
 [ext_resource type="Texture2D" uid="uid://c8kx2bfnd7jpt" path="res://data/2D assets/world/AntHill Base (7of7) Built Template.png" id="2_suedb"]
 [ext_resource type="Texture2D" uid="uid://dwaafdvygognb" path="res://data/2D assets/world/base buildings/AntHill Base Aphid Ranch Built.png" id="3_qyces"]
@@ -24,7 +25,9 @@
 
 [node name="Colony" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="ColonyCamera2D" type="Camera2D" parent="." node_paths=PackedStringArray("bounding_box")]
+script = ExtResource("1_fgowp")
+bounding_box = NodePath("../AntHillBase(7Of7)")
 
 [node name="AntHillBase(7Of7)" type="Sprite2D" parent="."]
 texture = ExtResource("1_vrkjr")
