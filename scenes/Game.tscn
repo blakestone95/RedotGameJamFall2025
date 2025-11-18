@@ -15,3 +15,7 @@ inventory_items = Array[ExtResource("2_kiw3p")]([ExtResource("3_400sg"), ExtReso
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 bus = &"Music"
+
+[node name="ExplorationTimer" type="Timer" parent="."]
+wait_time = 180.0
+one_shot = true
