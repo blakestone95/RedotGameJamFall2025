@@ -19,6 +19,11 @@ func _enter_tree() -> void:
 		game = get_tree().get_nodes_in_group("game")[0] as Game;
 		if !game.is_node_ready(): await game.ready
 	
+	# Since Royal Chamber state is dependent on all the other rooms being rebuilt, 
+	# we have to check if it can be rebuilt every time any other room is rebuilt
+	if room_type == Colony.Rooms.ROYAL_CHAMBERS:
+		game.room_rebuilt.connect(check_can_afford_rebuild)
+	
 	update_state(false)
 	game.colony_inventory.updated.connect(update_state)
 
@@ -53,10 +58,22 @@ func check_can_afford_rebuild() -> void:
 		if game.colony_inventory.items[type] < cost:
 			disabled = true
 			break
+			
+	# The Royal Chamber rcan only be rebuilt when everything else has
+	if room_type == Colony.Rooms.ROYAL_CHAMBERS:
+		for type in game.colony_upgrades.keys():
+			if type == room_type: continue
+			if game.colony_upgrades[type] == false:
+				disabled = true
+				break
 
 # TODO: Display costs as icons with counts
 func show_costs() -> void:
-	var costs_str = "Rebuilding this room costs "
+	if room_type == Colony.Rooms.ROYAL_CHAMBERS and disabled:
+		tooltip_text = "All other rooms must be rebuit before\nRoyal Chamber can be rebuilt"
+		return
+	
+	var costs_str = "Rebuilding this room costs:\n"
 	var first = true
 	for type in costs.keys():
 		var cost = costs[type]
@@ -65,7 +82,6 @@ func show_costs() -> void:
 		else: first = false
 		costs_str += str(cost) + " " + type_name
 	tooltip_text = costs_str
-	pass
 
 func on_rebuild() -> void:
 	# Button will be disabled if we can't afford to rebuild, so don't need to check that here
@@ -74,3 +90,7 @@ func on_rebuild() -> void:
 	if rubble_pile != null:
 		rubble_pile.rubble_fall()
 	update_state(true)
+	
+	if room_type == Colony.Rooms.ROYAL_CHAMBERS:
+		await get_tree().create_timer(3).timeout
+		get_tree().change_scene_to_file("res://menus/WinMenu.tscn")

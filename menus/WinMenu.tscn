@@ -1,18 +1,18 @@
-[gd_scene load_steps=22 format=3 uid="uid://xr0fw4yvmvc3"]
+[gd_scene load_steps=22 format=3 uid="uid://b4ndii4n8dvd2"]
 
-[ext_resource type="Texture2D" uid="uid://c81w0qa1xtdfl" path="res://data/2D assets/ui/MainMenu_Background.png" id="1_1bkv5"]
-[ext_resource type="Script" path="res://menus/main_menu.gd" id="1_kt1s7"]
-[ext_resource type="Theme" uid="uid://urbhhupy6a5l" path="res://data/2D assets/ui/Mainmenubutton.tres" id="2_xmsna"]
-[ext_resource type="Texture2D" uid="uid://7h56jvne7h3l" path="res://data/2D assets/world/topview_anthill.png" id="3_3tloa"]
-[ext_resource type="Texture2D" uid="uid://do7mpe4r63ikw" path="res://data/2D assets/character/AntoniaSpriteSheet.png" id="3_d3pb0"]
-[ext_resource type="Script" path="res://menus/ant scripts/ant1.gd" id="3_miq6v"]
-[ext_resource type="Texture2D" uid="uid://ydb3lfgldbr3" path="res://data/2D assets/world/Crumb.png" id="4_x3o4a"]
-[ext_resource type="Script" path="res://menus/ant scripts/ant2.gd" id="5_82ymk"]
-[ext_resource type="Texture2D" uid="uid://cw7awlj7drk5v" path="res://data/2D assets/world/Stick.png" id="5_d3pb0"]
-[ext_resource type="Script" path="res://menus/ant scripts/ant3.gd" id="6_1bkv5"]
-[ext_resource type="Script" path="res://menus/ant scripts/ant4.gd" id="7_wpxjr"]
-[ext_resource type="AudioStream" uid="uid://cv4mhiqfgfka4" path="res://data/audio_assets/music/MenuMusic.mp3" id="12_w6fla"]
-[ext_resource type="PackedScene" uid="uid://cicu1qk0jq20x" path="res://menus/credits.tscn" id="13_5d2t0"]
+[ext_resource type="Script" path="res://menus/win_menu.gd" id="1_s22th"]
+[ext_resource type="Texture2D" uid="uid://c81w0qa1xtdfl" path="res://data/2D assets/ui/MainMenu_Background.png" id="2_2pq3i"]
+[ext_resource type="Theme" uid="uid://urbhhupy6a5l" path="res://data/2D assets/ui/Mainmenubutton.tres" id="3_jgcf6"]
+[ext_resource type="PackedScene" uid="uid://cicu1qk0jq20x" path="res://menus/credits.tscn" id="4_o6kxp"]
+[ext_resource type="Texture2D" uid="uid://7h56jvne7h3l" path="res://data/2D assets/world/topview_anthill.png" id="5_7icm5"]
+[ext_resource type="Texture2D" uid="uid://ydb3lfgldbr3" path="res://data/2D assets/world/Crumb.png" id="6_yfgfj"]
+[ext_resource type="Texture2D" uid="uid://cw7awlj7drk5v" path="res://data/2D assets/world/Stick.png" id="7_qevsq"]
+[ext_resource type="Script" path="res://menus/ant scripts/ant1.gd" id="8_b6mym"]
+[ext_resource type="Texture2D" uid="uid://do7mpe4r63ikw" path="res://data/2D assets/character/AntoniaSpriteSheet.png" id="9_ct78v"]
+[ext_resource type="Script" path="res://menus/ant scripts/ant2.gd" id="10_g0j3f"]
+[ext_resource type="Script" path="res://menus/ant scripts/ant3.gd" id="11_yvq05"]
+[ext_resource type="Script" path="res://menus/ant scripts/ant4.gd" id="12_r6a8x"]
+[ext_resource type="AudioStream" uid="uid://cv4mhiqfgfka4" path="res://data/audio_assets/music/MenuMusic.mp3" id="13_b23gl"]
 
 [sub_resource type="Curve2D" id="Curve2D_miq6v"]
 _data = {
@@ -21,15 +21,15 @@ _data = {
 point_count = 44
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_82ymk"]
-atlas = ExtResource("3_d3pb0")
+atlas = ExtResource("9_ct78v")
 region = Rect2(0, 0, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1bkv5"]
-atlas = ExtResource("3_d3pb0")
+atlas = ExtResource("9_ct78v")
 region = Rect2(400, 0, 400, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wpxjr"]
-atlas = ExtResource("3_d3pb0")
+atlas = ExtResource("9_ct78v")
 region = Rect2(800, 0, 400, 400)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0hxc3"]
@@ -67,7 +67,7 @@ _data = {
 }
 point_count = 104
 
-[node name="Main menu" type="Control"]
+[node name="Win Menu" type="Control"]
 layout_direction = 1
 layout_mode = 3
 anchors_preset = 15
@@ -75,13 +75,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_kt1s7")
+script = ExtResource("1_s22th")
 
-[node name="MainMenuBackground" type="Sprite2D" parent="."]
+[node name="WinMenuBackground" type="Sprite2D" parent="."]
 position = Vector2(640, 360)
-texture = ExtResource("1_1bkv5")
+texture = ExtResource("2_2pq3i")
 
-[node name="TITLE" type="Label" parent="."]
+[node name="Title" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -101,6 +101,51 @@ text = "ANTPOCALYPSE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Congrats message" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -342.0
+offset_top = 109.0
+offset_right = 327.0
+offset_bottom = 386.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.909018, 0.508745, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 48
+text = "Congratulations!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Congrats message body" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -274.0
+offset_top = 228.0
+offset_right = 497.0
+offset_bottom = 505.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.964706, 0.917647, 0.709804, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 24
+text = "With your help, the ants have rebuilt their home and recovered from their apocalyptic disaster.
+
+Thanks for playing!"
+vertical_alignment = 1
+autowrap_mode = 2
+
 [node name="ButtonContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 4
@@ -111,42 +156,37 @@ offset_right = 394.0
 offset_bottom = 257.0
 grow_vertical = 2
 
-[node name="START" type="Button" parent="ButtonContainer"]
+[node name="Main Menu" type="Button" parent="ButtonContainer"]
 layout_mode = 2
-theme = ExtResource("2_xmsna")
-text = "BEGIN JOURNEY"
-
-[node name="Option" type="Button" parent="ButtonContainer"]
-layout_mode = 2
-theme = ExtResource("2_xmsna")
-text = "OPTION"
+theme = ExtResource("3_jgcf6")
+text = "MAIN MENU"
 
 [node name="Credits" type="Button" parent="ButtonContainer"]
 layout_mode = 2
-theme = ExtResource("2_xmsna")
+theme = ExtResource("3_jgcf6")
 text = "CREDITS"
 
 [node name="Quit" type="Button" parent="ButtonContainer"]
 layout_mode = 2
-theme = ExtResource("2_xmsna")
+theme = ExtResource("3_jgcf6")
 text = "EXIT"
 
-[node name="Credits" parent="." instance=ExtResource("13_5d2t0")]
+[node name="Credits" parent="." instance=ExtResource("4_o6kxp")]
 visible = false
 layout_mode = 1
 
 [node name="TopviewAnthill" type="Sprite2D" parent="."]
 position = Vector2(140, 93)
-texture = ExtResource("3_3tloa")
+texture = ExtResource("5_7icm5")
 
 [node name="Crumb" type="Sprite2D" parent="."]
 position = Vector2(1088, 587)
-texture = ExtResource("4_x3o4a")
+texture = ExtResource("6_yfgfj")
 
 [node name="Stick" type="Sprite2D" parent="."]
 position = Vector2(1080, 90)
 scale = Vector2(0.36, 0.3225)
-texture = ExtResource("5_d3pb0")
+texture = ExtResource("7_qevsq")
 
 [node name="ants" type="Node2D" parent="."]
 
@@ -157,7 +197,7 @@ curve = SubResource("Curve2D_miq6v")
 position = Vector2(144.726, 91.587)
 rotation = 1.61244
 progress = 6.6
-script = ExtResource("3_miq6v")
+script = ExtResource("8_b6mym")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ants/ant1/PathFollow2D"]
 position = Vector2(5.5206, 2.49783)
@@ -172,7 +212,7 @@ curve = SubResource("Curve2D_1bkv5")
 [node name="PathFollow2D" type="PathFollow2D" parent="ants/ant2"]
 position = Vector2(156, 90)
 rotation = -0.606988
-script = ExtResource("5_82ymk")
+script = ExtResource("10_g0j3f")
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="ants/ant2/PathFollow2D"]
 position = Vector2(-15.492, -2.23595)
@@ -188,7 +228,7 @@ curve = SubResource("Curve2D_wpxjr")
 [node name="PathFollow2D" type="PathFollow2D" parent="ants/ant3"]
 position = Vector2(124, 92)
 rotation = 1.6563
-script = ExtResource("6_1bkv5")
+script = ExtResource("11_yvq05")
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="ants/ant3/PathFollow2D"]
 position = Vector2(1.90729, -1.16715)
@@ -204,7 +244,7 @@ curve = SubResource("Curve2D_0hxc3")
 [node name="PathFollow2D" type="PathFollow2D" parent="ants/Path2D"]
 position = Vector2(115, 87)
 rotation = 1.11025
-script = ExtResource("7_wpxjr")
+script = ExtResource("12_r6a8x")
 
 [node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="ants/Path2D/PathFollow2D"]
 position = Vector2(10.715, -5.84708)
@@ -215,10 +255,10 @@ frame = 1
 frame_progress = 0.711405
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("12_w6fla")
+stream = ExtResource("13_b23gl")
 autoplay = true
 parameters/looping = true
 
-[connection signal="pressed" from="ButtonContainer/START" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="ButtonContainer/Main Menu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="ButtonContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="ButtonContainer/Quit" to="." method="_on_quit_pressed"]

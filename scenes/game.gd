@@ -22,6 +22,8 @@ var colony_upgrades: Dictionary = {
 	Colony.Rooms.SCOUT: false,
 	Colony.Rooms.STORAGE: false,
 }
+# Literally only so the Royal Chamber room can monitor when colony_upgrades changes
+signal room_rebuilt
 
 # Start in the colony screen on game start
 var state: GameState = GameState.REBUILD
@@ -71,3 +73,4 @@ func on_state_update(new_state: GameState) -> void:
 func rebuild_room(type: Colony.Rooms):
 	assert(colony_upgrades.has(type), "colony_upgrade dictionary has no key for type " + str(type))
 	colony_upgrades[type] = true
+	room_rebuilt.emit()

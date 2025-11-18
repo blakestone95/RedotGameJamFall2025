@@ -29,6 +29,7 @@
 script = ExtResource("1_sqlji")
 
 [node name="ColonyCamera2D" type="Camera2D" parent="." node_paths=PackedStringArray("bounding_box")]
+position = Vector2(0, -720)
 script = ExtResource("1_fgowp")
 bounding_box = NodePath("../AntHillBase(7Of7)")
 
