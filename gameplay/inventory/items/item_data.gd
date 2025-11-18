@@ -15,10 +15,17 @@ static var type_name_plural = {
 	Type.FOOD: 'Food',
 }
 
+## Item type enum
 @export var type: Type
+## Item name
 @export var name: String
+## Item texture, currently 64x64 is our default size
 @export var texture: Texture2D
+## Current amount held
 var count = 0
+## Inventory cannot go over this amount. Attempting to increase by more than max
+## will return the remainder after reaching max. A negative max will be treated
+## as unlimited.
 @export var max_amount: int
 
 ## Signal emitted if either increase or decrease are called, whether the count changes or not.
@@ -30,11 +37,12 @@ signal updated
 func increase(amount: int) -> int:
 	var sum: int = count + amount
 	var remainder: int = 0
-	if sum > max_amount:
-		count = max_amount
-		remainder = sum - max_amount
-	else:
-		count = sum
+	if max_amount >= 0:
+		if sum > max_amount:
+			count = max_amount
+			remainder = sum - max_amount
+		else:
+			count = sum
 	updated.emit()
 	return remainder
 

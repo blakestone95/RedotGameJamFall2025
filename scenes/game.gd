@@ -8,7 +8,7 @@ var state: GameState = GameState.REBUILD
 const win_scene = "res://menus/WinMenu.tscn"
 const lose_scene = "res://menus/LoseMenu.tscn"
 var day: int = 0
-var base_food_req: int = 20
+var base_food_req: int = 18
 
 ## Scene that shows when we are in the Explore state
 const explore_scene = "res://scenes/overworld/Overworld.tscn"
@@ -43,7 +43,9 @@ func _ready() -> void:
 	# Set up inventory
 	var intentory_data: Dictionary = {}
 	for item in inventory_items:
-		intentory_data[item.type] = item.duplicate()
+		var item_data = item.duplicate() as ItemData
+		item_data.max_amount = -1 # Colony has unlimited inventory
+		intentory_data[item.type] = item_data
 	colony_inventory = Inventory.new(intentory_data)
 	
 	# Render initial state
@@ -97,7 +99,7 @@ func consume_food() -> void:
 func get_req_food() -> int:
 	var req_food: int = base_food_req
 	if colony_upgrades[Colony.Rooms.RANCH]: req_food -= 5
-	if colony_upgrades[Colony.Rooms.FARM]: req_food -= 5
+	if colony_upgrades[Colony.Rooms.FARM]: req_food -= 3
 	return req_food
 
 func on_timer_expired() -> void:
