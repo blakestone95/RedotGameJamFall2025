@@ -43,7 +43,7 @@ func _ready() -> void:
 		var distribution = dist_mapping_loaded[dist_key] as SpawnDistribution
 		
 		# Any tile that can spawn items triggers a roll
-		var cell_position = map_to_local(cell)
+		var cell_position = to_global(map_to_local(cell))
 		var should_spawn = should_spawn_item(cell_position)
 		if !should_spawn: continue
 		
@@ -85,10 +85,11 @@ func should_spawn_item(cell_position: Vector2) -> bool:
 	var final_spawn_chance = distance_scalar * spawn_scalar
 	return roll < final_spawn_chance
 
-func spawn_item(cell_postion: Vector2, item_type: ItemData.Type) -> void:
+func spawn_item(cell_position: Vector2, item_type: ItemData.Type) -> void:
 	var spawn_resource = spawn_dict[item_type]
 	assert(spawn_resource != null, "Attempted to spawn item of type %s that is not in the spawn dictionary" % item_type)
 	var item_scene = load(spawn_resource) as PackedScene
 	var item = item_scene.instantiate() as Node2D
-	item.position = cell_postion
-	add_child(item)
+	item.position = cell_position
+	get_parent().get_node("World Objects").add_child(item)
+	

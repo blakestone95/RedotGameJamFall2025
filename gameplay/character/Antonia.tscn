@@ -47,6 +47,7 @@ animations = [{
 radius = 400.0
 
 [node name="Antonia" type="CharacterBody2D"]
+z_index = 1
 collision_mask = 6
 motion_mode = 1
 script = ExtResource("1_k7mp8")
