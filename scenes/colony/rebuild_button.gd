@@ -55,7 +55,7 @@ func check_can_afford_rebuild() -> void:
 	for type in costs.keys():
 		var cost = costs[type]
 		if cost < 1: continue
-		if game.colony_inventory.items[type] < cost:
+		if game.colony_inventory.items[type].count < cost:
 			disabled = true
 			break
 			

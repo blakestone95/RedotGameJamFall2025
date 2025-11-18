@@ -85,6 +85,12 @@ offset_right = -220.0
 offset_bottom = 91.0
 text = "Rebuild"
 script = ExtResource("13_nhadl")
+costs = {
+0: 10,
+1: 6,
+2: 6,
+3: 5
+}
 rubble_pile = NodePath("../../../Rubble/RubbleRanch")
 destroyed_room = NodePath("..")
 rebuilt_room = NodePath("../../../Built/AphidRanchBuilt")
@@ -101,6 +107,12 @@ offset_bottom = -52.0
 text = "Rebuild"
 script = ExtResource("13_nhadl")
 room_type = 1
+costs = {
+0: 10,
+1: 10,
+2: 2,
+3: 6
+}
 rubble_pile = NodePath("../../../Rubble/RubbleFarm")
 destroyed_room = NodePath("..")
 rebuilt_room = NodePath("../../../Built/FungusFarmBuilt")
@@ -117,6 +129,12 @@ offset_bottom = 56.0
 text = "Rebuild"
 script = ExtResource("13_nhadl")
 room_type = 2
+costs = {
+0: 0,
+1: 10,
+2: 10,
+3: 10
+}
 rubble_pile = NodePath("../../../Rubble/RubbleGuard")
 destroyed_room = NodePath("..")
 rebuilt_room = NodePath("../../../Built/GuardBuilt")
@@ -133,6 +151,12 @@ offset_bottom = -63.0
 text = "Rebuild"
 script = ExtResource("13_nhadl")
 room_type = 3
+costs = {
+0: 20,
+1: 10,
+2: 0,
+3: 6
+}
 rubble_pile = NodePath("../../../Rubble/RubbleHouses")
 destroyed_room = NodePath("..")
 rebuilt_room = NodePath("../../../Built/HousesBuilt")
@@ -149,6 +173,12 @@ offset_bottom = -158.0
 text = "Rebuild"
 script = ExtResource("13_nhadl")
 room_type = 4
+costs = {
+0: 20,
+1: 20,
+2: 10,
+3: 20
+}
 rubble_pile = NodePath("../../../Rubble/RubbleRoyal")
 destroyed_room = NodePath("..")
 rebuilt_room = NodePath("../../../Built/RoyalChamberBuilt")
@@ -165,6 +195,12 @@ offset_bottom = 9.0
 text = "Rebuild"
 script = ExtResource("13_nhadl")
 room_type = 5
+costs = {
+0: 6,
+1: 4,
+2: 0,
+3: 3
+}
 rubble_pile = NodePath("../../../Rubble/RubbleScout")
 destroyed_room = NodePath("..")
 rebuilt_room = NodePath("../../../Built/ScoutBuilt")
@@ -181,6 +217,12 @@ offset_bottom = -128.0
 text = "Rebuild"
 script = ExtResource("13_nhadl")
 room_type = 6
+costs = {
+0: 8,
+1: 10,
+2: 4,
+3: 9
+}
 rubble_pile = NodePath("../../../Rubble/RubbleStorage")
 destroyed_room = NodePath("..")
 rebuilt_room = NodePath("../../../Built/StorageBuilt")
