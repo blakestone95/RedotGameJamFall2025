@@ -32,7 +32,7 @@ var colony_upgrades: Dictionary = {
 	Colony.Rooms.SCOUT: false,
 	Colony.Rooms.STORAGE: false,
 }
-# Literally only so the Royal Chamber room can monitor when colony_upgrades changes
+# So scripts can monitor when colony_upgrades changes
 signal room_rebuilt
 
 @onready var music: AudioStreamPlayer = $Music
@@ -88,11 +88,17 @@ func on_state_update(new_state: GameState) -> void:
 
 func consume_food() -> void:
 	# Could potentially make unlocking rooms increase maintenance costs
-	var food_consumed = base_food_req
+	var food_consumed = get_req_food()
 	var remainder = colony_inventory.decrease_item(ItemData.Type.FOOD, food_consumed)
 	if remainder > 0:
 		# We didn't have enough food... game over
 		on_lose_game()
+
+func get_req_food() -> int:
+	var req_food: int = base_food_req
+	if colony_upgrades[Colony.Rooms.RANCH]: req_food -= 5
+	if colony_upgrades[Colony.Rooms.FARM]: req_food -= 5
+	return req_food
 
 func on_timer_expired() -> void:
 	# Could potentially show a message here if we have time

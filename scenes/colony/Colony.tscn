@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c3xvewkqam3go"]
+[gd_scene load_steps=26 format=3 uid="uid://c3xvewkqam3go"]
 
 [ext_resource type="Script" path="res://scenes/colony/colony_camera.gd" id="1_fgowp"]
 [ext_resource type="Script" path="res://scenes/colony/colony.gd" id="1_sqlji"]
@@ -24,6 +24,7 @@
 [ext_resource type="Script" path="res://scenes/colony/start_button.gd" id="19_r4j2g"]
 [ext_resource type="Script" path="res://gameplay/inventory/inventory_gui_control.gd" id="20_q1hyv"]
 [ext_resource type="Script" path="res://scenes/colony/day_counter.gd" id="21_83glh"]
+[ext_resource type="Script" path="res://scenes/colony/food_consumption_message.gd" id="22_dnati"]
 
 [node name="Colony" type="Node2D"]
 script = ExtResource("1_sqlji")
@@ -235,6 +236,7 @@ custom_minimum_size = Vector2(190, 50)
 layout_mode = 2
 text = "The ants require 20 food per day to survive!"
 autowrap_mode = 2
+script = ExtResource("22_dnati")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
