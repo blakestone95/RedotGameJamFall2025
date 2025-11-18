@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://dn0jgsyiovc1t"]
+[gd_scene load_steps=18 format=4 uid="uid://dn0jgsyiovc1t"]
 
 [ext_resource type="PackedScene" uid="uid://b7lkqr3s4c8wy" path="res://scenes/Parallax_Background.tscn" id="1_b33re"]
 [ext_resource type="Texture2D" uid="uid://yyxgoq3gpcqr" path="res://data/2D assets/world/Tilemap_World.png" id="2_dr8x1"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://6ies8rxg2dmo" path="res://gameplay/character/Antonia.tscn" id="10_m7ok3"]
 [ext_resource type="Shader" path="res://data/2D assets/world/Plants(Seethrough).gdshader" id="11_s1cq2"]
 [ext_resource type="PackedScene" uid="uid://brouxaecajl23" path="res://gameplay/inventory/InventoryGui.tscn" id="12_14h43"]
+[ext_resource type="Script" path="res://scenes/overworld/timer_countdown.gd" id="13_dr8x1"]
 [ext_resource type="PackedScene" uid="uid://6oui2eds8loi" path="res://scenes/overworld/PauseMenu.tscn" id="14_dr8x1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gmhqd"]
@@ -880,11 +881,20 @@ theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 
-[node name="MenuButton" type="Button" parent="CanvasLayer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TimerCountdown" type="Label" parent="CanvasLayer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "?:??"
+script = ExtResource("13_dr8x1")
+
+[node name="MenuButton" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 text = "Menu"
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("14_dr8x1")]
 visible = false
 
-[connection signal="pressed" from="CanvasLayer/MarginContainer/MenuButton" to="CanvasLayer/PauseMenu" method="_open"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/MenuButton" to="CanvasLayer/PauseMenu" method="_open"]
