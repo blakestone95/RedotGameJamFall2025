@@ -12,7 +12,6 @@ size = Vector2(45.2548, 407.294)
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 8
-collision_mask = 0
 script = ExtResource("1_egy04")
 pickup_item = ExtResource("2_egy04")
 
@@ -23,6 +22,13 @@ shape = SubResource("RectangleShape2D_egy04")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_0goa5")
+
+[node name="ForagePrompt" type="Label" parent="."]
+offset_left = -50.0
+offset_top = -217.0
+offset_right = 65.0
+offset_bottom = -194.0
+text = "Space to break"
 
 [node name="ForagingProgress" parent="." instance=ExtResource("4_pn4ke")]
 visible = false
