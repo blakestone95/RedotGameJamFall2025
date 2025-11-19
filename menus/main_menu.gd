@@ -8,3 +8,6 @@ func _on_quit_pressed() -> void:
 
 func _on_credits_pressed() -> void:
 	$Credits.show()
+
+func _on_options_pressed() -> void:
+	$Tutorial.show()

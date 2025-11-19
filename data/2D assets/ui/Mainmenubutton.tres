@@ -11,6 +11,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p3xge"]
 
 [resource]
+default_font_size = 30
 Button/colors/font_color = Color(1, 0.951757, 0.736105, 1)
 Button/colors/font_focus_color = Color(1, 0.909804, 0.509804, 1)
 Button/colors/font_hover_color = Color(1, 0.909804, 0.509804, 1)

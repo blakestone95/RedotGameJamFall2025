@@ -1,0 +1,81 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy0pskwhwjk42"]
+
+[ext_resource type="Script" path="res://menus/tutorial.gd" id="1_802sg"]
+[ext_resource type="Texture2D" uid="uid://c81w0qa1xtdfl" path="res://data/2D assets/ui/MainMenu_Background.png" id="2_abe7n"]
+[ext_resource type="Theme" uid="uid://urbhhupy6a5l" path="res://data/2D assets/ui/Mainmenubutton.tres" id="3_n1vtv"]
+
+[node name="Tutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_802sg")
+
+[node name="MainMenuBackground" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = ExtResource("2_abe7n")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 415.0
+offset_top = 247.0
+offset_right = 915.0
+offset_bottom = 436.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_n1vtv")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Movement" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("3_n1vtv")
+text = "Movement:"
+
+[node name="Forage" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Forage Big Item:"
+
+[node name="Pickup" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Pickup Small Item:"
+
+[node name="Label4" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Dropoff At Colony:"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="WASD" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "WASD"
+
+[node name="Spacebar" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Hold Spacebar"
+
+[node name="E1" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "E (by item)"
+
+[node name="E2" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "E (at anthill)"
+
+[node name="BackButton" type="Button" parent="."]
+offset_left = 563.0
+offset_top = 471.0
+offset_right = 726.0
+offset_bottom = 534.0
+theme = ExtResource("3_n1vtv")
+theme_override_font_sizes/font_size = 40
+text = "GO BACK"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
