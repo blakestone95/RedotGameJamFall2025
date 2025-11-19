@@ -20,6 +20,7 @@ config/icon="res://data/2D assets/other/gameicon_temp.png"
 
 IdManager="*res://autoloads/id_manager.gd"
 SignalManager="*res://autoloads/signal_manager.gd"
+Util="*res://autoloads/util.gd"
 
 [display]
 
