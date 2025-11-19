@@ -97,6 +97,8 @@ func _on_interaction_area_entered(area: Area2D) -> void:
 		nearby_colony = area
 	if area is ItemToBreak:
 		nearby_breakable[area.id] = area
+	if area.is_in_group("enemy"):
+		game.on_lose_game()
 
 
 func _on_interaction_area_exited(area: Area2D) -> void:
@@ -151,10 +153,7 @@ func apply_upgrades() -> void:
 	# Health increase
 	if game.colony_upgrades[Colony.Rooms.GUARD]:
 		pass # TODO: Hook up to health system when implemented
-		
-func _on_interaction_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("enemy"):
-		game.on_lose_game()
+	
 		
 """
 # doesn't work.  Not part of MVP, stretch goal
