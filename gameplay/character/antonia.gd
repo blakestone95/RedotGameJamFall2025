@@ -117,22 +117,32 @@ func handle_interaction() -> void:
 		# Handle pickup into inventory
 		var pickup: Pickup = nearby_pickups.values()[0]
 		assert(pickup is Pickup, "The first nearby pickup is not actually a Pickup class")
-		var inventory_slot = inventory.items[pickup.pickup_type]
-		var remainder = inventory_slot.increase(1)
-		if remainder == 0:
-			pickup.pickup()
-			nearby_pickups.erase(pickup.id)
+		pickup_item(pickup)
 		return
 	elif nearby_colony != null:
 		# Handle inventory deposit
-		for item_to_deposit in inventory.items.values():
-			if item_to_deposit.count == 0: continue
-			# Add current inventory to colony inventory
-			var colony_item_bucket = nearby_colony.inventory.items[item_to_deposit.type]
-			var remainder = colony_item_bucket.increase(item_to_deposit.count)
-			# Update player inventory
-			item_to_deposit.decrease(item_to_deposit.count - remainder)
+		deposit_items(nearby_colony.inventory)
 		return
+
+func pickup_item(pickup: Pickup) -> void:
+	var inventory_slot = inventory.items[pickup.pickup_type]
+	var num_to_pickup = 1
+	if game.colony_upgrades[Colony.Rooms.HOUSES] and Util.roll_with_chance(.5):
+		num_to_pickup += 1
+	var remainder = inventory_slot.increase(num_to_pickup)
+	# If we picked up anything, we need to remove the pickup so people can't try to pick up multiple times
+	if remainder != num_to_pickup:
+		pickup.pickup()
+		nearby_pickups.erase(pickup.id)
+
+func deposit_items(into: Inventory):
+	for item_to_deposit in inventory.items.values():
+		if item_to_deposit.count == 0: continue
+		# Add current inventory to colony inventory
+		var item_bucket = into.items[item_to_deposit.type]
+		var remainder = item_bucket.increase(item_to_deposit.count)
+		# Update player inventory
+		item_to_deposit.decrease(item_to_deposit.count - remainder)
 
 func handle_break(amount: float) -> void:
 	if nearby_breakable.size() > 0:
@@ -157,7 +167,8 @@ func apply_upgrades() -> void:
 	if game.colony_upgrades[Colony.Rooms.GUARD]:
 		pass # TODO: Hook up to health system when implemented
 	
-		
+	# Pickup increase - handled in pickup_item function
+
 """
 # doesn't work.  Not part of MVP, stretch goal
 func ground_below() -> void:

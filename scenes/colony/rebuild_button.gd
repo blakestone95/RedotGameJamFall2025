@@ -11,6 +11,9 @@ class_name RebuildButton extends Button
 @export var destroyed_room: Sprite2D
 @export var rebuilt_room: Sprite2D
 
+## Use to temporarily disable costs, like when testing stuff
+@export var disable_costs: bool = false
+
 var game: Game
 
 func _enter_tree() -> void:
@@ -52,6 +55,9 @@ func check_rebuilt_state(rocks_falling: bool) -> bool:
 # Check if we have the right resources, disable if we don't
 func check_can_afford_rebuild() -> void:
 	disabled = false
+	# Bypass all restrictions
+	if disable_costs: return
+	
 	for type in costs.keys():
 		var cost = costs[type]
 		if cost < 1: continue
@@ -85,7 +91,7 @@ func show_costs() -> void:
 
 func on_rebuild() -> void:
 	# Button will be disabled if we can't afford to rebuild, so don't need to check that here
-	game.rebuild_room(room_type, costs)
+	game.rebuild_room(room_type, costs, disable_costs)
 	hide()
 	if rubble_pile != null:
 		rubble_pile.rubble_fall()

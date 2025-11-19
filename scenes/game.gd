@@ -106,13 +106,14 @@ func on_timer_expired() -> void:
 	# Could potentially show a message here if we have time
 	on_state_update(Game.GameState.REBUILD)
 
-func rebuild_room(type: Colony.Rooms, costs: Dictionary) -> void:
+func rebuild_room(type: Colony.Rooms, costs: Dictionary, disable_costs: bool) -> void:
 	assert(colony_upgrades.has(type), "colony_upgrade dictionary has no key for type " + str(type))
 
-	# Checking costs is handled in RebuildButton, we don't need to recheck here
-	for item_type in costs.keys():
-		var cost = costs[item_type]
-		colony_inventory.decrease_item(item_type, cost)
+	if !disable_costs:
+		# Checking costs is handled in RebuildButton, we don't need to recheck here
+		for item_type in costs.keys():
+			var cost = costs[item_type]
+			colony_inventory.decrease_item(item_type, cost)
 
 	colony_upgrades[type] = true
 	room_rebuilt.emit()
