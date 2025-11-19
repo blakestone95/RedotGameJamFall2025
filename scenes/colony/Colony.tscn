@@ -160,6 +160,7 @@ costs = {
 rubble_pile = NodePath("../../../Rubble/RubbleHouses")
 destroyed_room = NodePath("..")
 rebuilt_room = NodePath("../../../Built/HousesBuilt")
+disable_costs = true
 
 [node name="RoyalChamberDestroyed" type="Sprite2D" parent="Destroyed"]
 position = Vector2(-35, 696)
