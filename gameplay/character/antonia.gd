@@ -34,6 +34,8 @@ var inventory: Inventory
 ## Provide the ItemData resources in the order you want them to appear
 @export var inventory_items: Array[ItemData]
 
+@export var health_bar : AntoniaHealthBar
+
 # Interactibles
 # Separated interactions with pickups and colony so we can prioritize interactions without complex data structure management
 var nearby_pickups: Dictionary = {}
@@ -98,7 +100,8 @@ func _on_interaction_area_entered(area: Area2D) -> void:
 	if area is ItemToBreak:
 		nearby_breakable[area.id] = area
 	if area.is_in_group("enemy"):
-		game.on_lose_game()
+		health_bar.take_damage(30)
+		$AnimationPlayer.play("iframe")
 
 
 func _on_interaction_area_exited(area: Area2D) -> void:
