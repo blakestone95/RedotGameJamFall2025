@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://bxnts5kevcg5k"]
+[gd_scene load_steps=23 format=3 uid="uid://bxnts5kevcg5k"]
 
 [ext_resource type="Script" path="res://menus/main_menu.gd" id="1_ih3s6"]
 [ext_resource type="Texture2D" uid="uid://c81w0qa1xtdfl" path="res://data/2D assets/ui/MainMenu_Background.png" id="2_53qvp"]
-[ext_resource type="Theme" path="res://data/2D assets/ui/Mainmenubutton.tres" id="3_je8l7"]
-[ext_resource type="PackedScene" path="res://menus/credits.tscn" id="4_wnv6w"]
+[ext_resource type="Theme" uid="uid://urbhhupy6a5l" path="res://data/2D assets/ui/Mainmenubutton.tres" id="3_je8l7"]
+[ext_resource type="PackedScene" uid="uid://cicu1qk0jq20x" path="res://menus/credits.tscn" id="4_wnv6w"]
+[ext_resource type="PackedScene" uid="uid://dy0pskwhwjk42" path="res://menus/tutorial.tscn" id="5_ia8rv"]
 [ext_resource type="Texture2D" uid="uid://7h56jvne7h3l" path="res://data/2D assets/world/topview_anthill.png" id="5_m8c1o"]
 [ext_resource type="Texture2D" uid="uid://ydb3lfgldbr3" path="res://data/2D assets/world/Crumb.png" id="6_h14mx"]
 [ext_resource type="Texture2D" uid="uid://cw7awlj7drk5v" path="res://data/2D assets/world/Stick.png" id="7_8pvqd"]
@@ -116,7 +117,7 @@ layout_mode = 2
 theme = ExtResource("3_je8l7")
 text = "BEGIN JOURNEY"
 
-[node name="Option" type="Button" parent="ButtonContainer"]
+[node name="Options" type="Button" parent="ButtonContainer"]
 layout_mode = 2
 theme = ExtResource("3_je8l7")
 text = "OPTIONS"
@@ -134,6 +135,9 @@ text = "EXIT"
 [node name="Credits" parent="." instance=ExtResource("4_wnv6w")]
 visible = false
 layout_mode = 1
+
+[node name="Tutorial" parent="." instance=ExtResource("5_ia8rv")]
+visible = false
 
 [node name="TopviewAnthill" type="Sprite2D" parent="."]
 position = Vector2(140, 93)
@@ -220,5 +224,6 @@ autoplay = true
 parameters/looping = true
 
 [connection signal="pressed" from="ButtonContainer/START" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="ButtonContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="ButtonContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="ButtonContainer/Quit" to="." method="_on_quit_pressed"]
