@@ -828,16 +828,16 @@ tile_map_data = PackedByteArray("AAD//wwAAAAUABgAAAD+/wsAAAAUABgAAAD8/wkAAAAUABg
 tile_set = ExtResource("4_bs1f5")
 
 [node name="LeafToBreak" parent="." instance=ExtResource("5_mgc53")]
-position = Vector2(-333, 122)
+position = Vector2(-2383, -1303)
 
 [node name="FoodToBreak" parent="." instance=ExtResource("6_tdi73")]
-position = Vector2(-486, 355)
+position = Vector2(-1728, 191)
 
 [node name="PebbleToBreak" parent="." instance=ExtResource("7_21ipt")]
-position = Vector2(414, 287)
+position = Vector2(1904, -1658)
 
 [node name="TwigToBreak" parent="." instance=ExtResource("8_8b1ch")]
-position = Vector2(51, 328)
+position = Vector2(3152, 1550)
 
 [node name="World Objects" type="Node2D" parent="."]
 

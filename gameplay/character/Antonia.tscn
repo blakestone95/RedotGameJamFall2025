@@ -64,7 +64,6 @@ frame = 2
 frame_progress = 0.571913
 
 [node name="InteractionArea" type="Area2D" parent="."]
-collision_layer = 0
 collision_mask = 8
 
 [node name="InteractionCircle" type="CollisionShape2D" parent="InteractionArea"]

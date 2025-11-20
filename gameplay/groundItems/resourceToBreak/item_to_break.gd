@@ -4,8 +4,12 @@ class_name ItemToBreak extends Area2D
 @export var pickup_item : PackedScene
 var id : int
 
+@onready var prompt = $"../ForagePrompt"
+
 func _ready() -> void:
 	id = IdManager.get_id()
+	area_entered.connect(show_interaction_prompt)
+	area_exited.connect(hide_interaction_prompt)
 
 func _on_foraging_progress_progress_bar_completed() -> void:
 	var number_items = randi_range(4,6)
@@ -21,3 +25,9 @@ func _on_foraging_progress_progress_bar_completed() -> void:
 
 func breaking_progress(amount: float) -> void:
 	foraging_progress.reduce_progress(amount)
+
+func show_interaction_prompt(_area: Area2D) -> void:
+	prompt.show()
+
+func hide_interaction_prompt(_area: Area2D) -> void:
+	prompt.hide()
