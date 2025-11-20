@@ -7,17 +7,10 @@ class_name TileMapSpawner extends TileMapLayer
 ## Constant spawn chance of cell - 0 meaning nothing can ever spawn and 1.0 meaning every tile spawns something. Multiplied with the distance band to determine final spawn chance.
 @export var spawn_scalar: float = 0.05
 ## Spawn distribution mapping, where the key is the int value assigned to tiles with the [code]item_distribution[/code] custom data layer and the value is the item distribution resource. 0 represents no distribution, so start the mapping with 1.
-@export var distribution_mapping: Dictionary = { 1: "res://gameplay/groundItems/spawning/spawn_dist_default.tres" }
+@export var distribution_mapping: Dictionary = { 1: "res://path/to/spawn_distribution.tres" }
 
 # Debug
 var spawned_items = []
-
-var spawn_dict: Dictionary = {
-	ItemData.Type.LEAF: "res://gameplay/groundItems/resourcePickups/LeafPickup.tscn",
-	ItemData.Type.STICK: "res://gameplay/groundItems/resourcePickups/TwigPickup.tscn",
-	ItemData.Type.PEBBLE: "res://gameplay/groundItems/resourcePickups/PebblePickup.tscn",
-	ItemData.Type.FOOD: "res://gameplay/groundItems/resourcePickups/FoodPickup.tscn",
-}
 
 func _ready() -> void:
 	# Load distribution mapping resources
@@ -44,8 +37,7 @@ func _ready() -> void:
 		
 		# Any tile that can spawn items triggers a roll
 		var cell_position = to_global(map_to_local(cell))
-		var should_spawn = should_spawn_item(cell_position)
-		if !should_spawn: continue
+		if !should_spawn(cell_position): continue
 		
 		# Roll which item to spawn, looping through the distribution dictionary
 		# Uses a chance counter so we can loop through linearly without any additional processing
@@ -54,29 +46,27 @@ func _ready() -> void:
 		# The second item has a 30% (0.3) chance, when added to the first item, that's 0.7--still less than we rolled and another miss.
 		# The third and final example items also has a 30% (0.3) chance. Since the roll is less than 0.7 (our counter) + 0.3 (our final item's chance), it's a hit and we know the thrid item should spawn.
 		var item_roll = randf()
-		var item_type: ItemData.Type
+		var scene_to_spawn: PackedScene
 		var chance_counter: float = 0.0
-		for row in distribution.distribution:
-			var dist_type = row[0]
-			var dist_chance = row[1]
-			if item_roll < (chance_counter + dist_chance):
+		for row in distribution.distribution_table:
+			if item_roll < (chance_counter + row.chance):
 				# Hit! Save the type and stop looping
-				item_type = dist_type
+				scene_to_spawn = row.scene
 				break
 			else:
 				# Miss! Iterate the chance
-				chance_counter += dist_chance
+				chance_counter += row.chance
 		
 		# Spawn the item we rolled to spawn
-		if item_type == null: push_warning("Rolled an item spawn but didn't get an item to spawn, ensure distribution chances add up to 1.0 to avoid accidentally lowering spawn chances")
-		spawn_item(cell_position, item_type)
+		if scene_to_spawn == null: push_warning("Expected to spawn something, but secondary selection roll resulted in nothing, ensure distribution chances add up to 1.0 to avoid accidentally lowering spawn chances")
+		spawn(cell_position, scene_to_spawn)
 		
 		#if OS.has_feature('debug'):
 			#spawned_items.push_back([cell, get_cell_atlas_coords(cell), cell_position, item_type])
 	#if OS.has_feature('debug'): print(spawned_items)
 
 # Determines if an item should spawn in this cell based on a roll against its distance from the spawn anchor and which distance band it lies within
-func should_spawn_item(cell_position: Vector2) -> bool:
+func should_spawn(cell_position: Vector2) -> bool:
 	var roll = randf()
 	var distance_scalar: float
 	var cell_distance = cell_position.distance_to(spawn_anchor)
@@ -85,11 +75,8 @@ func should_spawn_item(cell_position: Vector2) -> bool:
 	var final_spawn_chance = distance_scalar * spawn_scalar
 	return roll < final_spawn_chance
 
-func spawn_item(cell_position: Vector2, item_type: ItemData.Type) -> void:
-	var spawn_resource = spawn_dict[item_type]
-	assert(spawn_resource != null, "Attempted to spawn item of type %s that is not in the spawn dictionary" % item_type)
-	var item_scene = load(spawn_resource) as PackedScene
-	var item = item_scene.instantiate() as Node2D
-	item.position = cell_position
-	get_parent().get_node("World Objects").add_child(item)
+func spawn(cell_position: Vector2, packed_scene: PackedScene) -> void:
+	var scene = packed_scene.instantiate() as Node2D
+	scene.position = cell_position
+	get_parent().get_node("World Objects").add_child(scene)
 	
