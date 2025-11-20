@@ -39,7 +39,7 @@ offset_left = -58.0
 offset_top = -241.0
 offset_right = 57.0
 offset_bottom = -218.0
-text = "Space to break"
+text = "Hold space to break"
 
 [node name="ForagingProgress" parent="." instance=ExtResource("3_d0hve")]
 visible = false
