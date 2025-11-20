@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://dn0jgsyiovc1t"]
+[gd_scene load_steps=20 format=4 uid="uid://dn0jgsyiovc1t"]
 
 [ext_resource type="PackedScene" uid="uid://b7lkqr3s4c8wy" path="res://scenes/Parallax_Background.tscn" id="1_b33re"]
 [ext_resource type="Texture2D" uid="uid://yyxgoq3gpcqr" path="res://data/2D assets/world/Tilemap_World.png" id="2_dr8x1"]
@@ -8,10 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://bufmmsc7tlwwp" path="res://gameplay/groundItems/resourceToBreak/FoodToBreak.tscn" id="6_tdi73"]
 [ext_resource type="PackedScene" uid="uid://jx1hwa05ip52" path="res://gameplay/groundItems/resourceToBreak/PebbleToBreak.tscn" id="7_21ipt"]
 [ext_resource type="PackedScene" uid="uid://cusph446n0sbw" path="res://gameplay/groundItems/resourceToBreak/TwigToBreak.tscn" id="8_8b1ch"]
+[ext_resource type="PackedScene" uid="uid://bhk8b14ylpk0h" path="res://gameplay/enemies/Beetle.tscn" id="9_mw0uh"]
 [ext_resource type="PackedScene" uid="uid://c28kh77i1dev6" path="res://gameplay/colony/overworld/OverworldColony.tscn" id="9_tfoa8"]
 [ext_resource type="PackedScene" uid="uid://6ies8rxg2dmo" path="res://gameplay/character/Antonia.tscn" id="10_m7ok3"]
 [ext_resource type="Shader" path="res://data/2D assets/world/Plants(Seethrough).gdshader" id="11_s1cq2"]
 [ext_resource type="PackedScene" uid="uid://brouxaecajl23" path="res://gameplay/inventory/InventoryGui.tscn" id="12_14h43"]
+[ext_resource type="PackedScene" uid="uid://blhulx8ufcges" path="res://gameplay/character/AntoniaHealthBar.tscn" id="13_bs1f5"]
 [ext_resource type="Script" path="res://scenes/overworld/timer_countdown.gd" id="13_dr8x1"]
 [ext_resource type="PackedScene" uid="uid://6oui2eds8loi" path="res://scenes/overworld/PauseMenu.tscn" id="14_dr8x1"]
 
@@ -839,16 +841,20 @@ position = Vector2(1904, -1658)
 [node name="TwigToBreak" parent="." instance=ExtResource("8_8b1ch")]
 position = Vector2(3152, 1550)
 
+[node name="Beetle" parent="." instance=ExtResource("9_mw0uh")]
+position = Vector2(-362, -474)
+
 [node name="World Objects" type="Node2D" parent="."]
 
 [node name="OverworldColony" parent="World Objects" instance=ExtResource("9_tfoa8")]
 position = Vector2(128, -108)
 scale = Vector2(2.56783, 2.56783)
 
-[node name="Antonia" parent="World Objects" instance=ExtResource("10_m7ok3")]
+[node name="Antonia" parent="World Objects" node_paths=PackedStringArray("health_bar") instance=ExtResource("10_m7ok3")]
 position = Vector2(9.53674e-07, -1)
 rotation = -2.45036
 scale = Vector2(0.175, 0.175)
+health_bar = NodePath("../../CanvasLayer/ProgressBar")
 
 [node name="Camera2D" type="Camera2D" parent="World Objects/Antonia"]
 position = Vector2(-3.63851, -4.39747)
@@ -864,6 +870,10 @@ tile_map_data = PackedByteArray("AAD7/yAAAAAAABgAAADh/wsAAAAAABgAAFDz//z/AAAAABg
 tile_set = SubResource("TileSet_os70q")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" parent="CanvasLayer" instance=ExtResource("13_bs1f5")]
+offset_top = 56.0
+offset_bottom = 83.0
 
 [node name="Inventory" parent="CanvasLayer" node_paths=PackedStringArray("inventory_source") instance=ExtResource("12_14h43")]
 inventory_source = NodePath("../../World Objects/Antonia")
