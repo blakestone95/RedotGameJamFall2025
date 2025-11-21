@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://dn0jgsyiovc1t"]
+[gd_scene load_steps=20 format=4 uid="uid://dn0jgsyiovc1t"]
 
 [ext_resource type="PackedScene" uid="uid://b7lkqr3s4c8wy" path="res://scenes/Parallax_Background.tscn" id="1_b33re"]
 [ext_resource type="Texture2D" uid="uid://yyxgoq3gpcqr" path="res://data/2D assets/world/Tilemap_World.png" id="2_dr8x1"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://bhk8b14ylpk0h" path="res://gameplay/enemies/Beetle.tscn" id="9_mw0uh"]
 [ext_resource type="PackedScene" uid="uid://c28kh77i1dev6" path="res://gameplay/colony/overworld/OverworldColony.tscn" id="9_tfoa8"]
 [ext_resource type="PackedScene" uid="uid://6ies8rxg2dmo" path="res://gameplay/character/Antonia.tscn" id="10_m7ok3"]
-[ext_resource type="PackedScene" uid="uid://wyb7iimiu6nt" path="res://gameplay/enemies/RedAnt.tscn" id="10_mgc53"]
 [ext_resource type="Shader" path="res://data/2D assets/world/Plants(Seethrough).gdshader" id="11_s1cq2"]
 [ext_resource type="PackedScene" uid="uid://brouxaecajl23" path="res://gameplay/inventory/InventoryGui.tscn" id="12_14h43"]
 [ext_resource type="PackedScene" uid="uid://blhulx8ufcges" path="res://gameplay/character/AntoniaHealthBar.tscn" id="13_bs1f5"]
@@ -844,9 +843,6 @@ position = Vector2(51, 328)
 
 [node name="Beetle" parent="." instance=ExtResource("9_mw0uh")]
 position = Vector2(-362, -474)
-
-[node name="RedAnt" parent="." instance=ExtResource("10_mgc53")]
-position = Vector2(-700, 500)
 
 [node name="World Objects" type="Node2D" parent="."]
 
