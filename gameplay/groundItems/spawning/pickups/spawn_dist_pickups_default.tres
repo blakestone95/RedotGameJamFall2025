@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="SpawnDistribution" load_steps=11 format=3 uid="uid://dnxvqvpcr4sgh"]
+
+[ext_resource type="Script" path="res://gameplay/groundItems/spawning/spawn_distribution.gd" id="1_7uvv6"]
+[ext_resource type="Script" path="res://gameplay/groundItems/spawning/spawn_chance.gd" id="1_rmph7"]
+[ext_resource type="PackedScene" uid="uid://cvf4dc2at14k6" path="res://gameplay/groundItems/resourcePickups/FoodPickup.tscn" id="2_uqnpk"]
+[ext_resource type="PackedScene" uid="uid://bd66d8aayrdbr" path="res://gameplay/groundItems/resourcePickups/LeafPickup.tscn" id="3_xo5jc"]
+[ext_resource type="PackedScene" uid="uid://cuppqrojhp08q" path="res://gameplay/groundItems/resourcePickups/PebblePickup.tscn" id="4_djf15"]
+[ext_resource type="PackedScene" uid="uid://de4tue37p42jp" path="res://gameplay/groundItems/resourcePickups/TwigPickup.tscn" id="5_4rbxq"]
+
+[sub_resource type="Resource" id="Resource_rwmy6"]
+script = ExtResource("1_rmph7")
+chance = 0.3
+scene = ExtResource("2_uqnpk")
+
+[sub_resource type="Resource" id="Resource_sm1hr"]
+script = ExtResource("1_rmph7")
+chance = 0.3
+scene = ExtResource("3_xo5jc")
+
+[sub_resource type="Resource" id="Resource_6hrdm"]
+script = ExtResource("1_rmph7")
+chance = 0.1
+scene = ExtResource("4_djf15")
+
+[sub_resource type="Resource" id="Resource_csfl7"]
+script = ExtResource("1_rmph7")
+chance = 0.3
+scene = ExtResource("5_4rbxq")
+
+[resource]
+script = ExtResource("1_7uvv6")
+distribution_table = Array[ExtResource("1_rmph7")]([SubResource("Resource_rwmy6"), SubResource("Resource_sm1hr"), SubResource("Resource_6hrdm"), SubResource("Resource_csfl7")])

@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="SpawnDistribution" load_steps=11 format=3 uid="uid://bknvb782ljtxb"]
+
+[ext_resource type="Script" path="res://gameplay/groundItems/spawning/spawn_chance.gd" id="1_wopym"]
+[ext_resource type="PackedScene" uid="uid://bufmmsc7tlwwp" path="res://gameplay/groundItems/resourceToBreak/FoodToBreak.tscn" id="2_u5450"]
+[ext_resource type="PackedScene" uid="uid://dwbx8vhx4wk6e" path="res://gameplay/groundItems/resourceToBreak/LeafToBreak.tscn" id="3_cqdkt"]
+[ext_resource type="PackedScene" uid="uid://jx1hwa05ip52" path="res://gameplay/groundItems/resourceToBreak/PebbleToBreak.tscn" id="4_j2cok"]
+[ext_resource type="PackedScene" uid="uid://cusph446n0sbw" path="res://gameplay/groundItems/resourceToBreak/TwigToBreak.tscn" id="5_tnvug"]
+[ext_resource type="Script" path="res://gameplay/groundItems/spawning/spawn_distribution.gd" id="6_vk43c"]
+
+[sub_resource type="Resource" id="Resource_rwmy6"]
+script = ExtResource("1_wopym")
+chance = 0.25
+scene = ExtResource("2_u5450")
+
+[sub_resource type="Resource" id="Resource_sm1hr"]
+script = ExtResource("1_wopym")
+chance = 0.25
+scene = ExtResource("3_cqdkt")
+
+[sub_resource type="Resource" id="Resource_6hrdm"]
+script = ExtResource("1_wopym")
+chance = 0.25
+scene = ExtResource("4_j2cok")
+
+[sub_resource type="Resource" id="Resource_csfl7"]
+script = ExtResource("1_wopym")
+chance = 0.25
+scene = ExtResource("5_tnvug")
+
+[resource]
+script = ExtResource("6_vk43c")
+distribution_table = Array[ExtResource("1_wopym")]([SubResource("Resource_rwmy6"), SubResource("Resource_sm1hr"), SubResource("Resource_6hrdm"), SubResource("Resource_csfl7")])
