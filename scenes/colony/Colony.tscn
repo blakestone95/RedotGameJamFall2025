@@ -278,7 +278,7 @@ theme_override_constants/margin_bottom = 6
 [node name="FoodConsumptionMessage" type="Label" parent="FoodConsumptionPanel/MarginContainer"]
 custom_minimum_size = Vector2(190, 50)
 layout_mode = 2
-text = "The ants require 20 food per day to survive!"
+text = "The ants require X food per day to survive! Each room rebuilt will need X extra food each day."
 autowrap_mode = 2
 script = ExtResource("22_dnati")
 
@@ -345,19 +345,19 @@ stream = ExtResource("26_2wugf")
 [node name="ButtonSelect" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("27_g8s4c")
 
-[connection signal="mouse_entered" from="Destroyed/AphidRanchDestroyed/AphidRanchRebuildButton" to="." method="_on_aphid_ranch_rebuild_button_mouse_entered"]
+[connection signal="mouse_entered" from="Destroyed/AphidRanchDestroyed/AphidRanchRebuildButton" to="Destroyed/AphidRanchDestroyed/AphidRanchRebuildButton" method="on_button_hover"]
 [connection signal="pressed" from="Destroyed/AphidRanchDestroyed/AphidRanchRebuildButton" to="Destroyed/AphidRanchDestroyed/AphidRanchRebuildButton" method="on_rebuild"]
-[connection signal="mouse_entered" from="Destroyed/FungusFarmDestroyed/FungusFarmRebuildButton" to="." method="_on_fungus_farm_rebuild_button_mouse_entered"]
+[connection signal="mouse_entered" from="Destroyed/FungusFarmDestroyed/FungusFarmRebuildButton" to="Destroyed/FungusFarmDestroyed/FungusFarmRebuildButton" method="on_button_hover"]
 [connection signal="pressed" from="Destroyed/FungusFarmDestroyed/FungusFarmRebuildButton" to="Destroyed/FungusFarmDestroyed/FungusFarmRebuildButton" method="on_rebuild"]
-[connection signal="mouse_entered" from="Destroyed/GuardDestroyed/GuardRebuildButton" to="." method="_on_guard_rebuild_button_mouse_entered"]
+[connection signal="mouse_entered" from="Destroyed/GuardDestroyed/GuardRebuildButton" to="Destroyed/GuardDestroyed/GuardRebuildButton" method="on_button_hover"]
 [connection signal="pressed" from="Destroyed/GuardDestroyed/GuardRebuildButton" to="Destroyed/GuardDestroyed/GuardRebuildButton" method="on_rebuild"]
-[connection signal="mouse_entered" from="Destroyed/HousesDestroyed/HousesRebuildButton" to="." method="_on_houses_rebuild_button_mouse_entered"]
+[connection signal="mouse_entered" from="Destroyed/HousesDestroyed/HousesRebuildButton" to="Destroyed/HousesDestroyed/HousesRebuildButton" method="on_button_hover"]
 [connection signal="pressed" from="Destroyed/HousesDestroyed/HousesRebuildButton" to="Destroyed/HousesDestroyed/HousesRebuildButton" method="on_rebuild"]
-[connection signal="mouse_entered" from="Destroyed/RoyalChamberDestroyed/RoyalChamberRebuildButton" to="." method="_on_royal_chamber_rebuild_button_mouse_entered"]
+[connection signal="mouse_entered" from="Destroyed/RoyalChamberDestroyed/RoyalChamberRebuildButton" to="Destroyed/RoyalChamberDestroyed/RoyalChamberRebuildButton" method="on_button_hover"]
 [connection signal="pressed" from="Destroyed/RoyalChamberDestroyed/RoyalChamberRebuildButton" to="Destroyed/RoyalChamberDestroyed/RoyalChamberRebuildButton" method="on_rebuild"]
-[connection signal="mouse_entered" from="Destroyed/ScoutDestroyed/ScoutRebuildButton" to="." method="_on_scout_rebuild_button_mouse_entered"]
+[connection signal="mouse_entered" from="Destroyed/ScoutDestroyed/ScoutRebuildButton" to="Destroyed/ScoutDestroyed/ScoutRebuildButton" method="on_button_hover"]
 [connection signal="pressed" from="Destroyed/ScoutDestroyed/ScoutRebuildButton" to="Destroyed/ScoutDestroyed/ScoutRebuildButton" method="on_rebuild"]
-[connection signal="mouse_entered" from="Destroyed/StorageDestroyed/StorageRebuildButton" to="." method="_on_storage_rebuild_button_mouse_entered"]
+[connection signal="mouse_entered" from="Destroyed/StorageDestroyed/StorageRebuildButton" to="Destroyed/StorageDestroyed/StorageRebuildButton" method="on_button_hover"]
 [connection signal="pressed" from="Destroyed/StorageDestroyed/StorageRebuildButton" to="Destroyed/StorageDestroyed/StorageRebuildButton" method="on_rebuild"]
-[connection signal="mouse_entered" from="CanvasLayer/VBoxContainer/StartButtonMargin/StartButton" to="." method="_on_start_button_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/VBoxContainer/StartButtonMargin/StartButton" to="CanvasLayer/VBoxContainer/StartButtonMargin/StartButton" method="_on_button_hover"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/StartButtonMargin/StartButton" to="CanvasLayer/VBoxContainer/StartButtonMargin/StartButton" method="_on_pressed"]

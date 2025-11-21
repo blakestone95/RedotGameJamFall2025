@@ -105,3 +105,7 @@ func on_rebuild() -> void:
 	if room_type == Colony.Rooms.ROYAL_CHAMBERS:
 		await get_tree().create_timer(3).timeout
 		game.on_win_game()
+
+func on_button_hover() -> void:
+	if !disabled:
+		button_hover.play()

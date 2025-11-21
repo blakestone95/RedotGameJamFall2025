@@ -8,7 +8,10 @@ var state: GameState = GameState.REBUILD
 const win_scene = "res://menus/WinMenu.tscn"
 const lose_scene = "res://menus/LoseMenu.tscn"
 var day: int = 0
-var base_food_req: int = 6
+@export var food_base_req: int = 9
+@export var food_increase_per_room: int = 3
+@export var food_decrease_farm: int = 6
+@export var food_decrease_ranch: int = 9
 
 ## Scene that shows when we are in the Explore state
 const explore_scene = "res://scenes/overworld/Overworld.tscn"
@@ -100,9 +103,16 @@ func consume_food() -> void:
 		on_lose_game()
 
 func get_req_food() -> int:
-	var req_food: int = base_food_req
-	if colony_upgrades[Colony.Rooms.RANCH]: req_food -= 5
-	if colony_upgrades[Colony.Rooms.FARM]: req_food -= 3
+	var req_food: int = food_base_req
+	
+	var rooms_built: int = 0
+	for room_built in colony_upgrades.values():
+		if room_built: rooms_built += 1
+	req_food += (rooms_built * food_increase_per_room)
+	
+	if colony_upgrades[Colony.Rooms.RANCH]: req_food -= food_decrease_ranch
+	if colony_upgrades[Colony.Rooms.FARM]: req_food -= food_decrease_farm
+	
 	return req_food
 
 func on_timer_expired() -> void:
@@ -117,7 +127,6 @@ func rebuild_room(type: Colony.Rooms, costs: Dictionary, disable_costs: bool) ->
 		for item_type in costs.keys():
 			var cost = costs[item_type]
 			colony_inventory.decrease_item(item_type, cost)
-		base_food_req =+ 3
 
 	colony_upgrades[type] = true
 	room_rebuilt.emit()
