@@ -7,8 +7,9 @@ enum State {
 	RETREATING
 }
 
-var speed : int = 200
-var rotation_speed = 0.1
+@export var speed: int = 200
+@export var rotation_speed: float = 0.1
+@export var attack_damage: int = 20
 
 @onready var start_position = global_position
 var target: Antonia
@@ -61,6 +62,7 @@ func _on_timer_timeout() -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Antonia:
+		body.take_damage(attack_damage)
 		target = null
 		current_state = State.RETREATING
 		$AnimatedSprite2D.speed_scale = 1

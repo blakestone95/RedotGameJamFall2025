@@ -1,7 +1,11 @@
 class_name Antonia extends CharacterBody2D
 
 # Attributes
+## Speed in pixels/second
 @export var speed = 300
+## For i-frames
+var immune: bool = false
+var i_frame_time: float = 1.0
 
 var game: Game
 
@@ -101,10 +105,6 @@ func _on_interaction_area_entered(area: Area2D) -> void:
 		nearby_colony = area
 	if area is ItemToBreak:
 		nearby_breakable[area.id] = area
-	if area.is_in_group("enemy"):
-		health_bar.take_damage(30)
-		$AnimationPlayer.play("iframe")
-
 
 func _on_interaction_area_exited(area: Area2D) -> void:
 	if area is Pickup:
@@ -113,6 +113,14 @@ func _on_interaction_area_exited(area: Area2D) -> void:
 		nearby_colony = null
 	if area is ItemToBreak:
 		nearby_breakable.erase(area.id)
+
+func take_damage(damage: int) -> void:
+	if !immune:
+		health_bar.take_damage(damage)
+		$AnimationPlayer.play("iframe")
+		immune = true
+		await get_tree().create_timer(i_frame_time).timeout
+		immune = false
 
 func handle_interaction() -> void:
 	if nearby_pickups.size() > 0:
