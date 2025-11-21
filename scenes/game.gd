@@ -39,8 +39,7 @@ var colony_upgrades: Dictionary = {
 signal room_rebuilt
 
 @onready var music: AudioStreamPlayer = $Music
-var MenuMusic = preload("res://data/audio_assets/music/MenuMusic.mp3")
-var GameMusic = preload("res://data/audio_assets/music/NightLullaby.mp3")
+var ColonyMusic = preload("res://data/audio_assets/music/NightLullaby.mp3")
 var ExplorationMusic = preload("res://data/audio_assets/music/DayMusic.mp3")
 
 func _ready() -> void:
@@ -55,7 +54,7 @@ func _ready() -> void:
 	# Render initial state
 	var scene = preload(rebuild_scene).instantiate()
 	open_scene.add_child(scene)
-	music.stream = MenuMusic
+	music.stream = ColonyMusic
 	music.play()
 	
 	# Connect to signals
@@ -81,12 +80,12 @@ func on_state_update(new_state: GameState) -> void:
 		day += 1
 		scene = preload(explore_scene).instantiate()
 		exploration_timer.start()
-		music.stream = GameMusic
+		music.stream = ExplorationMusic
 	if state == GameState.REBUILD:
 		consume_food()
 		scene = preload(rebuild_scene).instantiate()
 		exploration_timer.stop()
-		music.stream = MenuMusic
+		music.stream = ColonyMusic
 	
 	assert(scene != null, "Tried to transition to game state %s with no scene attached" % new_state)
 	open_scene.add_child(scene)
