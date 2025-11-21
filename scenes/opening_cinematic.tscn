@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://ycl3jw6ipgk7" path="res://data/2D assets/other/openingcinematic/Opening Cinematic_04a.png" id="7_j35py"]
 [ext_resource type="Texture2D" uid="uid://b7xl8uw2jw2" path="res://data/2D assets/other/openingcinematic/Opening Cinematic_04b.png" id="8_rd2vl"]
 [ext_resource type="Texture2D" uid="uid://3a1kpjuw0fmi" path="res://data/2D assets/other/MainMenu_Background.png" id="9_fxknh"]
-[ext_resource type="AudioStream" uid="uid://bai1g8m0ajevr" path="res://data/audio_assets/music/NightLullaby.mp3" id="12_fgaw7"]
+[ext_resource type="AudioStream" uid="uid://cns0v3btckqmk" path="res://data/audio_assets/music/IntroStorm.mp3" id="12_2348l"]
 
 [sub_resource type="Animation" id="Animation_lovi3"]
 resource_name = "Opening_Cinematic"
@@ -288,7 +288,7 @@ libraries = {
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="CinematicAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("12_fgaw7")
+stream = ExtResource("12_2348l")
 autoplay = true
 
 [connection signal="animation_finished" from="Cinematic" to="." method="_on_cinematic_animation_finished"]

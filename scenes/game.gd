@@ -38,6 +38,7 @@ signal room_rebuilt
 @onready var music: AudioStreamPlayer = $Music
 var MenuMusic = preload("res://data/audio_assets/music/MenuMusic.mp3")
 var GameMusic = preload("res://data/audio_assets/music/NightLullaby.mp3")
+var ExplorationMusic = preload("res://data/audio_assets/music/DayMusic.mp3")
 
 func _ready() -> void:
 	# Set up inventory
