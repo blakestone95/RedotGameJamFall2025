@@ -77,23 +77,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [true, false, true, false, true]
 }
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("InteractionArea")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [5, false],
-"method": &"set_collision_mask_value"
-}, {
-"args": [5, true],
-"method": &"set_collision_mask_value"
-}]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6q770"]
 _data = {
@@ -103,7 +86,7 @@ _data = {
 
 [node name="Antonia" type="CharacterBody2D"]
 z_index = 1
-collision_mask = 6
+collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_k7mp8")
 inventory_items = Array[ExtResource("2_28fm6")]([ExtResource("3_8fv6c"), ExtResource("4_6q770"), ExtResource("5_a2een"), ExtResource("6_ggqb6")])
@@ -118,8 +101,15 @@ sprite_frames = SubResource("SpriteFrames_wnrh0")
 frame = 2
 frame_progress = 0.571913
 
+[node name="HurtArea" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="HurtCircle" type="CollisionShape2D" parent="HurtArea"]
+shape = SubResource("CircleShape2D_to8o5")
+debug_color = Color(0, 0.54423, 0.945571, 0.658824)
+
 [node name="InteractionArea" type="Area2D" parent="."]
-collision_mask = 24
+collision_mask = 8
 
 [node name="InteractionCircle" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("CircleShape2D_xnl2y")

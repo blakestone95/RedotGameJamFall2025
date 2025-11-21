@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://wyb7iimiu6nt"]
+[gd_scene load_steps=9 format=3 uid="uid://ltcjo1k5fb1v"]
 
 [ext_resource type="Texture2D" uid="uid://b864e2fsk2qdb" path="res://data/2D assets/character/EnemyAntSheet.png" id="1_mg4ot"]
 [ext_resource type="Script" path="res://gameplay/enemies/red_ant.gd" id="1_uqknm"]
@@ -36,30 +36,34 @@ animations = [{
 radius = 1500.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mg4ot"]
-radius = 16.0
-height = 222.0
+radius = 98.58
+height = 246.7
 
 [node name="RedAnt" type="Node2D"]
 scale = Vector2(0.175, 0.175)
 script = ExtResource("1_uqknm")
+speed = null
+rotation_speed = null
+attack_damage = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 17.1429)
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_33lh4")
 autoplay = "default"
 frame_progress = 0.794337
 
 [node name="DetectionZone" type="Area2D" parent="."]
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionZone"]
-position = Vector2(-16, 12)
 shape = SubResource("CircleShape2D_mg4ot")
 
-[node name="Area2D" type="Area2D" parent="." groups=["enemy"]]
-collision_layer = 16
+[node name="ContactHitbox" type="Area2D" parent="." groups=["enemy"]]
+collision_layer = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-17, 25)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ContactHitbox"]
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_mg4ot")
 
 [node name="Timer" type="Timer" parent="."]
@@ -69,5 +73,5 @@ autostart = true
 
 [connection signal="body_entered" from="DetectionZone" to="." method="_on_detection_zone_body_entered"]
 [connection signal="body_exited" from="DetectionZone" to="." method="_on_detection_zone_body_exited"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="ContactHitbox" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

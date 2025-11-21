@@ -10,9 +10,11 @@ enum State {
 
 var current_state : State = State.IDLE
 
+@export var speed: int = 200
+@export var rotation_speed: float = 0.01
+@export var attack_damage: int = 30
+
 var start_position: Vector2
-var rotation_speed = 0.01
-var speed : int = 200
 var target: Antonia
 var target_position : Vector2
 var arrival_position: Vector2
@@ -61,13 +63,10 @@ func _process(delta: float) -> void:
 			$AnimatedSprite2D.frame = 0
 			$AnimatedSprite2D.pause()
 
-		
-		 
 func _on_timer_timeout() -> void:
 	current_state = State.ATTACKING
 	$AnimatedSprite2D.speed_scale = 3
 
-	
-	
-	
-	
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body is Antonia:
+		body.take_damage(attack_damage)

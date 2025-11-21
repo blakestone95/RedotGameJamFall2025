@@ -42,6 +42,9 @@ height = 214.0
 [node name="Beetle" type="Node2D" groups=["enemy"]]
 rotation = -1.5708
 script = ExtResource("1_wmd30")
+speed = null
+rotation_speed = null
+attack_damage = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = 1.5708
@@ -49,23 +52,23 @@ sprite_frames = SubResource("SpriteFrames_jgoaw")
 frame_progress = 0.0460256
 
 [node name="DetectionZone" type="Area2D" parent="."]
-collision_layer = 8
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionZone"]
 shape = SubResource("CircleShape2D_borkq")
 
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
+[node name="ContactHitbox" type="Area2D" parent="." groups=["enemy"]]
+collision_layer = 4
 
-[node name="Area2D" type="Area2D" parent="." groups=["enemy"]]
-collision_layer = 16
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ContactHitbox"]
 position = Vector2(7, 2.38419e-07)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_wmd30")
 
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="body_entered" from="DetectionZone" to="." method="_on_detection_zone_body_entered"]
 [connection signal="body_exited" from="DetectionZone" to="." method="_on_detection_zone_body_exited"]
+[connection signal="body_entered" from="ContactHitbox" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
