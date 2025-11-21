@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cicu1qk0jq20x"]
+[gd_scene load_steps=6 format=3 uid="uid://cicu1qk0jq20x"]
 
 [ext_resource type="Script" path="res://menus/credits.gd" id="1_fns74"]
 [ext_resource type="Texture2D" uid="uid://c81w0qa1xtdfl" path="res://data/2D assets/ui/MainMenu_Background.png" id="1_xlg2h"]
 [ext_resource type="Theme" uid="uid://urbhhupy6a5l" path="res://data/2D assets/ui/Mainmenubutton.tres" id="3_dn5jh"]
+[ext_resource type="AudioStream" uid="uid://cmoifrvi6ktca" path="res://data/audio_assets/sfx/ui_click_rollover_misc_15.wav" id="4_yo5bs"]
+[ext_resource type="AudioStream" uid="uid://b13wfbea7coi6" path="res://data/audio_assets/sfx/ui_click_rollover_misc_16.wav" id="5_qpqy0"]
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -93,4 +95,11 @@ theme = ExtResource("3_dn5jh")
 theme_override_font_sizes/font_size = 40
 text = "GO BACK"
 
+[node name="ButtonHover" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_yo5bs")
+
+[node name="ButtonSelect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_qpqy0")
+
+[connection signal="mouse_entered" from="BackButton" to="." method="_on_back_button_mouse_entered"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

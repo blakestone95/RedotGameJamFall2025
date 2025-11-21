@@ -7,6 +7,7 @@ extends Node2D
 @export var cinematic: AnimationPlayer
 @export var autoplay : bool = false
 @export var next_scene : PackedScene
+@onready var cinematic_audio: AudioStreamPlayer = $CinematicAudio
 
 
 func _on_cinematic_animation_finished(anim_name: StringName) -> void:
@@ -24,6 +25,7 @@ func _input(event: InputEvent) -> void:
 		var target_time = cinematic.current_animation_length - 0.25
 		target_time = max(0.0, target_time)  # safety for very short animations
 		cinematic.seek(target_time, true)    # true = update immediately
+		cinematic_audio.stop()
 
 
 func change_scene() -> void:

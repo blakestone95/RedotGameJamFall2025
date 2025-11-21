@@ -11,12 +11,16 @@ class_name RebuildButton extends Button
 @export var destroyed_room: Sprite2D
 @export var rebuilt_room: Sprite2D
 
+@onready var button_hover: AudioStreamPlayer2D = $"../../../ButtonHover"
+@onready var button_select: AudioStreamPlayer2D = $"../../../ButtonSelect"
+
 ## Use to temporarily disable costs, like when testing stuff
 @export var disable_costs: bool = false
 
 var game: Game
 
 func _enter_tree() -> void:
+	# button_hover.play()
 	# Get the game node so we can access the inventory
 	if game == null: 
 		game = get_tree().get_nodes_in_group("game")[0] as Game;
@@ -91,6 +95,7 @@ func show_costs() -> void:
 
 func on_rebuild() -> void:
 	# Button will be disabled if we can't afford to rebuild, so don't need to check that here
+	button_select.play()
 	game.rebuild_room(room_type, costs, disable_costs)
 	hide()
 	if rubble_pile != null:
@@ -100,3 +105,7 @@ func on_rebuild() -> void:
 	if room_type == Colony.Rooms.ROYAL_CHAMBERS:
 		await get_tree().create_timer(3).timeout
 		game.on_win_game()
+
+func on_button_hover() -> void:
+	if !disabled:
+		button_hover.play()

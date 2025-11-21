@@ -7,6 +7,8 @@ var game: Game
 
 # Audio related  (Stingray)
 @onready var footstep_player: AudioStreamPlayer2D = $Footsteps_SFX
+@onready var pickup_sfx: AudioStreamPlayer2D = $Pickup_SFX
+@onready var dropoff_sfx: AudioStreamPlayer2D = $Dropoff_SFX
 const footsteps_dirt = [
 	preload("res://data/audio_assets/sfx/footsteps/Footsteps_Casual_Earth_01.wav"),
 	preload("res://data/audio_assets/sfx/footsteps/Footsteps_Casual_Earth_02.wav"),
@@ -132,15 +134,18 @@ func pickup_item(pickup: Pickup) -> void:
 	var remainder = inventory_slot.increase(num_to_pickup)
 	# If we picked up anything, we need to remove the pickup so people can't try to pick up multiple times
 	if remainder != num_to_pickup:
+		pickup_sfx.play()
 		pickup.pickup()
 		nearby_pickups.erase(pickup.id)
 
 func deposit_items(into: Inventory):
 	for item_to_deposit in inventory.items.values():
+		dropoff_sfx.play()
 		if item_to_deposit.count == 0: continue
 		# Add current inventory to colony inventory
 		var item_bucket = into.items[item_to_deposit.type]
 		var remainder = item_bucket.increase(item_to_deposit.count)
+		print(remainder)
 		# Update player inventory
 		item_to_deposit.decrease(item_to_deposit.count - remainder)
 

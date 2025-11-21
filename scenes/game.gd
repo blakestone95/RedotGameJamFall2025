@@ -8,7 +8,10 @@ var state: GameState = GameState.REBUILD
 const win_scene = "res://menus/WinMenu.tscn"
 const lose_scene = "res://menus/LoseMenu.tscn"
 var day: int = 0
-var base_food_req: int = 18
+@export var food_base_req: int = 9
+@export var food_increase_per_room: int = 3
+@export var food_decrease_farm: int = 6
+@export var food_decrease_ranch: int = 9
 
 ## Scene that shows when we are in the Explore state
 const explore_scene = "res://scenes/overworld/Overworld.tscn"
@@ -38,6 +41,7 @@ signal room_rebuilt
 @onready var music: AudioStreamPlayer = $Music
 var MenuMusic = preload("res://data/audio_assets/music/MenuMusic.mp3")
 var GameMusic = preload("res://data/audio_assets/music/NightLullaby.mp3")
+var ExplorationMusic = preload("res://data/audio_assets/music/DayMusic.mp3")
 
 func _ready() -> void:
 	# Set up inventory
@@ -91,15 +95,24 @@ func on_state_update(new_state: GameState) -> void:
 func consume_food() -> void:
 	# Could potentially make unlocking rooms increase maintenance costs
 	var food_consumed = get_req_food()
+	print(colony_inventory)
 	var remainder = colony_inventory.decrease_item(ItemData.Type.FOOD, food_consumed)
+	print(remainder)
 	if remainder > 0:
 		# We didn't have enough food... game over
 		on_lose_game()
 
 func get_req_food() -> int:
-	var req_food: int = base_food_req
-	if colony_upgrades[Colony.Rooms.RANCH]: req_food -= 5
-	if colony_upgrades[Colony.Rooms.FARM]: req_food -= 3
+	var req_food: int = food_base_req
+	
+	var rooms_built: int = 0
+	for room_built in colony_upgrades.values():
+		if room_built: rooms_built += 1
+	req_food += (rooms_built * food_increase_per_room)
+	
+	if colony_upgrades[Colony.Rooms.RANCH]: req_food -= food_decrease_ranch
+	if colony_upgrades[Colony.Rooms.FARM]: req_food -= food_decrease_farm
+	
 	return req_food
 
 func on_timer_expired() -> void:

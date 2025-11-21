@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3j5wu03naiiv"]
+[gd_scene load_steps=3 format=3 uid="uid://c3j5wu03naiiv"]
 
 [ext_resource type="Script" path="res://gameplay/foraging/foraging_progress.gd" id="1_pmpmd"]
+[ext_resource type="AudioStream" uid="uid://dqb2neoxhdok1" path="res://data/audio_assets/sfx/Player_Eating_02.wav" id="2_dg7ix"]
 
 [node name="ForagingProgress" type="ProgressBar"]
 offset_right = 36.0
@@ -10,3 +11,7 @@ value = 5.0
 fill_mode = 1
 show_percentage = false
 script = ExtResource("1_pmpmd")
+
+[node name="ChompingSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_dg7ix")
+bus = &"SFX"
