@@ -27,3 +27,8 @@ func decrease_item(type: ItemData.Type, amount: int) -> int:
 	var remainder = items[type].decrease(amount)
 	updated.emit(type)
 	return remainder
+	
+func empty_inventory() -> void:
+	for item in items.keys():
+		decrease_item(item, items[item].count)
+		
