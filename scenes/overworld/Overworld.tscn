@@ -807,13 +807,12 @@ distribution_mapping = {
 
 [node name="OverworldColony" parent="World Objects" instance=ExtResource("9_tfoa8")]
 position = Vector2(128, -108)
-scale = Vector2(2.56783, 2.56783)
 
 [node name="Antonia" parent="World Objects" node_paths=PackedStringArray("health_bar") instance=ExtResource("10_m7ok3")]
 position = Vector2(9.53674e-07, -1)
 rotation = -2.45036
 scale = Vector2(0.175, 0.175)
-health_bar = NodePath("../../CanvasLayer/ProgressBar")
+health_bar = NodePath("../../CanvasLayer/HealthBar")
 
 [node name="Camera2D" type="Camera2D" parent="World Objects/Antonia"]
 position = Vector2(-3.63851, -4.39747)
@@ -830,9 +829,11 @@ tile_set = SubResource("TileSet_os70q")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ProgressBar" parent="CanvasLayer" instance=ExtResource("13_bs1f5")]
-offset_top = 56.0
-offset_bottom = 83.0
+[node name="HealthBar" parent="CanvasLayer" instance=ExtResource("13_bs1f5")]
+offset_left = 16.0
+offset_top = 96.0
+offset_right = 116.0
+offset_bottom = 123.0
 
 [node name="Inventory" parent="CanvasLayer" node_paths=PackedStringArray("inventory_source") instance=ExtResource("12_14h43")]
 inventory_source = NodePath("../../World Objects/Antonia")

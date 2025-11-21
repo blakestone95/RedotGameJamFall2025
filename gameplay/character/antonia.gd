@@ -139,13 +139,12 @@ func pickup_item(pickup: Pickup) -> void:
 		nearby_pickups.erase(pickup.id)
 
 func deposit_items(into: Inventory):
+	dropoff_sfx.play()
 	for item_to_deposit in inventory.items.values():
-		dropoff_sfx.play()
 		if item_to_deposit.count == 0: continue
 		# Add current inventory to colony inventory
 		var item_bucket = into.items[item_to_deposit.type]
 		var remainder = item_bucket.increase(item_to_deposit.count)
-		print(remainder)
 		# Update player inventory
 		item_to_deposit.decrease(item_to_deposit.count - remainder)
 

@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://c28kh77i1dev6"]
+[gd_scene load_steps=9 format=3 uid="uid://c28kh77i1dev6"]
 
 [ext_resource type="Texture2D" uid="uid://7h56jvne7h3l" path="res://data/2D assets/world/topview_anthill.png" id="1_uhbpm"]
 [ext_resource type="Script" path="res://gameplay/colony/overworld/overworld_colony.gd" id="2_ohxvw"]
-[ext_resource type="Script" path="res://gameplay/inventory/inventory_gui_control.gd" id="3_y6lv6"]
+[ext_resource type="PackedScene" uid="uid://bvpf3x4oafk50" path="res://gameplay/colony/overworld/InventoryPanel.tscn" id="3_y6lv6"]
+[ext_resource type="Resource" uid="uid://bx08d373rhb7o" path="res://gameplay/inventory/items/Leaf.tres" id="4_7mb6p"]
+[ext_resource type="Resource" uid="uid://umc8jremj87a" path="res://gameplay/inventory/items/Stick.tres" id="5_u36dn"]
+[ext_resource type="Resource" uid="uid://dwpbt4mvk2odb" path="res://gameplay/inventory/items/Pebble.tres" id="6_o8ar5"]
+[ext_resource type="Resource" uid="uid://brc0mofk4ogjs" path="res://gameplay/inventory/items/Food.tres" id="7_qwfbu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uhbpm"]
-radius = 100.0
+radius = 200.0
 
 [node name="OverworldColony" type="Node2D"]
 
@@ -15,10 +19,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -50.0
-offset_right = 50.0
-offset_bottom = 50.0
+offset_left = -125.0
+offset_top = -125.0
+offset_right = 125.0
+offset_bottom = 125.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_uhbpm")
@@ -30,28 +34,48 @@ script = ExtResource("2_ohxvw")
 [node name="InteractionCircle" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("CircleShape2D_uhbpm")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-visible = false
-offset_left = -64.0
-offset_top = -118.0
-offset_right = 64.0
-offset_bottom = -54.0
-
-[node name="InventoryGui" type="Control" parent="CenterContainer" node_paths=PackedStringArray("inventory_source")]
-layout_mode = 2
-script = ExtResource("3_y6lv6")
-inventory_source = NodePath("../../InteractionArea")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/InventoryGui"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="DepositPrompt" type="Label" parent="."]
 visible = false
 offset_left = -44.0
-offset_top = -79.0
+offset_top = -160.0
 offset_right = 47.0
-offset_bottom = -56.0
+offset_bottom = -137.0
 text = "E to deposit"
+
+[node name="InventoryCounts" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LeafPanel" parent="InventoryCounts" instance=ExtResource("3_y6lv6")]
+layout_mode = 0
+offset_left = -112.0
+offset_top = -42.0
+offset_right = -46.0
+offset_bottom = -6.0
+item = ExtResource("4_7mb6p")
+
+[node name="StickPanel" parent="InventoryCounts" instance=ExtResource("3_y6lv6")]
+layout_mode = 0
+offset_left = -73.0
+offset_top = -95.0
+offset_right = -7.0
+offset_bottom = -59.0
+item = ExtResource("5_u36dn")
+
+[node name="PebblePanel" parent="InventoryCounts" instance=ExtResource("3_y6lv6")]
+layout_mode = 0
+offset_left = 8.0
+offset_top = -95.0
+offset_right = 74.0
+offset_bottom = -59.0
+item = ExtResource("6_o8ar5")
+
+[node name="FoodPanel" parent="InventoryCounts" instance=ExtResource("3_y6lv6")]
+layout_mode = 0
+offset_left = 45.0
+offset_top = -44.0
+offset_right = 111.0
+offset_bottom = -8.0
+item = ExtResource("7_qwfbu")
