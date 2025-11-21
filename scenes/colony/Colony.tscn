@@ -315,8 +315,10 @@ script = ExtResource("20_q1hyv")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/InventoryControl"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 56.0
+offset_bottom = 56.0
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 1
