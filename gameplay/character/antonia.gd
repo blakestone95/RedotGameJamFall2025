@@ -54,6 +54,7 @@ func _ready() -> void:
 	for item in inventory_items:
 		inventory_data[item.type] = item.duplicate()
 	inventory = Inventory.new(inventory_data)
+	health_bar.lost_all_hp.connect(handle_death)
 
 func _enter_tree() -> void:
 	# Get the game node so we can access the inventory
@@ -121,6 +122,12 @@ func take_damage(damage: int) -> void:
 		immune = true
 		await get_tree().create_timer(i_frame_time).timeout
 		immune = false
+		
+func handle_death() -> void:
+	inventory.empty_inventory()
+	position = Vector2.ZERO
+	health_bar.value = health_bar.max_value
+	
 
 func handle_interaction() -> void:
 	if nearby_pickups.size() > 0:
