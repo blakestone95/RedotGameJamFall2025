@@ -1,7 +1,7 @@
 extends Label
 
 ## Message contents, put "%s" where you want the count to appear
-@export var message: String = "The ants require %s food per day to survive!"
+@export var message: String = "The ants require %s food per day to survive!  More will be needed when the colony grows!"
 
 var game
 

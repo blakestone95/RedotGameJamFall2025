@@ -8,7 +8,7 @@ var state: GameState = GameState.REBUILD
 const win_scene = "res://menus/WinMenu.tscn"
 const lose_scene = "res://menus/LoseMenu.tscn"
 var day: int = 0
-var base_food_req: int = 18
+var base_food_req: int = 6
 
 ## Scene that shows when we are in the Explore state
 const explore_scene = "res://scenes/overworld/Overworld.tscn"
@@ -91,7 +91,9 @@ func on_state_update(new_state: GameState) -> void:
 func consume_food() -> void:
 	# Could potentially make unlocking rooms increase maintenance costs
 	var food_consumed = get_req_food()
+	print(colony_inventory)
 	var remainder = colony_inventory.decrease_item(ItemData.Type.FOOD, food_consumed)
+	print(remainder)
 	if remainder > 0:
 		# We didn't have enough food... game over
 		on_lose_game()
@@ -114,6 +116,7 @@ func rebuild_room(type: Colony.Rooms, costs: Dictionary, disable_costs: bool) ->
 		for item_type in costs.keys():
 			var cost = costs[item_type]
 			colony_inventory.decrease_item(item_type, cost)
+		base_food_req =+ 3
 
 	colony_upgrades[type] = true
 	room_rebuilt.emit()
