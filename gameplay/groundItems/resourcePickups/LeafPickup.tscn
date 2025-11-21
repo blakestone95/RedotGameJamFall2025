@@ -10,13 +10,20 @@ radius = 24.0
 
 [node name="PickupArea" type="Area2D" parent="." node_paths=PackedStringArray("root")]
 collision_layer = 8
-collision_mask = 0
 script = ExtResource("1_w26cd")
 root = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
 shape = SubResource("CircleShape2D_w26cd")
 
-[node name="Sprite2D" type="Sprite2D" parent="PickupArea"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_2ekjp")
+
+[node name="PickupPrompt" type="Label" parent="."]
+visible = false
+offset_left = -45.0
+offset_top = -51.0
+offset_right = 45.0
+offset_bottom = -28.0
+text = "E to pick up"

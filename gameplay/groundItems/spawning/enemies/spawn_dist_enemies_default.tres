@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SpawnDistribution" load_steps=5 format=3 uid="uid://bcpg2uv4ad4nc"]
+
+[ext_resource type="Script" path="res://gameplay/groundItems/spawning/spawn_chance.gd" id="1_blikc"]
+[ext_resource type="PackedScene" uid="uid://bhk8b14ylpk0h" path="res://gameplay/enemies/Beetle.tscn" id="2_wktim"]
+[ext_resource type="Script" path="res://gameplay/groundItems/spawning/spawn_distribution.gd" id="6_dojow"]
+
+[sub_resource type="Resource" id="Resource_rwmy6"]
+script = ExtResource("1_blikc")
+chance = 1.0
+scene = ExtResource("2_wktim")
+
+[resource]
+script = ExtResource("6_dojow")
+distribution_table = Array[ExtResource("1_blikc")]([SubResource("Resource_rwmy6")])
