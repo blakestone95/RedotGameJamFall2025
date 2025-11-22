@@ -177,6 +177,10 @@ func apply_upgrades() -> void:
 	
 	# Health increase
 	if game.colony_upgrades[Colony.Rooms.GUARD]:
+		# slowly recharge health over time
+		if health_bar.value != health_bar.max_value:
+			health_bar.value += 1
+			get_tree().create_timer(2)
 		pass # TODO: Hook up to health system when implemented
 	
 	# Pickup increase - handled in pickup_item function
