@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://6oui2eds8loi"]
+[gd_scene load_steps=3 format=3 uid="uid://6oui2eds8loi"]
 
 [ext_resource type="Script" path="res://scenes/overworld/pause_menu.gd" id="1_4x8e1"]
+[ext_resource type="PackedScene" uid="uid://qklll68udo8e" path="res://menus/option_menu.tscn" id="2_u2dvn"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 2
@@ -39,9 +40,18 @@ grow_vertical = 2
 layout_mode = 2
 text = "Resume"
 
+[node name="OptionButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Option"
+
 [node name="EndDayButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "End Day"
 
+[node name="option menu" parent="." instance=ExtResource("2_u2dvn")]
+visible = false
+layout_mode = 1
+
 [connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_close"]
+[connection signal="pressed" from="VBoxContainer/OptionButton" to="." method="_on_option_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/EndDayButton" to="." method="_end_day"]
