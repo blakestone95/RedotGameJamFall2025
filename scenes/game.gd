@@ -8,10 +8,10 @@ var state: GameState = GameState.REBUILD
 const win_scene = "res://menus/WinMenu.tscn"
 const lose_scene = "res://menus/LoseMenu.tscn"
 var day: int = 0
-@export var food_base_req: int = 16
-@export var food_increase_per_room: int = 1
-@export var food_decrease_farm: int = 6
-@export var food_decrease_ranch: int = 9
+@export var food_base_req: int = 12
+@export var food_increase_per_room: int = 2
+@export var food_decrease_farm: int = 4
+@export var food_decrease_ranch: int = 6
 @export var food_increase_house: int = 10
 
 ## Scene that shows when we are in the Explore state
