@@ -35,24 +35,11 @@ func _enter_tree() -> void:
 	game.colony_inventory.updated.connect(update_state)
 
 # Handle all state updates
-func update_state(rocks_falling: bool) -> void:
-	if room_type == Colony.Rooms.SCOUT:
-		tooltip_text = "Scout building speeds up exploration.\n"
-	if room_type == Colony.Rooms.GUARD:
-		tooltip_text = "Guard building buffs health\n"
-	if room_type == Colony.Rooms.FARM:
-		tooltip_text = "Fungus farm helps reduce the food required daily.\n"
-	if room_type == Colony.Rooms.RANCH:
-		tooltip_text = "Aphid Ranch helps reduce the fod required daily.\n"
-	if room_type == Colony.Rooms.HOUSES:
-		tooltip_text = "Houses make sure the ants population is stable, but cost extra daily food.\n"
-	if room_type == Colony.Rooms.STORAGE:
-		tooltip_text = "Storage building increases inventory size.\n"
-	
+func update_state(rocks_falling: bool) -> void:	
 	var rebuilt = check_rebuilt_state(rocks_falling)
 	if rebuilt: return # Can exit processing early if the room is rebuilt already
 	check_can_afford_rebuild()
-	show_costs()
+	update_tooltip()
 
 # Checks against the upgrade state from Game to decide what should be shown
 func check_rebuilt_state(rocks_falling: bool) -> bool:
@@ -91,10 +78,26 @@ func check_can_afford_rebuild() -> void:
 				break
 
 # TODO: Display costs as icons with counts
-func show_costs() -> void:
-	if room_type == Colony.Rooms.ROYAL_CHAMBERS and disabled:
-		tooltip_text = "All other rooms must be rebuit before\nRoyal Chamber can be rebuilt"
-		return
+func update_tooltip() -> void:
+	tooltip_text = ""
+
+	# Add room descriptions
+	if room_type == Colony.Rooms.ROYAL_CHAMBERS:
+		tooltip_text += "The Royal Chambers are the capstone project, completing the restoration of the colony.\n"
+		if disabled:
+			tooltip_text += "All other rooms must be rebuit before Royal Chamber can be rebuilt.\n"
+	if room_type == Colony.Rooms.SCOUT:
+		tooltip_text += "The Scout building speeds up exploration.\n"
+	if room_type == Colony.Rooms.GUARD:
+		tooltip_text += "The Guard building improves healing.\n"
+	if room_type == Colony.Rooms.FARM:
+		tooltip_text += "The Fungus Farm helps reduce the food required daily.\n"
+	if room_type == Colony.Rooms.RANCH:
+		tooltip_text += "The Aphid Ranch helps greatly reduce the food required daily.\n"
+	if room_type == Colony.Rooms.HOUSES:
+		tooltip_text += "The Houses help gather resources faster, but greatly increase the daily food requirement.\n"
+	if room_type == Colony.Rooms.STORAGE:
+		tooltip_text += "The Storage building lets you carry more resources.\n"
 	
 	var costs_str = "Rebuilding this room costs:\n"
 	var first = true

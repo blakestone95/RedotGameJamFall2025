@@ -46,9 +46,14 @@ var inventory: Inventory
 # Separated interactions with pickups and colony so we can prioritize interactions without complex data structure management
 var nearby_pickups: Dictionary = {}
 var nearby_colony: OverworldColony # There will only be one colony
-var nearby_breakable: Dictionary = {}
+var nearby_breakables: Dictionary = {}
 
-func _ready() -> void:
+func _enter_tree() -> void:
+	# Get the game node so we can access the inventory
+	if game == null: 
+		game = get_tree().get_nodes_in_group("game")[0] as Game;
+		if !game.is_node_ready(): await game.ready
+
 	# Set up inventory
 	var inventory_data: Dictionary = {}
 	for item in inventory_items:
@@ -56,12 +61,6 @@ func _ready() -> void:
 	inventory = Inventory.new(inventory_data)
 	health_bar.lost_all_hp.connect(handle_death)
 
-func _enter_tree() -> void:
-	# Get the game node so we can access the inventory
-	if game == null: 
-		game = get_tree().get_nodes_in_group("game")[0] as Game;
-		if !game.is_node_ready(): await game.ready
-	
 	apply_upgrades()
 
 func _physics_process(_delta: float) -> void:
@@ -105,7 +104,7 @@ func _on_interaction_area_entered(area: Area2D) -> void:
 	if area is OverworldColony:
 		nearby_colony = area
 	if area is ItemToBreak:
-		nearby_breakable[area.id] = area
+		nearby_breakables[area.id] = area
 
 func _on_interaction_area_exited(area: Area2D) -> void:
 	if area is Pickup:
@@ -113,7 +112,7 @@ func _on_interaction_area_exited(area: Area2D) -> void:
 	if area is OverworldColony:
 		nearby_colony = null
 	if area is ItemToBreak:
-		nearby_breakable.erase(area.id)
+		nearby_breakables.erase(area.id)
 
 func take_damage(damage: int) -> void:
 	if !immune:
@@ -132,8 +131,15 @@ func handle_death() -> void:
 func handle_interaction() -> void:
 	if nearby_pickups.size() > 0:
 		# Handle pickup into inventory
-		var pickup: Pickup = nearby_pickups.values()[0]
-		assert(pickup is Pickup, "The first nearby pickup is not actually a Pickup class")
+		var pickup: Pickup
+		var min_distance: float = INF
+		# Find the pickup which is the minimum distance away
+		for nearby_pickup in nearby_pickups.values():
+			var distance = global_position.distance_to(nearby_pickup.global_position)
+			if distance < min_distance:
+				pickup = nearby_pickup
+				min_distance = distance
+		assert(pickup is Pickup, "The nearest pickup is not actually a Pickup class")
 		pickup_item(pickup)
 		return
 	elif nearby_colony != null:
@@ -164,9 +170,16 @@ func deposit_items(into: Inventory):
 		item_to_deposit.decrease(item_to_deposit.count - remainder)
 
 func handle_break(amount: float) -> void:
-	if nearby_breakable.size() > 0:
-		# Handle pickup into inventory
-		var breakable: ItemToBreak = nearby_breakable.values()[0]
+	if nearby_breakables.size() > 0:
+		# Handle breaking
+		var breakable: ItemToBreak
+		var min_distance: float = INF
+		# Find the breakable which is the minimum distance away
+		for nearby_breakable in nearby_breakables.values():
+			var distance = global_position.distance_to(nearby_breakable.global_position)
+			if distance < min_distance:
+				breakable = nearby_breakable
+				min_distance = distance
 		assert(breakable is ItemToBreak, "The first nearby breakable is not actually a ItemToBreak class")
 		breakable.breaking_progress(amount)
 
