@@ -1,0 +1,176 @@
+[gd_scene load_steps=7 format=3 uid="uid://qklll68udo8e"]
+
+[ext_resource type="Script" path="res://menus/menu scripts/option_menu.gd" id="1_o37ns"]
+[ext_resource type="Texture2D" uid="uid://c81w0qa1xtdfl" path="res://data/2D assets/ui/MainMenu_Background.png" id="2_2dui6"]
+[ext_resource type="Theme" uid="uid://urbhhupy6a5l" path="res://data/2D assets/ui/Mainmenubutton.tres" id="3_6l4x5"]
+[ext_resource type="Script" path="res://menus/menu scripts/audio_options.gd" id="4_efxg7"]
+[ext_resource type="Script" path="res://menus/menu scripts/input_setting.gd" id="5_kcedf"]
+[ext_resource type="PackedScene" uid="uid://d2h04heevn2b0" path="res://menus/input_button.tscn" id="6_olw53"]
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o37ns")
+
+[node name="MainMenuBackground" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = ExtResource("2_2dui6")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.084
+anchor_top = 0.107
+anchor_right = 0.915
+anchor_bottom = 0.888
+offset_left = -11.52
+offset_top = -0.0400085
+offset_right = 14.7999
+offset_bottom = 8.63995
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_6l4x5")
+current_tab = 0
+
+[node name="audio" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="audio options" type="Control" parent="TabContainer/audio"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_efxg7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/audio/audio options"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 147.0
+offset_top = -68.0
+offset_right = -120.0
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MASTER" type="Label" parent="TabContainer/audio/audio options/VBoxContainer"]
+layout_mode = 2
+text = "	Master"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MASTER BAR" type="HSlider" parent="TabContainer/audio/audio options/VBoxContainer"]
+layout_mode = 2
+
+[node name="MUSIC" type="Label" parent="TabContainer/audio/audio options/VBoxContainer"]
+layout_mode = 2
+text = "Music"
+horizontal_alignment = 1
+
+[node name="MUSIC BAR" type="HSlider" parent="TabContainer/audio/audio options/VBoxContainer"]
+layout_mode = 2
+
+[node name="SFX" type="Label" parent="TabContainer/audio/audio options/VBoxContainer"]
+layout_mode = 2
+text = "SFX"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFX BAR" type="HSlider" parent="TabContainer/audio/audio options/VBoxContainer"]
+layout_mode = 2
+
+[node name="apply" type="Button" parent="TabContainer/audio"]
+layout_mode = 0
+offset_left = 537.0
+offset_top = 434.0
+offset_right = 589.0
+offset_bottom = 465.0
+text = "Apply"
+
+[node name="back" type="Button" parent="TabContainer/audio"]
+layout_mode = 0
+offset_left = 1036.0
+offset_top = 499.0
+offset_right = 1081.0
+offset_bottom = 530.0
+text = "Back"
+
+[node name="controls" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="InputSetting" type="Control" parent="TabContainer/controls"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_kcedf")
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/controls/InputSetting"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/controls/InputSetting/MarginContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/controls/InputSetting/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ActionList" type="VBoxContainer" parent="TabContainer/controls/InputSetting/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InputButton" parent="TabContainer/controls/InputSetting/MarginContainer/VBoxContainer/ScrollContainer/ActionList" instance=ExtResource("6_olw53")]
+layout_mode = 2
+
+[node name="InputButton2" parent="TabContainer/controls/InputSetting/MarginContainer/VBoxContainer/ScrollContainer/ActionList" instance=ExtResource("6_olw53")]
+layout_mode = 2
+
+[node name="InputButton3" parent="TabContainer/controls/InputSetting/MarginContainer/VBoxContainer/ScrollContainer/ActionList" instance=ExtResource("6_olw53")]
+layout_mode = 2
+
+[node name="InputButton4" parent="TabContainer/controls/InputSetting/MarginContainer/VBoxContainer/ScrollContainer/ActionList" instance=ExtResource("6_olw53")]
+layout_mode = 2
+
+[node name="InputButton5" parent="TabContainer/controls/InputSetting/MarginContainer/VBoxContainer/ScrollContainer/ActionList" instance=ExtResource("6_olw53")]
+layout_mode = 2
+
+[node name="InputButton6" parent="TabContainer/controls/InputSetting/MarginContainer/VBoxContainer/ScrollContainer/ActionList" instance=ExtResource("6_olw53")]
+layout_mode = 2
+
+[node name="InputButton7" parent="TabContainer/controls/InputSetting/MarginContainer/VBoxContainer/ScrollContainer/ActionList" instance=ExtResource("6_olw53")]
+layout_mode = 2
+
+[node name="ResetButton" type="Button" parent="TabContainer/controls/InputSetting/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Reset To Default"
+
+[node name="Back" type="Button" parent="TabContainer/controls/InputSetting/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="TabContainer/audio/apply" to="." method="_on_apply_pressed"]
+[connection signal="pressed" from="TabContainer/audio/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="TabContainer/controls/InputSetting/MarginContainer/VBoxContainer/ResetButton" to="TabContainer/controls/InputSetting" method="_on_reset_button_pressed"]
+[connection signal="pressed" from="TabContainer/controls/InputSetting/MarginContainer/VBoxContainer/Back" to="TabContainer/controls/InputSetting" method="_on_back_pressed"]

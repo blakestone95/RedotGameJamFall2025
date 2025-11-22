@@ -37,12 +37,11 @@ signal updated
 func increase(amount: int) -> int:
 	var sum: int = count + amount
 	var remainder: int = 0
-	if max_amount >= 0:
-		if sum > max_amount:
-			count = max_amount
-			remainder = sum - max_amount
-		else:
-			count = sum
+	if max_amount >= 0 and sum > max_amount:
+		count = max_amount
+		remainder = sum - max_amount
+	else:
+		count = sum
 	updated.emit()
 	return remainder
 

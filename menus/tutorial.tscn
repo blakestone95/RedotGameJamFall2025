@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dy0pskwhwjk42"]
+[gd_scene load_steps=6 format=3 uid="uid://dy0pskwhwjk42"]
 
 [ext_resource type="Script" path="res://menus/tutorial.gd" id="1_802sg"]
 [ext_resource type="Texture2D" uid="uid://c81w0qa1xtdfl" path="res://data/2D assets/ui/MainMenu_Background.png" id="2_abe7n"]
 [ext_resource type="Theme" uid="uid://urbhhupy6a5l" path="res://data/2D assets/ui/Mainmenubutton.tres" id="3_n1vtv"]
+[ext_resource type="AudioStream" uid="uid://cmoifrvi6ktca" path="res://data/audio_assets/sfx/ui_click_rollover_misc_15.wav" id="4_x4h72"]
+[ext_resource type="AudioStream" uid="uid://b13wfbea7coi6" path="res://data/audio_assets/sfx/ui_click_rollover_misc_16.wav" id="5_6051t"]
 
 [node name="Tutorial" type="Control"]
 layout_mode = 3
@@ -72,12 +74,26 @@ text = "E (at anthill)"
 
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 0
+<<<<<<< HEAD
 offset_left = 566.0
 offset_top = 588.0
 offset_right = 741.0
 offset_bottom = 651.0
+=======
+offset_left = 563.0
+offset_top = 471.0
+offset_right = 726.0
+offset_bottom = 534.0
+>>>>>>> 620b23ee42cb12533febae5a5b955d9480aa095d
 theme = ExtResource("3_n1vtv")
 theme_override_font_sizes/font_size = 40
 text = "GO BACK"
 
+[node name="Buttonhover" type="AudioStreamPlayer2D" parent="BackButton"]
+stream = ExtResource("4_x4h72")
+
+[node name="Buttonselect" type="AudioStreamPlayer2D" parent="BackButton"]
+stream = ExtResource("5_6051t")
+
+[connection signal="mouse_entered" from="BackButton" to="." method="_on_back_button_mouse_entered"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

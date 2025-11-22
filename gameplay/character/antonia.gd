@@ -1,12 +1,18 @@
 class_name Antonia extends CharacterBody2D
 
 # Attributes
+## Speed in pixels/second
 @export var speed = 300
+## For i-frames
+var immune: bool = false
+var i_frame_time: float = 1.0
 
 var game: Game
 
 # Audio related  (Stingray)
 @onready var footstep_player: AudioStreamPlayer2D = $Footsteps_SFX
+@onready var pickup_sfx: AudioStreamPlayer2D = $Pickup_SFX
+@onready var dropoff_sfx: AudioStreamPlayer2D = $Dropoff_SFX
 const footsteps_dirt = [
 	preload("res://data/audio_assets/sfx/footsteps/Footsteps_Casual_Earth_01.wav"),
 	preload("res://data/audio_assets/sfx/footsteps/Footsteps_Casual_Earth_02.wav"),
@@ -40,21 +46,21 @@ var inventory: Inventory
 # Separated interactions with pickups and colony so we can prioritize interactions without complex data structure management
 var nearby_pickups: Dictionary = {}
 var nearby_colony: OverworldColony # There will only be one colony
-var nearby_breakable: Dictionary = {}
-
-func _ready() -> void:
-	# Set up inventory
-	var inventory_data: Dictionary = {}
-	for item in inventory_items:
-		inventory_data[item.type] = item.duplicate()
-	inventory = Inventory.new(inventory_data)
+var nearby_breakables: Dictionary = {}
 
 func _enter_tree() -> void:
 	# Get the game node so we can access the inventory
 	if game == null: 
 		game = get_tree().get_nodes_in_group("game")[0] as Game;
 		if !game.is_node_ready(): await game.ready
-	
+
+	# Set up inventory
+	var inventory_data: Dictionary = {}
+	for item in inventory_items:
+		inventory_data[item.type] = item.duplicate()
+	inventory = Inventory.new(inventory_data)
+	health_bar.lost_all_hp.connect(handle_death)
+
 	apply_upgrades()
 
 func _physics_process(_delta: float) -> void:
@@ -98,11 +104,7 @@ func _on_interaction_area_entered(area: Area2D) -> void:
 	if area is OverworldColony:
 		nearby_colony = area
 	if area is ItemToBreak:
-		nearby_breakable[area.id] = area
-	if area.is_in_group("enemy"):
-		health_bar.take_damage(30)
-		$AnimationPlayer.play("iframe")
-
+		nearby_breakables[area.id] = area
 
 func _on_interaction_area_exited(area: Area2D) -> void:
 	if area is Pickup:
@@ -110,13 +112,34 @@ func _on_interaction_area_exited(area: Area2D) -> void:
 	if area is OverworldColony:
 		nearby_colony = null
 	if area is ItemToBreak:
-		nearby_breakable.erase(area.id)
+		nearby_breakables.erase(area.id)
+
+func take_damage(damage: int) -> void:
+	if !immune:
+		health_bar.take_damage(damage)
+		$AnimationPlayer.play("iframe")
+		immune = true
+		await get_tree().create_timer(i_frame_time).timeout
+		immune = false
+		
+func handle_death() -> void:
+	inventory.empty_inventory()
+	position = Vector2.ZERO
+	health_bar.value = health_bar.max_value
+	
 
 func handle_interaction() -> void:
 	if nearby_pickups.size() > 0:
 		# Handle pickup into inventory
-		var pickup: Pickup = nearby_pickups.values()[0]
-		assert(pickup is Pickup, "The first nearby pickup is not actually a Pickup class")
+		var pickup: Pickup
+		var min_distance: float = INF
+		# Find the pickup which is the minimum distance away
+		for nearby_pickup in nearby_pickups.values():
+			var distance = global_position.distance_to(nearby_pickup.global_position)
+			if distance < min_distance:
+				pickup = nearby_pickup
+				min_distance = distance
+		assert(pickup is Pickup, "The nearest pickup is not actually a Pickup class")
 		pickup_item(pickup)
 		return
 	elif nearby_colony != null:
@@ -132,10 +155,12 @@ func pickup_item(pickup: Pickup) -> void:
 	var remainder = inventory_slot.increase(num_to_pickup)
 	# If we picked up anything, we need to remove the pickup so people can't try to pick up multiple times
 	if remainder != num_to_pickup:
+		pickup_sfx.play()
 		pickup.pickup()
 		nearby_pickups.erase(pickup.id)
 
 func deposit_items(into: Inventory):
+	dropoff_sfx.play()
 	for item_to_deposit in inventory.items.values():
 		if item_to_deposit.count == 0: continue
 		# Add current inventory to colony inventory
@@ -145,9 +170,16 @@ func deposit_items(into: Inventory):
 		item_to_deposit.decrease(item_to_deposit.count - remainder)
 
 func handle_break(amount: float) -> void:
-	if nearby_breakable.size() > 0:
-		# Handle pickup into inventory
-		var breakable: ItemToBreak = nearby_breakable.values()[0]
+	if nearby_breakables.size() > 0:
+		# Handle breaking
+		var breakable: ItemToBreak
+		var min_distance: float = INF
+		# Find the breakable which is the minimum distance away
+		for nearby_breakable in nearby_breakables.values():
+			var distance = global_position.distance_to(nearby_breakable.global_position)
+			if distance < min_distance:
+				breakable = nearby_breakable
+				min_distance = distance
 		assert(breakable is ItemToBreak, "The first nearby breakable is not actually a ItemToBreak class")
 		breakable.breaking_progress(amount)
 
@@ -165,6 +197,10 @@ func apply_upgrades() -> void:
 	
 	# Health increase
 	if game.colony_upgrades[Colony.Rooms.GUARD]:
+		# slowly recharge health over time
+		if health_bar.value != health_bar.max_value:
+			health_bar.value += 1
+			get_tree().create_timer(2)
 		pass # TODO: Hook up to health system when implemented
 	
 	# Pickup increase - handled in pickup_item function

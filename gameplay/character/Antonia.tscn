@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://6ies8rxg2dmo"]
+[gd_scene load_steps=19 format=3 uid="uid://6ies8rxg2dmo"]
 
 [ext_resource type="Script" path="res://gameplay/character/antonia.gd" id="1_k7mp8"]
 [ext_resource type="Script" path="res://gameplay/inventory/items/item_data.gd" id="2_28fm6"]
@@ -7,6 +7,8 @@
 [ext_resource type="Resource" uid="uid://umc8jremj87a" path="res://gameplay/inventory/items/Stick.tres" id="4_6q770"]
 [ext_resource type="Resource" uid="uid://dwpbt4mvk2odb" path="res://gameplay/inventory/items/Pebble.tres" id="5_a2een"]
 [ext_resource type="Resource" uid="uid://brc0mofk4ogjs" path="res://gameplay/inventory/items/Food.tres" id="6_ggqb6"]
+[ext_resource type="AudioStream" uid="uid://uppx4kox1h10" path="res://data/audio_assets/sfx/swish_01.wav" id="8_7l0l6"]
+[ext_resource type="AudioStream" uid="uid://e3i1nu3cw5al" path="res://data/audio_assets/sfx/chips_single_flip_001.wav" id="9_oxhme"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_to8o5"]
 radius = 180.0
@@ -75,23 +77,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [true, false, true, false, true]
 }
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("InteractionArea")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [5, false],
-"method": &"set_collision_mask_value"
-}, {
-"args": [5, true],
-"method": &"set_collision_mask_value"
-}]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6q770"]
 _data = {
@@ -101,7 +86,7 @@ _data = {
 
 [node name="Antonia" type="CharacterBody2D"]
 z_index = 1
-collision_mask = 6
+collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_k7mp8")
 inventory_items = Array[ExtResource("2_28fm6")]([ExtResource("3_8fv6c"), ExtResource("4_6q770"), ExtResource("5_a2een"), ExtResource("6_ggqb6")])
@@ -116,8 +101,15 @@ sprite_frames = SubResource("SpriteFrames_wnrh0")
 frame = 2
 frame_progress = 0.571913
 
+[node name="HurtArea" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="HurtCircle" type="CollisionShape2D" parent="HurtArea"]
+shape = SubResource("CircleShape2D_to8o5")
+debug_color = Color(0, 0.54423, 0.945571, 0.658824)
+
 [node name="InteractionArea" type="Area2D" parent="."]
-collision_mask = 24
+collision_mask = 8
 
 [node name="InteractionCircle" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("CircleShape2D_xnl2y")
@@ -125,6 +117,16 @@ debug_color = Color(9.62615e-07, 0.649433, 0.143892, 0.42)
 
 [node name="Footsteps_SFX" type="AudioStreamPlayer2D" parent="."]
 volume_db = 13.631
+bus = &"SFX"
+
+[node name="Pickup_SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_7l0l6")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="Dropoff_SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_oxhme")
+volume_db = 10.0
 bus = &"SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

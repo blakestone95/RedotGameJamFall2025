@@ -1,9 +1,15 @@
+<<<<<<< HEAD
 [gd_scene load_steps=24 format=3 uid="uid://bxnts5kevcg5k"]
+=======
+[gd_scene load_steps=26 format=3 uid="uid://bxnts5kevcg5k"]
+>>>>>>> 620b23ee42cb12533febae5a5b955d9480aa095d
 
 [ext_resource type="Script" path="res://menus/main_menu.gd" id="1_ih3s6"]
 [ext_resource type="Texture2D" uid="uid://c81w0qa1xtdfl" path="res://data/2D assets/ui/MainMenu_Background.png" id="2_53qvp"]
 [ext_resource type="Theme" uid="uid://urbhhupy6a5l" path="res://data/2D assets/ui/Mainmenubutton.tres" id="3_je8l7"]
+[ext_resource type="AudioStream" uid="uid://b13wfbea7coi6" path="res://data/audio_assets/sfx/ui_click_rollover_misc_16.wav" id="4_l656b"]
 [ext_resource type="PackedScene" uid="uid://cicu1qk0jq20x" path="res://menus/credits.tscn" id="4_wnv6w"]
+[ext_resource type="AudioStream" uid="uid://cmoifrvi6ktca" path="res://data/audio_assets/sfx/ui_click_rollover_misc_15.wav" id="5_5mdks"]
 [ext_resource type="PackedScene" uid="uid://dy0pskwhwjk42" path="res://menus/tutorial.tscn" id="5_ia8rv"]
 [ext_resource type="Texture2D" uid="uid://7h56jvne7h3l" path="res://data/2D assets/world/topview_anthill.png" id="5_m8c1o"]
 [ext_resource type="Texture2D" uid="uid://ydb3lfgldbr3" path="res://data/2D assets/world/Crumb.png" id="6_h14mx"]
@@ -14,7 +20,11 @@
 [ext_resource type="Script" path="res://menus/ant scripts/ant3.gd" id="11_5ftxp"]
 [ext_resource type="Script" path="res://menus/ant scripts/ant4.gd" id="12_3swi0"]
 [ext_resource type="AudioStream" uid="uid://cv4mhiqfgfka4" path="res://data/audio_assets/music/MenuMusic.mp3" id="13_ylc3x"]
+<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://qklll68udo8e" path="res://menus/option_menu.tscn" id="15_je8l7"]
+=======
+[ext_resource type="PackedScene" uid="uid://qklll68udo8e" path="res://menus/OptionsMenu.tscn" id="15_je8l7"]
+>>>>>>> 620b23ee42cb12533febae5a5b955d9480aa095d
 
 [sub_resource type="Curve2D" id="Curve2D_miq6v"]
 _data = {
@@ -139,6 +149,16 @@ layout_mode = 2
 theme = ExtResource("3_je8l7")
 text = "EXIT"
 
+[node name="MenuSelectSound" type="AudioStreamPlayer2D" parent="ButtonContainer"]
+position = Vector2(0, -363)
+stream = ExtResource("4_l656b")
+bus = &"SFX"
+
+[node name="MenuHoverSound" type="AudioStreamPlayer2D" parent="ButtonContainer"]
+position = Vector2(0, -363)
+stream = ExtResource("5_5mdks")
+bus = &"SFX"
+
 [node name="Credits" parent="." instance=ExtResource("4_wnv6w")]
 visible = false
 layout_mode = 1
@@ -151,7 +171,11 @@ layout_mode = 1
 position = Vector2(140, 93)
 texture = ExtResource("5_m8c1o")
 
+<<<<<<< HEAD
 [node name="option menu" parent="." instance=ExtResource("15_je8l7")]
+=======
+[node name="OptionsMenu" parent="." instance=ExtResource("15_je8l7")]
+>>>>>>> 620b23ee42cb12533febae5a5b955d9480aa095d
 visible = false
 layout_mode = 1
 offset_left = -2.0
@@ -232,13 +256,22 @@ sprite_frames = SubResource("SpriteFrames_0hxc3")
 frame = 1
 frame_progress = 0.711405
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="MainMenuMusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_ylc3x")
 autoplay = true
 parameters/looping = true
 
+[connection signal="mouse_entered" from="ButtonContainer/START" to="." method="_play_hover_sound"]
 [connection signal="pressed" from="ButtonContainer/START" to="." method="_on_start_pressed"]
+<<<<<<< HEAD
 [connection signal="pressed" from="ButtonContainer/How to play" to="." method="_on_how_to_play_pressed"]
+=======
+[connection signal="mouse_entered" from="ButtonContainer/How to play" to="." method="_play_hover_sound"]
+[connection signal="pressed" from="ButtonContainer/How to play" to="." method="_on_how_to_play_pressed"]
+[connection signal="mouse_entered" from="ButtonContainer/Options" to="." method="_play_hover_sound"]
+>>>>>>> 620b23ee42cb12533febae5a5b955d9480aa095d
 [connection signal="pressed" from="ButtonContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="mouse_entered" from="ButtonContainer/Credits" to="." method="_play_hover_sound"]
 [connection signal="pressed" from="ButtonContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="mouse_entered" from="ButtonContainer/Quit" to="." method="_play_hover_sound"]
 [connection signal="pressed" from="ButtonContainer/Quit" to="." method="_on_quit_pressed"]
