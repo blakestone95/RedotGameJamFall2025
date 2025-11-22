@@ -52,6 +52,10 @@ func _ready() -> void:
 		intentory_data[item.type] = item_data
 	colony_inventory = Inventory.new(intentory_data)
 	
+	#For Debugging
+	#for i in range(4):
+	#	colony_inventory.increase_item(i,100)
+	
 	# Render initial state
 	var scene = preload(rebuild_scene).instantiate()
 	open_scene.add_child(scene)
@@ -72,6 +76,11 @@ func on_state_update(new_state: GameState) -> void:
 	assert(new_state is GameState, "Signal update_game_state must be emitted with an argument of type GameState")
 	if state == new_state: return
 	state = new_state
+	if state == GameState.REBUILD:
+		var Fade = load("res://scenes/Fade.tscn").instantiate()
+		add_child(Fade)
+		Fade.get_node("ColorRect").get_node("AnimationPlayer").play("FadeEffect")
+		await get_tree().create_timer(5.0).timeout
 
 	# When the state updates, remove the current scene and load the apropriate scene
 	# Also update what music is playing
