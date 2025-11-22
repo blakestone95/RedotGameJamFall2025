@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ltcjo1k5fb1v"]
+[gd_scene load_steps=10 format=3 uid="uid://ltcjo1k5fb1v"]
 
 [ext_resource type="Texture2D" uid="uid://b864e2fsk2qdb" path="res://data/2D assets/character/EnemyAntSheet.png" id="1_mg4ot"]
 [ext_resource type="Script" path="res://gameplay/enemies/red_ant.gd" id="1_uqknm"]
@@ -37,14 +37,17 @@ radius = 1500.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mg4ot"]
 radius = 98.58
-height = 246.7
+height = 262.857
 
-[node name="RedAnt" type="Node2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uqknm"]
+radius = 80.0
+height = 228.571
+
+[node name="RedAnt" type="CharacterBody2D"]
 scale = Vector2(0.175, 0.175)
+collision_layer = 0
+collision_mask = 3
 script = ExtResource("1_uqknm")
-speed = null
-rotation_speed = null
-attack_damage = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 17.1429)
@@ -70,6 +73,10 @@ shape = SubResource("CapsuleShape2D_mg4ot")
 wait_time = 2.0
 one_shot = true
 autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_uqknm")
 
 [connection signal="body_entered" from="DetectionZone" to="." method="_on_detection_zone_body_entered"]
 [connection signal="body_exited" from="DetectionZone" to="." method="_on_detection_zone_body_exited"]
