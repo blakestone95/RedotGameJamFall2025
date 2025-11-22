@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cicu1qk0jq20x"]
+[gd_scene load_steps=6 format=3 uid="uid://cicu1qk0jq20x"]
 
 [ext_resource type="Script" path="res://menus/credits.gd" id="1_fns74"]
 [ext_resource type="Texture2D" uid="uid://c81w0qa1xtdfl" path="res://data/2D assets/ui/MainMenu_Background.png" id="1_xlg2h"]
 [ext_resource type="Theme" uid="uid://urbhhupy6a5l" path="res://data/2D assets/ui/Mainmenubutton.tres" id="3_dn5jh"]
+[ext_resource type="AudioStream" uid="uid://cmoifrvi6ktca" path="res://data/audio_assets/sfx/ui_click_rollover_misc_15.wav" id="4_yo5bs"]
+[ext_resource type="AudioStream" uid="uid://b13wfbea7coi6" path="res://data/audio_assets/sfx/ui_click_rollover_misc_16.wav" id="5_qpqy0"]
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -18,26 +20,28 @@ position = Vector2(640, 360)
 texture = ExtResource("1_xlg2h")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(400, 500)
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -199.0
-offset_top = -132.0
-offset_right = 199.0
-offset_bottom = 113.0
+anchor_bottom = 1.0
+offset_left = -238.0
+offset_top = -500.0
+offset_right = 238.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 theme = ExtResource("3_dn5jh")
+alignment = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2"]
 layout_mode = 2
-text = "Programmer:"
+text = "Programmer:          "
 
 [node name="Programer" type="Label" parent="HBoxContainer/VBoxContainer2"]
 layout_mode = 2
@@ -84,6 +88,7 @@ text = "Jintessa"
 uri = "https://Jintessa.itch.io"
 
 [node name="BackButton" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 300)
 layout_mode = 0
 offset_left = 563.0
 offset_top = 471.0
@@ -93,4 +98,11 @@ theme = ExtResource("3_dn5jh")
 theme_override_font_sizes/font_size = 40
 text = "GO BACK"
 
+[node name="ButtonHover" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_yo5bs")
+
+[node name="ButtonSelect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_qpqy0")
+
+[connection signal="mouse_entered" from="BackButton" to="." method="_on_back_button_mouse_entered"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

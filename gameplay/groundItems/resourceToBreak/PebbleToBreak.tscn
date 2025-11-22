@@ -13,7 +13,6 @@ height = 318.0
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 8
-collision_mask = 0
 script = ExtResource("1_1v01m")
 pickup_item = ExtResource("2_1v01m")
 
@@ -24,6 +23,14 @@ shape = SubResource("CapsuleShape2D_0pwtd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_4xsjs")
+
+[node name="ForagePrompt" type="Label" parent="."]
+visible = false
+offset_left = -56.0
+offset_top = -175.0
+offset_right = 59.0
+offset_bottom = -152.0
+text = "Hold space to break"
 
 [node name="ForagingProgress" parent="." instance=ExtResource("4_m0ejh")]
 visible = false

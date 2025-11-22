@@ -1,0 +1,73 @@
+extends CharacterBody2D
+
+
+enum State {
+	IDLE,
+	ATTACKING,
+	RETREATING
+}
+
+@export var speed: int = 200
+@export var rotation_speed: float = 0.1
+@export var attack_damage: int = 20
+
+@onready var start_position = global_position
+var target: Antonia
+var current_state : State = State.IDLE
+var idle_position : Vector2
+var nb_idle_positions = 8
+var idle_positions : Array[Vector2] = []
+
+func _ready() -> void:
+	# Set up o
+	for i in range(nb_idle_positions):
+		var x = cos(2*i*PI/nb_idle_positions)
+		var y = sin(2*i*PI/nb_idle_positions)
+		idle_positions.append(global_position + Vector2(x*150, y*150))
+
+func _on_detection_zone_body_entered(body: Node2D) -> void:
+	if body is Antonia:
+		target = body
+		current_state = State.ATTACKING
+		$AnimatedSprite2D.speed_scale = 2
+		$Timer.stop()
+
+func _on_detection_zone_body_exited(body: Node2D) -> void:
+	if body is Antonia:
+		target = null
+		current_state = State.RETREATING
+		$AnimatedSprite2D.speed_scale = 1
+		rotation += get_angle_to(start_position)
+		
+func _physics_process(delta: float) -> void:
+	if current_state == State.ATTACKING:
+		rotation += get_angle_to(target.global_position)
+		velocity = global_position.direction_to(target.global_position) * speed
+		
+	if current_state == State.RETREATING:
+		velocity = global_position.direction_to(start_position) * speed
+		if (global_position - start_position).length() < speed * delta:
+			current_state = State.IDLE
+			$Timer.start()
+	
+	if current_state == State.IDLE:
+		if (global_position - idle_position).length() < speed * delta:
+			velocity = Vector2.ZERO
+			
+	move_and_slide()
+			
+func _on_timer_timeout() -> void:
+	var idle_position_index = randi_range(0, idle_positions.size()-1)
+	idle_position = idle_positions[idle_position_index]
+	velocity = global_position.direction_to(idle_position) * speed
+	rotation += get_angle_to(idle_position)
+	$Timer.start()
+	
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body is Antonia:
+		body.take_damage(attack_damage)
+		target = null
+		current_state = State.RETREATING
+		$AnimatedSprite2D.speed_scale = 1
+		rotation += get_angle_to(start_position)

@@ -1,0 +1,84 @@
+[gd_scene load_steps=10 format=3 uid="uid://ltcjo1k5fb1v"]
+
+[ext_resource type="Texture2D" uid="uid://b864e2fsk2qdb" path="res://data/2D assets/character/EnemyAntSheet.png" id="1_mg4ot"]
+[ext_resource type="Script" path="res://gameplay/enemies/red_ant.gd" id="1_uqknm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqknm"]
+atlas = ExtResource("1_mg4ot")
+region = Rect2(0, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1y7s"]
+atlas = ExtResource("1_mg4ot")
+region = Rect2(400, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uye5o"]
+atlas = ExtResource("1_mg4ot")
+region = Rect2(800, 0, 400, 400)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_33lh4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqknm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1y7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uye5o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mg4ot"]
+radius = 1500.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mg4ot"]
+radius = 98.58
+height = 262.857
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uqknm"]
+radius = 80.0
+height = 228.571
+
+[node name="RedAnt" type="CharacterBody2D"]
+scale = Vector2(0.175, 0.175)
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_uqknm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 17.1429)
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_33lh4")
+autoplay = "default"
+frame_progress = 0.794337
+
+[node name="DetectionZone" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionZone"]
+shape = SubResource("CircleShape2D_mg4ot")
+
+[node name="ContactHitbox" type="Area2D" parent="." groups=["enemy"]]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ContactHitbox"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_mg4ot")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_uqknm")
+
+[connection signal="body_entered" from="DetectionZone" to="." method="_on_detection_zone_body_entered"]
+[connection signal="body_exited" from="DetectionZone" to="." method="_on_detection_zone_body_exited"]
+[connection signal="body_entered" from="ContactHitbox" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,9 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://ky6c418pyj6d"]
+[gd_scene load_steps=24 format=3 uid="uid://ky6c418pyj6d"]
 
 [ext_resource type="Script" path="res://menus/lose_menu.gd" id="1_t7yca"]
 [ext_resource type="Texture2D" uid="uid://c81w0qa1xtdfl" path="res://data/2D assets/ui/MainMenu_Background.png" id="2_hfx3b"]
 [ext_resource type="Theme" uid="uid://urbhhupy6a5l" path="res://data/2D assets/ui/Mainmenubutton.tres" id="3_ou2va"]
 [ext_resource type="PackedScene" uid="uid://cicu1qk0jq20x" path="res://menus/credits.tscn" id="4_2tv5r"]
+[ext_resource type="AudioStream" uid="uid://b13wfbea7coi6" path="res://data/audio_assets/sfx/ui_click_rollover_misc_16.wav" id="4_i8f04"]
+[ext_resource type="AudioStream" uid="uid://cmoifrvi6ktca" path="res://data/audio_assets/sfx/ui_click_rollover_misc_15.wav" id="5_3eq78"]
 [ext_resource type="Texture2D" uid="uid://7h56jvne7h3l" path="res://data/2D assets/world/topview_anthill.png" id="5_muqma"]
 [ext_resource type="Texture2D" uid="uid://ydb3lfgldbr3" path="res://data/2D assets/world/Crumb.png" id="6_iffbq"]
 [ext_resource type="Texture2D" uid="uid://cw7awlj7drk5v" path="res://data/2D assets/world/Stick.png" id="7_v8j6r"]
@@ -171,6 +173,14 @@ layout_mode = 2
 theme = ExtResource("3_ou2va")
 text = "EXIT"
 
+[node name="MenuSelectSound" type="AudioStreamPlayer2D" parent="ButtonContainer"]
+stream = ExtResource("4_i8f04")
+bus = &"SFX"
+
+[node name="MenuHoverSound" type="AudioStreamPlayer2D" parent="ButtonContainer"]
+stream = ExtResource("5_3eq78")
+bus = &"SFX"
+
 [node name="Credits" parent="." instance=ExtResource("4_2tv5r")]
 visible = false
 layout_mode = 1
@@ -259,6 +269,9 @@ stream = ExtResource("13_1e6pd")
 autoplay = true
 parameters/looping = true
 
+[connection signal="mouse_entered" from="ButtonContainer/Main Menu" to="." method="_on_main_menu_mouse_entered"]
 [connection signal="pressed" from="ButtonContainer/Main Menu" to="." method="_on_main_menu_pressed"]
+[connection signal="mouse_entered" from="ButtonContainer/Credits" to="." method="_on_credits_mouse_entered"]
 [connection signal="pressed" from="ButtonContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="mouse_entered" from="ButtonContainer/Quit" to="." method="_on_quit_mouse_entered"]
 [connection signal="pressed" from="ButtonContainer/Quit" to="." method="_on_quit_pressed"]

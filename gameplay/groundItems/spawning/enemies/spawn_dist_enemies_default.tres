@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="SpawnDistribution" load_steps=7 format=3 uid="uid://bcpg2uv4ad4nc"]
+
+[ext_resource type="Script" path="res://gameplay/groundItems/spawning/spawn_chance.gd" id="1_blikc"]
+[ext_resource type="PackedScene" uid="uid://bhk8b14ylpk0h" path="res://gameplay/enemies/Beetle.tscn" id="2_wktim"]
+[ext_resource type="PackedScene" path="res://gameplay/enemies/RedAnt.tscn" id="3_led7e"]
+[ext_resource type="Script" path="res://gameplay/groundItems/spawning/spawn_distribution.gd" id="6_dojow"]
+
+[sub_resource type="Resource" id="Resource_rwmy6"]
+script = ExtResource("1_blikc")
+chance = 0.3
+scene = ExtResource("2_wktim")
+
+[sub_resource type="Resource" id="Resource_ir83c"]
+script = ExtResource("1_blikc")
+chance = 0.7
+scene = ExtResource("3_led7e")
+
+[resource]
+script = ExtResource("6_dojow")
+distribution_table = Array[ExtResource("1_blikc")]([SubResource("Resource_rwmy6"), SubResource("Resource_ir83c")])

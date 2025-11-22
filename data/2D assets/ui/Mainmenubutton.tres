@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://urbhhupy6a5l"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://1i2ae3dpuumj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_apktr"]
 
@@ -9,6 +9,20 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4d8uf"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p3xge"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4d8uf"]
+bg_color = Color(1, 0.909804, 0.509804, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2ilsl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qmd6x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_debpj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8toye"]
+content_margin_left = 15.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_80p1s"]
 
 [resource]
 default_font_size = 30
@@ -22,3 +36,16 @@ Button/styles/focus = SubResource("StyleBoxEmpty_des0j")
 Button/styles/hover = SubResource("StyleBoxEmpty_1skck")
 Button/styles/normal = SubResource("StyleBoxEmpty_4d8uf")
 Button/styles/pressed = SubResource("StyleBoxEmpty_p3xge")
+Label/colors/font_color = Color(1, 0.952941, 0.737255, 1)
+Label/font_sizes/font_size = 33
+TabBar/colors/font_hovered_color = Color(1, 0.909804, 0.509804, 1)
+TabBar/colors/font_selected_color = Color(1, 0.909804, 0.509804, 1)
+TabBar/styles/tab_selected = SubResource("StyleBoxFlat_4d8uf")
+TabContainer/colors/font_hovered_color = Color(0.679688, 0.46875, 0.257813, 1)
+TabContainer/colors/font_selected_color = Color(1, 0.952941, 0.737255, 1)
+TabContainer/colors/font_unselected_color = Color(0.824219, 0.565881, 0.307544, 1)
+TabContainer/styles/panel = SubResource("StyleBoxEmpty_2ilsl")
+TabContainer/styles/tab_hovered = SubResource("StyleBoxEmpty_qmd6x")
+TabContainer/styles/tab_selected = SubResource("StyleBoxEmpty_debpj")
+TabContainer/styles/tab_unselected = SubResource("StyleBoxEmpty_8toye")
+TabContainer/styles/tabbar_background = SubResource("StyleBoxEmpty_80p1s")

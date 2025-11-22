@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c3xvewkqam3go"]
+[gd_scene load_steps=28 format=3 uid="uid://c3xvewkqam3go"]
 
 [ext_resource type="Script" path="res://scenes/colony/colony_camera.gd" id="1_fgowp"]
 [ext_resource type="Script" path="res://scenes/colony/colony.gd" id="1_sqlji"]
@@ -25,6 +25,8 @@
 [ext_resource type="Script" path="res://gameplay/inventory/inventory_gui_control.gd" id="20_q1hyv"]
 [ext_resource type="Script" path="res://scenes/colony/day_counter.gd" id="21_83glh"]
 [ext_resource type="Script" path="res://scenes/colony/food_consumption_message.gd" id="22_dnati"]
+[ext_resource type="AudioStream" uid="uid://cmoifrvi6ktca" path="res://data/audio_assets/sfx/ui_click_rollover_misc_15.wav" id="26_2wugf"]
+[ext_resource type="AudioStream" uid="uid://b13wfbea7coi6" path="res://data/audio_assets/sfx/ui_click_rollover_misc_16.wav" id="27_g8s4c"]
 
 [node name="Colony" type="Node2D"]
 script = ExtResource("1_sqlji")
@@ -263,8 +265,8 @@ texture = ExtResource("18_b6sg5")
 [node name="FoodConsumptionPanel" type="PanelContainer" parent="."]
 offset_left = 247.0
 offset_top = -976.0
-offset_right = 435.0
-offset_bottom = -919.0
+offset_right = 554.0
+offset_bottom = -889.0
 
 [node name="MarginContainer" type="MarginContainer" parent="FoodConsumptionPanel"]
 layout_mode = 2
@@ -276,7 +278,7 @@ theme_override_constants/margin_bottom = 6
 [node name="FoodConsumptionMessage" type="Label" parent="FoodConsumptionPanel/MarginContainer"]
 custom_minimum_size = Vector2(190, 50)
 layout_mode = 2
-text = "The ants require 20 food per day to survive!"
+text = "The ants require X food per day to survive! Each room rebuilt will need X extra food each day."
 autowrap_mode = 2
 script = ExtResource("22_dnati")
 
@@ -313,8 +315,10 @@ script = ExtResource("20_q1hyv")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/InventoryControl"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 56.0
+offset_bottom = 56.0
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 1
@@ -337,11 +341,25 @@ text = "Day: ?"
 horizontal_alignment = 2
 script = ExtResource("21_83glh")
 
+[node name="ButtonHover" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("26_2wugf")
+
+[node name="ButtonSelect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("27_g8s4c")
+
+[connection signal="mouse_entered" from="Destroyed/AphidRanchDestroyed/AphidRanchRebuildButton" to="Destroyed/AphidRanchDestroyed/AphidRanchRebuildButton" method="on_button_hover"]
 [connection signal="pressed" from="Destroyed/AphidRanchDestroyed/AphidRanchRebuildButton" to="Destroyed/AphidRanchDestroyed/AphidRanchRebuildButton" method="on_rebuild"]
+[connection signal="mouse_entered" from="Destroyed/FungusFarmDestroyed/FungusFarmRebuildButton" to="Destroyed/FungusFarmDestroyed/FungusFarmRebuildButton" method="on_button_hover"]
 [connection signal="pressed" from="Destroyed/FungusFarmDestroyed/FungusFarmRebuildButton" to="Destroyed/FungusFarmDestroyed/FungusFarmRebuildButton" method="on_rebuild"]
+[connection signal="mouse_entered" from="Destroyed/GuardDestroyed/GuardRebuildButton" to="Destroyed/GuardDestroyed/GuardRebuildButton" method="on_button_hover"]
 [connection signal="pressed" from="Destroyed/GuardDestroyed/GuardRebuildButton" to="Destroyed/GuardDestroyed/GuardRebuildButton" method="on_rebuild"]
+[connection signal="mouse_entered" from="Destroyed/HousesDestroyed/HousesRebuildButton" to="Destroyed/HousesDestroyed/HousesRebuildButton" method="on_button_hover"]
 [connection signal="pressed" from="Destroyed/HousesDestroyed/HousesRebuildButton" to="Destroyed/HousesDestroyed/HousesRebuildButton" method="on_rebuild"]
+[connection signal="mouse_entered" from="Destroyed/RoyalChamberDestroyed/RoyalChamberRebuildButton" to="Destroyed/RoyalChamberDestroyed/RoyalChamberRebuildButton" method="on_button_hover"]
 [connection signal="pressed" from="Destroyed/RoyalChamberDestroyed/RoyalChamberRebuildButton" to="Destroyed/RoyalChamberDestroyed/RoyalChamberRebuildButton" method="on_rebuild"]
+[connection signal="mouse_entered" from="Destroyed/ScoutDestroyed/ScoutRebuildButton" to="Destroyed/ScoutDestroyed/ScoutRebuildButton" method="on_button_hover"]
 [connection signal="pressed" from="Destroyed/ScoutDestroyed/ScoutRebuildButton" to="Destroyed/ScoutDestroyed/ScoutRebuildButton" method="on_rebuild"]
+[connection signal="mouse_entered" from="Destroyed/StorageDestroyed/StorageRebuildButton" to="Destroyed/StorageDestroyed/StorageRebuildButton" method="on_button_hover"]
 [connection signal="pressed" from="Destroyed/StorageDestroyed/StorageRebuildButton" to="Destroyed/StorageDestroyed/StorageRebuildButton" method="on_rebuild"]
+[connection signal="mouse_entered" from="CanvasLayer/VBoxContainer/StartButtonMargin/StartButton" to="CanvasLayer/VBoxContainer/StartButtonMargin/StartButton" method="_on_button_hover"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/StartButtonMargin/StartButton" to="CanvasLayer/VBoxContainer/StartButtonMargin/StartButton" method="_on_pressed"]
