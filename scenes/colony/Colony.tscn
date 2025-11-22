@@ -265,8 +265,8 @@ texture = ExtResource("18_b6sg5")
 [node name="FoodConsumptionPanel" type="PanelContainer" parent="."]
 offset_left = 247.0
 offset_top = -976.0
-offset_right = 435.0
-offset_bottom = -919.0
+offset_right = 554.0
+offset_bottom = -889.0
 
 [node name="MarginContainer" type="MarginContainer" parent="FoodConsumptionPanel"]
 layout_mode = 2
