@@ -1,11 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://6oui2eds8loi"]
 
 [ext_resource type="Script" path="res://scenes/overworld/pause_menu.gd" id="1_4x8e1"]
-<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://qklll68udo8e" path="res://menus/option_menu.tscn" id="2_u2dvn"]
-=======
-[ext_resource type="PackedScene" uid="uid://qklll68udo8e" path="res://menus/OptionsMenu.tscn" id="2_u2dvn"]
->>>>>>> 620b23ee42cb12533febae5a5b955d9480aa095d
 
 [node name="PauseMenu" type="Control"]
 process_mode = 2

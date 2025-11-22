@@ -39,6 +39,27 @@ bounding_box = NodePath("../AntHillBase(7Of7)")
 [node name="AntHillBase(7Of7)" type="Sprite2D" parent="."]
 texture = ExtResource("1_vrkjr")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -648.0
+offset_top = -1092.0
+offset_right = -78.0
+offset_bottom = -854.0
+color = Color(0.0866493, 0.000109919, 0.235096, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = -92.0
+offset_top = -1092.0
+offset_right = 38.0
+offset_bottom = -914.0
+color = Color(0.0862745, 0, 0.235294, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+offset_left = 28.0
+offset_top = -1092.0
+offset_right = 658.0
+offset_bottom = -782.0
+color = Color(0.0862745, 0, 0.235294, 1)
+
 [node name="AntHillBase(7Of7)BuiltTemplate" type="Sprite2D" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0.286275)
