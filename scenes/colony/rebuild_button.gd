@@ -36,6 +36,19 @@ func _enter_tree() -> void:
 
 # Handle all state updates
 func update_state(rocks_falling: bool) -> void:
+	if room_type == Colony.Rooms.SCOUT:
+		tooltip_text = "Scout building speeds up exploration.\n"
+	if room_type == Colony.Rooms.GUARD:
+		tooltip_text = "Guard building buffs health\n"
+	if room_type == Colony.Rooms.FARM:
+		tooltip_text = "Fungus farm helps reduce the food required daily.\n"
+	if room_type == Colony.Rooms.RANCH:
+		tooltip_text = "Aphid Ranch helps reduce the fod required daily.\n"
+	if room_type == Colony.Rooms.HOUSES:
+		tooltip_text = "Houses make sure the ants population is stable, but cost extra daily food.\n"
+	if room_type == Colony.Rooms.STORAGE:
+		tooltip_text = "Storage building increases inventory size.\n"
+	
 	var rebuilt = check_rebuilt_state(rocks_falling)
 	if rebuilt: return # Can exit processing early if the room is rebuilt already
 	check_can_afford_rebuild()
@@ -91,7 +104,7 @@ func show_costs() -> void:
 		if !first: costs_str += ", " 
 		else: first = false
 		costs_str += str(cost) + " " + type_name
-	tooltip_text = costs_str
+	tooltip_text += costs_str
 
 func on_rebuild() -> void:
 	# Button will be disabled if we can't afford to rebuild, so don't need to check that here
