@@ -81,6 +81,7 @@ func on_state_update(new_state: GameState) -> void:
 		add_child(Fade)
 		Fade.get_node("ColorRect").get_node("AnimationPlayer").play("FadeEffect")
 		await get_tree().create_timer(5.0).timeout
+		Fade.get_node("ColorRect").get_node("AnimationPlayer").play("FadeIn")
 
 	# When the state updates, remove the current scene and load the apropriate scene
 	# Also update what music is playing
