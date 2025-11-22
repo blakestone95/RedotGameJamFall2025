@@ -104,19 +104,12 @@ func consume_food() -> void:
 
 func get_req_food() -> int:
 	var req_food: int = food_base_req
-	
-	var rooms_built: int = 0
-	for room_built in colony_upgrades.values():
-		if room_built: rooms_built += 1
-	req_food += (rooms_built * food_increase_per_room)
-	
 	if colony_upgrades[Colony.Rooms.RANCH]: req_food -= food_decrease_ranch
 	if colony_upgrades[Colony.Rooms.FARM]: req_food -= food_decrease_farm
 	if colony_upgrades[Colony.Rooms.HOUSES]: req_food += food_increase_house
 	if colony_upgrades[Colony.Rooms.SCOUT]: req_food += food_increase_per_room
 	if colony_upgrades[Colony.Rooms.GUARD]: req_food += food_increase_per_room
 	if colony_upgrades[Colony.Rooms.STORAGE]: req_food += food_increase_per_room
-	
 	return req_food
 
 func on_timer_expired() -> void:
