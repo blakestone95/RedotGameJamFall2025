@@ -48,7 +48,12 @@ var nearby_pickups: Dictionary = {}
 var nearby_colony: OverworldColony # There will only be one colony
 var nearby_breakable: Dictionary = {}
 
-func _ready() -> void:
+func _enter_tree() -> void:
+	# Get the game node so we can access the inventory
+	if game == null: 
+		game = get_tree().get_nodes_in_group("game")[0] as Game;
+		if !game.is_node_ready(): await game.ready
+
 	# Set up inventory
 	var inventory_data: Dictionary = {}
 	for item in inventory_items:
@@ -56,12 +61,6 @@ func _ready() -> void:
 	inventory = Inventory.new(inventory_data)
 	health_bar.lost_all_hp.connect(handle_death)
 
-func _enter_tree() -> void:
-	# Get the game node so we can access the inventory
-	if game == null: 
-		game = get_tree().get_nodes_in_group("game")[0] as Game;
-		if !game.is_node_ready(): await game.ready
-	
 	apply_upgrades()
 
 func _physics_process(_delta: float) -> void:
