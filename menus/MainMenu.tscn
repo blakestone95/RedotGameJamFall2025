@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bxnts5kevcg5k"]
+[gd_scene load_steps=26 format=3 uid="uid://bxnts5kevcg5k"]
 
 [ext_resource type="Script" path="res://menus/main_menu.gd" id="1_ih3s6"]
 [ext_resource type="Texture2D" uid="uid://c81w0qa1xtdfl" path="res://data/2D assets/ui/MainMenu_Background.png" id="2_53qvp"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://menus/ant scripts/ant3.gd" id="11_5ftxp"]
 [ext_resource type="Script" path="res://menus/ant scripts/ant4.gd" id="12_3swi0"]
 [ext_resource type="AudioStream" uid="uid://cv4mhiqfgfka4" path="res://data/audio_assets/music/MenuMusic.mp3" id="13_ylc3x"]
+[ext_resource type="PackedScene" uid="uid://qklll68udo8e" path="res://menus/OptionsMenu.tscn" id="15_je8l7"]
 
 [sub_resource type="Curve2D" id="Curve2D_miq6v"]
 _data = {
@@ -81,7 +82,8 @@ grow_vertical = 2
 script = ExtResource("1_ih3s6")
 
 [node name="MainMenuBackground" type="Sprite2D" parent="."]
-position = Vector2(640, 360)
+position = Vector2(642.5, 360)
+scale = Vector2(1.00391, 1)
 texture = ExtResource("2_53qvp")
 
 [node name="TITLE" type="Label" parent="."]
@@ -119,6 +121,11 @@ layout_mode = 2
 theme = ExtResource("3_je8l7")
 text = "BEGIN JOURNEY"
 
+[node name="How to play" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+theme = ExtResource("3_je8l7")
+text = "HOW TO PLAY"
+
 [node name="Options" type="Button" parent="ButtonContainer"]
 layout_mode = 2
 theme = ExtResource("3_je8l7")
@@ -150,10 +157,17 @@ layout_mode = 1
 
 [node name="Tutorial" parent="." instance=ExtResource("5_ia8rv")]
 visible = false
+layout_mode = 1
 
 [node name="TopviewAnthill" type="Sprite2D" parent="."]
 position = Vector2(140, 93)
 texture = ExtResource("5_m8c1o")
+
+[node name="OptionsMenu" parent="." instance=ExtResource("15_je8l7")]
+visible = false
+layout_mode = 1
+offset_left = -2.0
+offset_right = -2.0
 
 [node name="Crumb" type="Sprite2D" parent="."]
 position = Vector2(1088, 587)
@@ -163,6 +177,12 @@ texture = ExtResource("6_h14mx")
 position = Vector2(1080, 90)
 scale = Vector2(0.36, 0.3225)
 texture = ExtResource("7_8pvqd")
+
+[node name="option menu" parent="." instance=ExtResource("15_je8l7")]
+visible = false
+layout_mode = 1
+offset_left = -2.0
+offset_right = -2.0
 
 [node name="ants" type="Node2D" parent="."]
 
@@ -235,11 +255,13 @@ stream = ExtResource("13_ylc3x")
 autoplay = true
 parameters/looping = true
 
-[connection signal="mouse_entered" from="ButtonContainer/START" to="." method="_on_start_mouse_entered"]
+[connection signal="mouse_entered" from="ButtonContainer/START" to="." method="_play_hover_sound"]
 [connection signal="pressed" from="ButtonContainer/START" to="." method="_on_start_pressed"]
-[connection signal="mouse_entered" from="ButtonContainer/Options" to="." method="_on_options_mouse_entered"]
+[connection signal="mouse_entered" from="ButtonContainer/How to play" to="." method="_play_hover_sound"]
+[connection signal="pressed" from="ButtonContainer/How to play" to="." method="_on_how_to_play_pressed"]
+[connection signal="mouse_entered" from="ButtonContainer/Options" to="." method="_play_hover_sound"]
 [connection signal="pressed" from="ButtonContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="mouse_entered" from="ButtonContainer/Credits" to="." method="_on_credits_mouse_entered"]
+[connection signal="mouse_entered" from="ButtonContainer/Credits" to="." method="_play_hover_sound"]
 [connection signal="pressed" from="ButtonContainer/Credits" to="." method="_on_credits_pressed"]
-[connection signal="mouse_entered" from="ButtonContainer/Quit" to="." method="_on_quit_mouse_entered"]
+[connection signal="mouse_entered" from="ButtonContainer/Quit" to="." method="_play_hover_sound"]
 [connection signal="pressed" from="ButtonContainer/Quit" to="." method="_on_quit_pressed"]
